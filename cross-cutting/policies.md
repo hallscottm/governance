@@ -45,11 +45,9 @@ cross-cutting/access-rules.md for who approves.
 ---
 
 **Open items:**
-- Procedures (column 8) for these cross-cutting policies are not yet
-  extracted into a shared registry — Infrastructure's PROC-1/PROC-2/PROC-6
-  still hold the mechanical steps, currently Infrastructure-specific in
-  wording even though the underlying flow is generic. Revisit once a
-  second layer's Procedures column needs the same steps.
+- (Resolved 2026-09-22) cross-cutting/procedures.md created, extracting
+  CCPROC-1/2/3/4 from Infrastructure's PROC-1/2/5/6; Infrastructure's
+  procedures retrofitted to extend them.
 - Whether Risk Tiers (column 9) concepts should also have a cross-cutting
   registry is an open question — Infrastructure's Risk Tiers (FIPS
   199-aligned Low/Moderate/High) is already fairly generic and a strong

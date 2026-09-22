@@ -26,3 +26,30 @@
      Infrastructure Admin alone — AR-2 needs a forward-looking update
 - Date answered: 2026-09-22 (drafted; awaiting explicit human review,
   including the two flagged inconsistencies above)
+
+## Q-cc.1 — Retrofit: Risk Scale extracted to cross-cutting registry
+- Date: 2026-09-22
+- Context: while drafting Networking's Risk Tiers, recognized the FIPS
+  199-aligned Risk Scale itself (not the Determining Factors) is fully
+  generic. Human confirmed extraction, same pattern as
+  Policies/Access Rules/Procedures.
+- Resolution: cross-cutting/risk-tiers.md created with the Risk Scale
+  table and a baseline Consequences by Tier table; this layer's Risk
+  Scale and Consequences by Tier sections updated to "Extends:
+  cross-cutting/risk-tiers.md" with only layer-specific additions kept.
+- Decision-weight: High (governs Risk Tiers structure for all future layers)
+- Date answered: 2026-09-22
+
+## Q-fix.1 — Stale text correction in Consequences by Tier
+- Date: 2026-09-22
+- Context: while performing the cross-cutting retrofit above, discovered
+  the Consequences by Tier table still said "this framework does not
+  currently differentiate Moderate from the flat Production rules" — this
+  was true when originally written but became stale the moment POL-2/
+  POL-3 were updated to scale by Risk Tier earlier the same session. The
+  open items section had already been correctly marked resolved; only
+  this one table's prose wasn't updated to match.
+- Resolution: table corrected to reflect POL-2/POL-3's actual current
+  (scaled) requirements per tier, with a note explaining the correction.
+- Decision-weight: Low (factual correction, not a new decision)
+- Date answered: 2026-09-22

@@ -12,11 +12,9 @@ Information and Information Systems)
 
 ## Risk Scale
 
-| Tier | FIPS 199 Definition | Infrastructure Interpretation |
-|---|---|---|
-| **Low** | Limited adverse effect on operations/assets if compromised | Dev/Staging resources; non-sensitive data; loss of availability is an inconvenience, not a business event |
-| **Moderate** | Serious adverse effect | Most Production resources; moderate data sensitivity; downtime has real but recoverable business impact |
-| **High** | Severe or catastrophic adverse effect | Production resources handling regulated/highly sensitive data, or whose failure has severe business/safety/legal consequence |
+**Extends:** cross-cutting/risk-tiers.md (see that file for the FIPS
+199-aligned Low/Moderate/High scale and its general interpretation — not
+restated here as of 2026-09-22).
 
 ## Determining Factors
 
@@ -53,11 +51,17 @@ adopting this framework fills in which regimes apply to which Risk Tier.
 
 ## Consequences by Tier
 
-| Tier | Policy Implication |
+**Extends:** cross-cutting/risk-tiers.md's baseline Consequences by Tier
+(the two-person sign-off rule for High risk lives there now, via CCAR-3 —
+not restated here).
+
+**Layer-specific additions beyond the baseline:**
+
+| Tier | Infrastructure-Specific Policy Implication |
 |---|---|
-| **Low** | Existing Policies (column 6) apply as written — no additional constraint. |
-| **Moderate** | Existing Policies apply as written — this framework does not currently differentiate Moderate from the flat "Production" rules in POL-2/POL-3. See open item below. |
-| **High** | Existing Policies apply, **plus**: break-glass override (AR-2) requires two-person sign-off (Infrastructure Admin + Security/Compliance role) rather than Infrastructure Admin alone. |
+| **Low** | POL-2 requires Availability Tier II minimum; POL-3 recommends (does not require) a DR Tier. |
+| **Moderate** | POL-2 requires Availability Tier III minimum; POL-3 requires a DR Tier. (Corrected 2026-09-22 — an earlier version of this table said Moderate wasn't differentiated from flat Production rules; that was resolved when POL-2/POL-3 were updated to scale by Risk Tier, but this table wasn't updated to match until now.) |
+| **High** | POL-2 requires Availability Tier IV minimum; POL-3 requires a DR Tier. |
 
 ---
 

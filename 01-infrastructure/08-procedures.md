@@ -14,8 +14,11 @@ process to be enforceable, not just stated.
 ---
 
 ### PROC-1 — Production Provisioning Request & Approval
-**Executes:** POL-5, AR-1, AR-3
-**Steps:**
+**Extends:** CCPROC-1 (cross-cutting/procedures.md)
+**Executes:** POL-5, AR-1, AR-3 (which extend CCP-3, CCAR-1, CCAR-2)
+**Steps:** (base sequence per CCPROC-1, with step 3 extended for this
+layer's DR Tier confirmation — see CCPROC-1's "Layer-specific extensions"
+note)
 1. Requester (human or AI Agent/Harness drafting on a human's behalf)
    submits a provisioning request specifying the resource, its required
    metadata fields (per 04-metadata-standards.md), and a proposed
@@ -33,8 +36,9 @@ process to be enforceable, not just stated.
    is created.
 
 ### PROC-2 — Metadata Completeness Validation
-**Executes:** POL-1
-**Steps:**
+**Extends:** CCPROC-2 (cross-cutting/procedures.md)
+**Executes:** POL-1 (which extends CCP-1)
+**Steps:** (identical to CCPROC-2, restated here for local readability)
 1. At provisioning time, the requested resource's declared fields are
    checked against the Required fields for its entity type
    (04-metadata-standards.md).
@@ -71,8 +75,9 @@ process to be enforceable, not just stated.
    only after sign-off, not at initiation.
 
 ### PROC-5 — Break-Glass Override
-**Executes:** AR-2
-**Steps:**
+**Extends:** CCPROC-4 (cross-cutting/procedures.md)
+**Executes:** AR-2 (which extends CCAR-3)
+**Steps:** (identical to CCPROC-4, applied to this layer's hard-block policies)
 1. Requester or Approver identifies a case where POL-1, POL-2, or POL-6
    must be bypassed for a legitimate reason.
 2. Request for override is submitted to an Infrastructure Admin with the
@@ -85,8 +90,9 @@ process to be enforceable, not just stated.
    block that can be silently bypassed isn't actually hard).
 
 ### PROC-6 — Untagged Resource Handling
-**Executes:** POL-6
-**Steps:**
+**Extends:** CCPROC-3 (cross-cutting/procedures.md)
+**Executes:** POL-6 (which extends CCP-2)
+**Steps:** (identical to CCPROC-3, restated here for local readability)
 1. A provisioning request missing a Cost Center Tag is rejected at
    submission — this check happens before any other validation, since
    POL-6 applies to all environments (not just Production).

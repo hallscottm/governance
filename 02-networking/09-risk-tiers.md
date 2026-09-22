@@ -1,7 +1,61 @@
-# Risk Tiers
+# Networking Layer — Risk Tiers
 
-Status: Not started
+Status: Draft — pending review
 Ratified: No
-Last updated: —
+Last updated: 2026-09-22
+Provenance: see _qa/09-risk-tiers.qa.md
+Built on: 02-taxonomies.md, 06-policies.md, cross-cutting/risk-tiers.md
 
-(Content pending — see corresponding file in _qa/ once work begins.)
+## Risk Scale
+
+**Extends:** cross-cutting/risk-tiers.md (FIPS 199-aligned Low/Moderate/
+High scale — not restated here).
+
+## Determining Factors (layer-specific)
+
+A resource's Risk Tier is the **highest** tier triggered by any applicable
+factor (cross-cutting averaging rule, per cross-cutting/risk-tiers.md).
+
+| Factor | Low | Moderate | High |
+|---|---|---|---|
+| Environment (referenced from Infrastructure) | Dev | Staging/QA | Production |
+| Network exposure | Internal-only (`net-network-zone` fully internal) | Cross-zone, internal boundary crossing | Publicly internet-facing (triggers NPOL-3) |
+| Trust boundary classification | N/A | Inside a defined trust boundary | Crossing or undefined trust boundary (`net-trust-boundary`) |
+| Segmentation posture | Micro-segmented (`net-microsegmentation`) | Zone-segmented (`net-network-zone`) | Flat/unsegmented |
+
+**Note on Network exposure factor:** public internet-facing exposure is
+automatically High risk, not just a triggering factor to weigh — this is
+consistent with NPOL-3 treating public exposure as categorically
+different, deserving its own approval step regardless of other factors.
+
+## Consequences by Tier
+
+**Extends:** cross-cutting/risk-tiers.md's baseline (two-person sign-off
+for High risk, via CCAR-3).
+
+**Layer-specific additions beyond the baseline:**
+
+| Tier | Networking-Specific Policy Implication |
+|---|---|
+| **Low** | NPOL-1 (default-deny) and NPOL-2 (encryption in transit) still apply — these are not risk-tier-scaled, unlike Infrastructure's POL-2/POL-3. |
+| **Moderate** | Same as Low. |
+| **High** | Same as Low/Moderate, plus: NPOL-3's public-exposure approval (NAR-1) is required whenever Network exposure factor is High, which by definition it always is at this tier. |
+
+---
+
+**Open items:**
+- (Resolved 2026-09-22) Confirmed: NPOL-1/NPOL-2 apply uniformly
+  regardless of Risk Tier — a default-deny posture and encryption
+  requirement are baseline security hygiene, not proportional controls
+  that should relax for lower-risk resources.
+- Data sensitivity factor (same provisional status as Infrastructure's)
+  is not included as a Networking-specific factor — network exposure and
+  trust boundary factors were judged sufficient proxies for this layer;
+  revisit once Data/Metadata layer exists.
+
+**Quality bar check (00-framework/quality-bar.md):**
+- [x] Simple — 4 determining factors, reusing the cross-cutting scale
+- [x] Modular — layer-specific factors independent of Infrastructure's
+- [x] Easy to update — cross-cutting scale updates once, applies here automatically
+- [x] Easy to maintain — factors derived from existing Definitions terms
+- [x] Easy to replace — standard-grounded (FIPS 199, inherited)
