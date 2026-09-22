@@ -5,9 +5,9 @@ columns:
   00-standards-alignment: draft
   01-definitions: draft
   02-taxonomies: draft
-  03-ontologies: not-started
-  04-metadata-standards: not-started
-  05-conventions: not-started
+  03-ontologies: draft
+  04-metadata-standards: draft
+  05-conventions: draft
   06-policies: not-started
   07-access-rules: not-started
   08-procedures: not-started
