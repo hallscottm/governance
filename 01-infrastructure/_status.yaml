@@ -3,7 +3,7 @@
 layer: "01-infrastructure"
 columns:
   00-standards-alignment: not-started
-  01-definitions: not-started
+  01-definitions: draft
   02-taxonomies: not-started
   03-ontologies: not-started
   04-metadata-standards: not-started
