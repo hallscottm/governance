@@ -1,0 +1,15 @@
+# Machine-readable status roll-up for this layer.
+# Values: not-started | draft | ratified | deprecated | superseded
+layer: "05-workflow-process"
+columns:
+  00-standards-alignment: not-started
+  01-definitions: not-started
+  02-taxonomies: not-started
+  03-ontologies: not-started
+  04-metadata-standards: not-started
+  05-conventions: not-started
+  06-policies: not-started
+  07-access-rules: not-started
+  08-procedures: not-started
+  09-risk-tiers: not-started
+  10-tooling: not-started
