@@ -145,3 +145,17 @@ to another term in this layer. See scope note in relation-types.md.
 - [x] Easy to update — anchor-ID based, survives display-text renames
 - [x] Easy to maintain — grouped by subdomain, matches Definitions/Taxonomy structure
 - [x] Easy to replace — relation-type vocabulary is a shared framework asset, not layer-specific, so a change there is made once
+
+## Cross-Layer References (relationships pointing into this layer)
+
+Per 00-framework/relation-types.md's reverse-pointer rule, added
+retroactively once Networking's ontology created relationships into this
+layer.
+
+- `infra-compute-unit`
+  Referenced by (cross-layer relationships):
+  - Networking: `net-load-balancer --[runs-on]--> infra-compute-unit`
+  - Networking: `net-reverse-proxy --[runs-on]--> infra-compute-unit`
+- `infra-throughput`
+  Referenced by (cross-layer relationships):
+  - Networking: `net-bandwidth --[constrains]--> infra-throughput`

@@ -139,6 +139,7 @@ Source: Common industry practice
 Data transfer rate, typically MB/s or GB/s, for a storage or network
 resource.
 Source: Common industry practice
+Referenced by: Networking
 
 ### Durability Class {#infra-durability-class}
 The statistical likelihood a stored object survives without loss over a
@@ -283,10 +284,12 @@ Source: NIST SP 800-53 (CM family)
 ### Redundancy {#infra-redundancy}
 Duplication of critical components to prevent single points of failure.
 Source: NIST SP 800-53 (CP family)
+Referenced by: Networking
 
 ### Failover {#infra-failover}
 Automatic switching to a redundant/standby resource upon failure.
 Source: Common industry practice
+Referenced by: Networking
 
 ### Disaster Recovery (DR) Tier {#infra-dr-tier}
 A classification of how quickly and completely a system must recover after

@@ -39,3 +39,26 @@ Not every term needs to appear in a relationship. Ontology captures
 *meaningful* connections, not an exhaustive graph — a term with no
 natural relationship to others in its layer is left unconnected rather
 than forced into an artificial one.
+
+## Cross-layer relationships and reverse pointers
+
+A relationship may reference an anchor owned by a different layer (e.g.,
+Networking's `net-load-balancer --[runs-on]--> infra-compute-unit`). When
+this happens, the *owning* layer's Ontology file must carry a reverse
+pointer noting which other layer's relationship targets it — same
+discipline as Definitions' "Referenced by" tag, applied to relationships
+instead of terms.
+
+**Format:** in the owner's Ontology file, under a term's relationships (or
+in a dedicated "Referenced by other layers' relationships" note near it):
+```
+### infra-compute-unit
+Referenced by (cross-layer relationships):
+- Networking: net-load-balancer --[runs-on]--> infra-compute-unit
+- Networking: net-reverse-proxy --[runs-on]--> infra-compute-unit
+```
+
+This is added retroactively where needed — a layer drafted before this
+rule existed (e.g., Infrastructure) gets its reverse pointers added the
+first time a later layer's ontology creates a cross-layer relationship
+into it, not rebuilt wholesale.
