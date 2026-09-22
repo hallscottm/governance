@@ -156,6 +156,30 @@ layer.
   Referenced by (cross-layer relationships):
   - Networking: `net-load-balancer --[runs-on]--> infra-compute-unit`
   - Networking: `net-reverse-proxy --[runs-on]--> infra-compute-unit`
+  - System Architecture: `sysarch-serverless-architecture --[runs-on]--> infra-compute-unit`
+  - System Architecture: `sysarch-database --[runs-on]--> infra-compute-unit`
 - `infra-throughput`
   Referenced by (cross-layer relationships):
   - Networking: `net-bandwidth --[constrains]--> infra-throughput`
+- `infra-container`
+  Referenced by (cross-layer relationships):
+  - System Architecture: `sysarch-service --[runs-on]--> infra-container`
+  - System Architecture: `sysarch-container-image --[produces]--> infra-container`
+- `infra-block-storage`
+  Referenced by (cross-layer relationships):
+  - System Architecture: `sysarch-database --[requires]--> infra-block-storage`
+- `infra-horizontal-scaling`
+  Referenced by (cross-layer relationships):
+  - System Architecture: `sysarch-stateless-service --[scales-via]--> infra-horizontal-scaling`
+  - System Architecture: `sysarch-scalability --[scales-via]--> infra-horizontal-scaling`
+- `infra-environment-lifecycle`
+  Referenced by (cross-layer relationships):
+  - System Architecture: `sysarch-release --[has-lifecycle-state]--> infra-environment-lifecycle`
+- `infra-redundancy`
+  Referenced by (cross-layer relationships):
+  - System Architecture: `sysarch-resilience --[requires]--> infra-redundancy`
+- `infra-availability-tier`
+  Note: this anchor is the SOURCE (not target) of one cross-layer
+  relationship — `infra-availability-tier --[constrains]--> sysarch-availability`
+  — recorded in full in 03-system-architecture/03-ontologies.md. Listed
+  here for discoverability since the relationship touches this term.

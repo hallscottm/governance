@@ -1,7 +1,69 @@
-# Risk Tiers
+# System Architecture Layer — Risk Tiers
 
-Status: Not started
+Status: Draft — pending review
 Ratified: No
-Last updated: —
+Last updated: 2026-09-22
+Provenance: see _qa/09-risk-tiers.qa.md
+Built on: 02-taxonomies.md, 04-metadata-standards.md, 06-policies.md, cross-cutting/risk-tiers.md
 
-(Content pending — see corresponding file in _qa/ once work begins.)
+## Risk Scale
+
+**Extends:** cross-cutting/risk-tiers.md (FIPS 199-aligned Low/Moderate/
+High scale — not restated here).
+
+## Determining Factors (layer-specific)
+
+A resource's Risk Tier is the **highest** tier triggered by any applicable
+factor (cross-cutting maximum rule, per cross-cutting/risk-tiers.md).
+
+| Factor | Low | Moderate | High |
+|---|---|---|---|
+| Environment (referenced from Infrastructure) | Dev | Staging/QA | Production |
+| Service Tier / Criticality (04-metadata-standards.md) | Non-critical, internal tooling | Business-important, moderate user impact if down | Business-critical, severe impact if down |
+| Public exposure | Internal-only (no public Endpoint) | N/A — this factor has no Moderate value | Publicly internet-facing (triggers SAPOL-5, and Networking's NPOL-3) |
+| Data handled (provisional) | — | — | — |
+
+**Note on Public exposure factor:** same treatment as Networking's
+identical factor — public internet-facing exposure is automatically High
+risk, not just a weighted input, consistent with SAPOL-5 and NPOL-3 both
+treating public exposure as categorically different.
+
+**Note on Data handled factor:** left as a placeholder row, not populated
+— same provisional status as Infrastructure's and Networking's Data
+sensitivity factor. A service/database's Risk Tier here is currently
+driven by Service Tier/Criticality and exposure, not by what sensitivity
+of data it processes; revisit once Data/Metadata (layer 4) exists and can
+supply an actual classification to reference.
+
+## Consequences by Tier
+
+**Extends:** cross-cutting/risk-tiers.md's baseline (two-person sign-off
+for High risk, via CCAR-3).
+
+**Layer-specific additions beyond the baseline (already defined in full
+in 06-policies.md/07-access-rules.md — summarized here for visibility):**
+
+| Tier | System Architecture-Specific Policy Implication |
+|---|---|
+| **Low** | SAPOL-2 migration review: peer review only. SAPOL-5 (if public-facing): ASVS L1, Owning Team Lead self-attestation. |
+| **Moderate** | SAPOL-2: peer review + Owning Team Lead sign-off. SAPOL-5 (if public-facing): ASVS L2, Owning Team Lead attestation + Security/Compliance review. |
+| **High** | SAPOL-2: peer review + Owning Team Lead sign-off + documented rollback plan. SAPOL-5 (if public-facing): ASVS L3, mandatory independent Security/Compliance verification. SAPOL-1, SAPOL-3, SAPOL-4 hard blocks apply uniformly at every tier (not scaled), same treatment as Networking's NPOL-1/NPOL-2. |
+
+---
+
+**Open items:**
+- Data handled/sensitivity factor remains unpopulated — third layer in a
+  row to carry this open item forward (Infrastructure, Networking, now
+  System Architecture); will very likely be resolved in a single pass
+  once Data/Metadata (layer 4) is drafted, rather than three separate
+  future edits.
+- SAPOL-1, SAPOL-3, SAPOL-4 confirmed uniform (not Risk-Tier-scaled) by
+  design during Policies drafting — restated here for consistency with
+  how Networking's Risk Tiers column documents the same kind of decision.
+
+**Quality bar check (00-framework/quality-bar.md):**
+- [x] Simple — 4 determining factors (1 unpopulated placeholder), reusing the cross-cutting scale
+- [x] Modular — layer-specific factors independent of Infrastructure's and Networking's
+- [x] Easy to update — cross-cutting scale updates once, applies here automatically
+- [x] Easy to maintain — factors derived from existing Definitions/Metadata Standards
+- [x] Easy to replace — standard-grounded (FIPS 199, inherited)

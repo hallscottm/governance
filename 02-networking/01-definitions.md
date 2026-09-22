@@ -189,6 +189,7 @@ Source: Common industry practice
 ### Load Balancer {#net-load-balancer}
 A system that distributes incoming traffic across multiple backend resources to optimize utilization and availability.
 Source: Common industry practice
+Referenced by: System Architecture
 
 ### Reverse Proxy {#net-reverse-proxy}
 A server that sits in front of backend services, forwarding client requests to them and returning responses.
@@ -203,10 +204,12 @@ Source: Common industry practice
 ### TLS {#net-tls}
 Transport Layer Security — the standard protocol for encrypting data in transit between networked systems.
 Source: IETF RFC 8446 (TLS 1.3)
+Referenced by: System Architecture
 
 ### Encryption in Transit {#net-encryption-in-transit}
 The practice of encrypting data while it moves across a network, as distinct from encryption at rest.
 Source: NIST SP 800-53 (SC family) / common practice
+Referenced by: System Architecture
 
 ## Performance Metrics
 

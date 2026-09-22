@@ -24,6 +24,7 @@ A logically or physically isolated instance of infrastructure used for a
 specific stage of the software/data lifecycle. Standard tiers: Development,
 Staging/QA, Production.
 Source: Common industry practice
+Referenced by: Networking, System Architecture
 
 ### Compute Unit {#infra-compute-unit}
 The smallest independently provisionable unit of processing capacity (e.g.,
@@ -73,6 +74,7 @@ Source: Common industry practice
 A lightweight, isolated runtime sharing the host OS kernel, packaging an
 application and its dependencies.
 Source: OCI (Open Container Initiative)
+Referenced by: System Architecture (Container Image)
 
 ## AI-Specific Compute
 

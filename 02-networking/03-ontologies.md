@@ -101,6 +101,17 @@ about term ownership, not relationships between terms.
 
 ---
 
+## Cross-Layer References (relationships pointing into this layer)
+
+Per 00-framework/relation-types.md's reverse-pointer rule, added once
+System Architecture's ontology created a relationship into this layer.
+
+- `net-encryption-in-transit`
+  Referenced by (cross-layer relationships):
+  - System Architecture: `sysarch-service --[requires]--> net-encryption-in-transit`
+
+---
+
 **Open items:**
 - `net-transit-gateway --[requires]--> net-vpc` and `net-private-link`
   overlap conceptually (both connectivity alternatives to peering) but no
