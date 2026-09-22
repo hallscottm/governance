@@ -54,3 +54,14 @@
   Moderate risk, Infrastructure Admin + Security/Compliance for High risk
 - Decision-weight: High
 - Date answered: 2026-09-22
+
+## Q-cc.1 — Retrofit: AR-1/AR-2/AR-3 converted to extend cross-cutting access rules
+- Date: 2026-09-22
+- Context: same retrofit as Policies (see 06-policies.qa.md Q-cc.1) —
+  AR-1 (AI agent authority), AR-2 (break-glass override), AR-3 (provisioning
+  approval separation of duties) are genuinely universal.
+- Resolution: cross-cutting/access-rules.md created (CCAR-1, CCAR-2,
+  CCAR-3); AR-1, AR-2, AR-3 updated to "Extends: CCAR-X". AR-4
+  (decommissioning sign-off) remains layer-specific.
+- Decision-weight: High
+- Date answered: 2026-09-22

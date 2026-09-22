@@ -31,21 +31,17 @@ Flagged here so this isn't lost.
 ## Access Rules
 
 ### AR-1 — AI Agent Provisioning Authority
-**Rule:** An AI agent/harness may draft/request a provisioning action but
-may never itself grant final approval for a Production resource. Human
-approval (per AR-3) is always required for Production, with no AI
-exemption from POL-5.
+**Extends:** CCAR-1 (cross-cutting/access-rules.md)
+**Rule:** As CCAR-1, applied to this layer.
 **Applies to:** AI Agent/Harness actor type, Production environment.
-**Ties to:** POL-5.
+**Ties to:** POL-5 (which extends CCP-3).
+**Revision note:** converted to extend CCAR-1 on 2026-09-22, first
+application of a cross-cutting access rule.
 
 ### AR-2 — Hard-Block Override (Break-Glass)
-**Rule:** An exception overriding POL-1 (metadata completeness), POL-2
-(Availability Tier minimum), or POL-6 (cost tag requirement) for a
-Production resource requires sign-off based on the resource's Risk Tier
-(09-risk-tiers.md):
-- Low or Moderate risk: Infrastructure Admin role alone
-- High risk: Infrastructure Admin AND Security/Compliance role (two-person
-  sign-off)
+**Extends:** CCAR-3 (cross-cutting/access-rules.md)
+**Rule:** As CCAR-3, applied to this layer's hard-block policies (POL-1,
+POL-2, POL-6).
 **Applies to:** Infrastructure Admin role (all risk tiers); Security/
 Compliance role additionally required for High-risk. No other role, and
 no AI Agent/Harness, may grant this override at any risk tier.
@@ -53,15 +49,15 @@ no AI Agent/Harness, may grant this override at any risk tier.
 Tier section.
 **Revision note:** originally Infrastructure Admin alone, regardless of
 risk tier; revised 2026-09-22 once Risk Tiers (column 9) introduced a
-two-person requirement for High-risk overrides — this rule is now
-risk-tier-aware to stay consistent.
+two-person requirement for High-risk overrides. Converted to extend
+CCAR-3 later the same day once Networking needed the identical rule.
 
 ### AR-3 — Production Provisioning Approval
-**Rule:** Only the Approver role may approve a Production provisioning
-request. The Requester and Approver must be different actors (separation
-of duties) — a Requester cannot approve their own request.
+**Extends:** CCAR-2 (cross-cutting/access-rules.md)
+**Rule:** As CCAR-2, applied to this layer.
 **Applies to:** Approver role, Production environment.
-**Ties to:** POL-5.
+**Ties to:** POL-5 (which extends CCP-3).
+**Revision note:** converted to extend CCAR-2 on 2026-09-22.
 
 ### AR-4 — Decommissioning Sanitization Sign-off
 **Rule:** Completion of NIST SP 800-88 sanitization must be certified by

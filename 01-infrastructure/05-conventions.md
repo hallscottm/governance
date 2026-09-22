@@ -55,6 +55,12 @@ fields are expressed as actual tag keys (kebab-case, per above), not
 
 ## Abbreviation Registry
 
+Referenced by: Networking (02-networking/05-conventions.md reuses `<env>`
+and `<compute-env>` segments from this registry rather than duplicating
+them). Same anchor-granularity gap noted in Infrastructure's Metadata
+Standards applies here — no per-row anchors yet, so this is a section-level
+reference note rather than a per-term reverse pointer.
+
 | Full Term | Abbreviation | Anchor |
 |---|---|---|
 | Development | `dev` | `infra-environment-lifecycle` |

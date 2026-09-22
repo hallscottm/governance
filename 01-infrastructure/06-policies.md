@@ -13,13 +13,17 @@ drafted. See _qa/06-policies.qa.md for the full reasoning trail.
 ---
 
 ### POL-1 — Metadata Completeness (Production)
-**Rule:** A resource classified as Production cannot be provisioned/
-registered unless all fields marked "Required" for its entity type in
-04-metadata-standards.md are present.
+**Extends:** CCP-1 (cross-cutting/policies.md)
+**Rule:** As CCP-1, applied to this layer's entity types per
+04-metadata-standards.md.
 **Applies to:** Production environment only (per `infra-environment-lifecycle`).
 **Enforcement:** Hard block.
 **Rationale:** Guarantees AI/tooling consuming this metadata can trust
 completeness for the environment where it matters most.
+**Revision note:** originally fully restated here; converted to extend
+CCP-1 on 2026-09-22 once Networking needed the identical rule — this is
+the first application of a cross-cutting policy, and CCP-1's "Originally
+drafted as" note traces back to this entry.
 
 ### POL-2 — Minimum Availability Tier (Production, scaled by Risk Tier)
 **Rule:** Production resources must meet a minimum Availability Tier
@@ -64,18 +68,21 @@ already cited for `infra-decommissioning` in Definitions; defensible for
 audits.
 
 ### POL-5 — Provisioning Approval
-**Rule:** Provisioning a Production resource requires approval prior to
-creation. Dev and Staging/QA environments are self-service.
+**Extends:** CCP-3 (cross-cutting/policies.md)
+**Rule:** As CCP-3, applied to this layer's resources.
 **Applies to:** Differentiated by `infra-environment-lifecycle` value.
 **Enforcement:** Approval gate (who approves: deferred to Access Rules,
-column 7; how approval is requested/granted: deferred to Procedures,
-column 8).
+column 7 — see CCAR-1/CCAR-2 in cross-cutting/access-rules.md; how
+approval is requested/granted: deferred to Procedures, column 8).
 **Rationale:** Explicitly chosen — balances safety where it matters
 (Production) against not adding friction to dev/staging experimentation,
 consistent with the project's original anti-burnout goal.
+**Revision note:** converted to extend CCP-3 on 2026-09-22, same
+retrofit as POL-1.
 
 ### POL-6 — Cost Center Tag Enforcement
-**Rule:** A resource cannot be provisioned without a valid Cost Center Tag.
+**Extends:** CCP-2 (cross-cutting/policies.md)
+**Rule:** As CCP-2, applied to this layer's resources.
 **Applies to:** All environments (Cost Center Tag is "Required — always"
 in Metadata Standards; this policy makes that enforceable rather than
 aspirational).
@@ -83,6 +90,8 @@ aspirational).
 **Rationale:** Explicitly chosen — keeps the Policies column consistent
 with Metadata Standards' existing "Required" designation rather than
 letting a required field go unenforced.
+**Revision note:** converted to extend CCP-2 on 2026-09-22, same
+retrofit as POL-1/POL-5.
 
 ---
 

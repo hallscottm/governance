@@ -82,3 +82,18 @@
   POL-3 now Recommended/Required/Required by Low/Moderate/High risk
 - Decision-weight: High
 - Date answered: 2026-09-22
+
+## Q-cc.1 — Retrofit: POL-1/POL-5/POL-6 converted to extend cross-cutting policies
+- Date: 2026-09-22
+- Context: while drafting Networking's Policies column, recognized POL-1
+  (metadata completeness), POL-5 (provisioning approval), and POL-6 (cost
+  tag) are genuinely universal, not Infrastructure-specific. Human
+  confirmed creating a cross-cutting policy registry rather than
+  duplicating these across every layer.
+- Resolution: cross-cutting/policies.md created (CCP-1, CCP-2, CCP-3);
+  POL-1, POL-5, POL-6 updated to "Extends: CCP-X" rather than restating
+  the rule. POL-2, POL-3, POL-4 remain layer-specific (Availability Tier,
+  DR Tier, and NIST 800-88 sanitization don't generalize).
+- Decision-weight: High (governs how Policies columns are structured for
+  all future layers)
+- Date answered: 2026-09-22
