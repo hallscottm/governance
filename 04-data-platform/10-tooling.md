@@ -99,12 +99,11 @@ one platform typically serves both domains, not independently selected.
 - Data Pipeline Orchestration's actual mechanism depends on
   Workflow/Process (domain 7), not yet built — same forward reference
   already flagged in 06-policies.md and 08-procedures.md.
-- DPPROC-5's detection mechanism (flagging Certified Metrics computed
-  outside the Semantic Layer) is asserted as belonging to the Data
-  Catalog category here, but not yet cross-checked against Business
-  Intelligence / Reporting's own Tooling column (not yet drafted) — likely
-  needs reconciling once that column is built, to avoid asserting the
-  same capability twice from two different domains.
+- (Resolved 2026-09-22) DPPROC-5's detection mechanism cross-checked
+  against Business Intelligence / Reporting's own Tooling column, now
+  drafted (06-bi-reporting/10-tooling.md) — both domains explicitly share
+  one Data Catalog / Metadata Management Platform selection rather than
+  each asserting an independent one, resolving this item as anticipated.
 
 **Quality bar check (00-framework/quality-bar.md):**
 - [x] Simple — 7 capability categories, no product lock-in

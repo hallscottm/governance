@@ -58,12 +58,12 @@ draws a relationship into a specific BI/Reporting anchor.
   making the gap visible (not eliminating self-service modeling
   entirely) is this domain's actual governance posture, per the founding
   discussion (00-qa.md Q8 in cross-cutting/roles-and-departments/).
-- Policies/Access Rules/Risk Tiers/Tooling columns not yet drafted — the
-  Certified/Draft lifecycle above anticipates a Policies-column hard
-  gate ("no broad distribution without Certified status") and a
-  Tooling-column pointer extending Data/Metadata's OpenMetadata entry,
-  but neither is written yet; this Ontology only establishes the
-  concepts the later columns will govern.
+- (Resolved 2026-09-22) Policies through Tooling columns are now
+  drafted (04 through 10) — the Certified/Draft lifecycle anticipated
+  here became BIPOL-1/BIPOL-2 (06-policies.md), and the OpenMetadata-class
+  tooling pointer became the shared Data Catalog / Metadata Management
+  Platform category (10-tooling.md), reconciled against Data Platform's
+  own Tooling column rather than independently asserted.
 
 **Quality bar check (00-framework/quality-bar.md):**
 - [x] Simple — 12 relationships, grouped by subdomain

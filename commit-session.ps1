@@ -1,12 +1,10 @@
 # Run this from the repo root: .\commit-session.ps1
 
-# 1. Clear the stale lock (safe if no other git process is actually running)
 if (Test-Path ".git\index.lock") {
     Write-Host "Removing stale .git\index.lock..."
     Remove-Item -Force ".git\index.lock"
 }
 
-# 2. Show context before committing
 Write-Host "`n--- Last commit ---"
 git --no-pager log -1
 Write-Host "`n--- Diff stat (last 20 lines) ---"
@@ -16,54 +14,58 @@ git status --short
 
 Read-Host "`nReview the above. Press Enter to stage and commit, or Ctrl+C to abort"
 
-# 3. Stage everything
 git add -A
 
-# 4. Write commit message to a temp file (avoids PowerShell quoting issues)
 @'
-Fill Data Platform's remaining 8 columns (Standards Alignment through Tooling)
+Fill Business Intelligence / Reporting's remaining 8 columns (Standards Alignment through Tooling)
 
-Standards Alignment: ANSI/ISO SQL, ISO/IEC 27040, NIST SP 800-53/800-88,
-CIS Benchmarks, and the Iceberg/Delta Lake/Hudi and Kafka open-source
-specs (flagged distinct in authority from formal standards bodies).
+Standards Alignment: WCAG 2.1/2.2 (first accessibility citation in this
+framework -- the first domain whose artifacts a broad human audience
+consumes directly), XMLA, ISO 8000, NIST SP 800-53 AC family, plus the
+dbt Semantic Layer/MetricFlow spec and TDWI BI governance practice
+flagged as community-originated, not formal standards bodies.
 
-Metadata Standards: field registry + entity-type matrix for Database,
-Warehouse/Lakehouse, Data Lake, Vector Database, Stream/Topic, and Data
-Pipeline entities.
+Metadata Standards: field registry for Report, Dashboard, and Report
+Data Model entities, including Certification Status and Source-to-Target
+Mapping Reference fields that directly operationalize the Draft/Certified
+lifecycle from 01-definitions.md.
 
-Conventions: Database naming convention migrated verbatim from System
-Architecture (5-conventions.md), alongside new warehouse/lakehouse layer,
-streaming topic, table, and embedding-model-reference naming patterns.
+Conventions: Report/Dashboard naming with a [CERTIFIED] title prefix,
+Calculated Field naming tied to matching Metric names where one exists.
 
-Policies/Access Rules/Procedures: migrated System Architecture's schema
-migration review governance (SAPOL-2/SAAR-1/SAPROC-2) to this domain as
-DPPOL-1/DPPAR-1/DPPROC-1, updating approving roles from Owning Team Lead
-to Data Architect/Data Engineer. Added new policies for streaming
-retention, vector embedding model versioning, lakehouse table format
-changes, and -- most notably -- DPPOL-5, requiring Certified Metrics to
-route through the Semantic Layer rather than being recomputed ad hoc by
-a downstream report. DPPAR-3 is this framework's first Access Rule to
-route a change through a Business Function Department's Data Owner.
+Policies: BIPOL-1 is the policy this domain was created to write --
+Certified status is required before a Report/Dashboard can reach
+Organization-wide or External distribution. BIPOL-2 makes the ontology's
+Source-to-Target Mapping requirement enforceable. BIPOL-3 scales Row-
+Level Security by inherited sensitivity, mirroring System Architecture's
+SAPOL-5 escalation pattern. BIPOL-4 requires a refresh schedule on any
+Data Extract.
 
-Risk Tiers: Environment, Sensitivity Level/PII (from Data/Metadata),
-Service Tier/Criticality (from System Architecture), and Public exposure
-factors.
+Access Rules: BIAR-1 (certification authority, BI Analyst/Developer only,
+no self-certification) and BIAR-2 (Row-Level Security configuration
+authority, scaled by sensitivity).
 
-Tooling: 7 capability categories, including a Data Catalog / Metadata
-Management Platform category connecting to the OpenMetadata-class
-tooling discussed for BI/Reporting's lineage and certification needs.
+Procedures: BIPROC-1/2/3 execute the above, with BIPROC-2 nested inside
+BIPROC-1's certification review flow.
 
-System Architecture's Conventions/Policies/Access Rules/Procedures/Risk
-Tiers/Tooling columns updated with reference stubs and reconciled
-cross-references wherever schema-migration content moved out.
+Risk Tiers: introduces Distribution Scope as a first-class Risk Tier
+factor -- a deliberate, flagged departure from this framework's usual
+pattern of treating "who can see this" as purely an Access Rules concern,
+justified because audience reach is this domain's defining risk.
 
-All 11 columns of Data Platform (domain 4) are now drafted.
+Tooling: 5 capability categories, including Accessibility Testing (new)
+and a Data Catalog / Metadata Management Platform explicitly shared with
+Data Platform's and Data/Metadata's own Tooling columns rather than
+independently selected -- resolves the reconciliation flagged as an open
+item in Data Platform's Tooling column (updated to record the resolution).
+
+All 11 columns of Business Intelligence / Reporting (domain 6) are now
+drafted.
 '@ | Out-File -Encoding utf8 ".git\COMMIT_MSG.tmp"
 
 git commit -F ".git\COMMIT_MSG.tmp"
 Remove-Item ".git\COMMIT_MSG.tmp"
 
-# 5. Confirm
 Write-Host "`n--- New commit ---"
 git --no-pager log -1
 Write-Host "`n--- Status after commit ---"
