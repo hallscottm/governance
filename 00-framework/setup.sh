@@ -18,7 +18,6 @@ LAYERS=(
   "06-bi-reporting"
   "07-workflow-process"
   "08-harness"
-  "09-interface-human"
 )
 
 COLUMNS=(

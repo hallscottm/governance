@@ -56,7 +56,6 @@ holds a link, never a duplicate definition.
 | Business Intelligence / Reporting | `bi` |
 | Workflow/Process | `wf` |
 | Harness | `harness` |
-| Interface/Human | `iface` |
 | Cross-Cutting: Roles & Departments (roles) | `ccrole` |
 | Cross-Cutting: Roles & Departments (departments) | `ccdept` |
 | Cross-Cutting: Roles & Departments (governance bodies) | `ccgov` |
@@ -74,6 +73,11 @@ Kept distinct from `data` (Data/Metadata) on purpose: `dp` owns where data
 physically lives and runs (databases, lakes, lakehouses, warehouses,
 vector stores, streaming); `data` owns what it means (classification,
 stewardship, catalog, governance).
+
+`iface` (Interface/Human) removed 2026-09-22 — that domain was folded
+into the Roles & Departments cross-cutting pillar (`ccorg` prefix; see
+cross-cutting/roles-and-departments/00-qa.md Q11). It had no drafted
+content, so no anchors needed migrating.
 
 Cross-cutting prefixes follow the same anchor/reference-stub/reverse-tag
 mechanics as domain prefixes — a role or department is defined once in

@@ -16,11 +16,17 @@ department below.
 
 ├── **Platform Engineering** (#ccdept-platform-engineering)
 │   ├── Owns: Domain 1 (Infrastructure), Domain 2 (Networking)
-│   └── Positional Role: Infrastructure Admin (#ccrole-infrastructure-admin)
+│   ├── Positional Role: Infrastructure Admin (#ccrole-infrastructure-admin)
+│   └── Instantiates its own Workflow/Process (Domain 7) pipeline/repo
+│       instance against DevOps's cross-cutting standard (resolved
+│       2026-09-22, see 00-qa.md Q10)
 │
 ├── **Application Engineering** (#ccdept-application-engineering)
 │   ├── Owns: Domain 3 (System Architecture)
-│   └── Positional Role: Owning Team Lead (#ccrole-owning-team-lead) — typical home, not exclusive
+│   ├── Positional Role: Owning Team Lead (#ccrole-owning-team-lead) — typical home, not exclusive
+│   └── Instantiates its own Workflow/Process (Domain 7) pipeline/repo
+│       instance against DevOps's cross-cutting standard (resolved
+│       2026-09-22, see 00-qa.md Q10)
 │
 ├── **Data Governance & Engineering** (#ccdept-data-governance-engineering)
 │   ├── Owns: Domain 4 (Data Platform), Domain 5 (Data/Metadata)
@@ -30,37 +36,54 @@ department below.
 │   │   build-operate / transform-and-semantic-layer split; added
 │   │   2026-09-22, see 00-qa.md Q7/Q8, replacing Application
 │   │   Engineering's earlier co-ownership stake)
-│   └── Positional Roles (owned by Data/Metadata, referenced here):
-│       Data Owner, Data Steward, Data Custodian
-│       — see 05-data-metadata/01-definitions.md
+│   ├── Positional Roles (owned by Data/Metadata, referenced here):
+│   │   Data Owner, Data Steward, Data Custodian
+│   │   — see 05-data-metadata/01-definitions.md
+│   └── Instantiates its own Workflow/Process (Domain 7) pipeline/repo
+│       instance against DevOps's cross-cutting standard (resolved
+│       2026-09-22, see 00-qa.md Q10)
 │
 ├── **Business Intelligence & Analytics** (#ccdept-business-intelligence-analytics)
 │   ├── Owns: Domain 6 (Business Intelligence / Reporting) — not yet drafted
 │   ├── Positional Roles: Business Analyst / Report Builder
 │   │   (#ccrole-business-analyst-report-builder), BI Analyst/Developer
 │   │   (#ccrole-bi-analyst-developer)
-│   └── Added 2026-09-22 (see 00-qa.md Q8) when Business Intelligence /
-│       Reporting was split out as its own domain, to govern the risk
-│       that report-level self-service models diverge from Data
-│       Platform's official Semantic Layer / Data/Metadata's Metrics
+│   ├── Added 2026-09-22 (see 00-qa.md Q8) when Business Intelligence /
+│   │   Reporting was split out as its own domain, to govern the risk
+│   │   that report-level self-service models diverge from Data
+│   │   Platform's official Semantic Layer / Data/Metadata's Metrics
+│   └── Instantiates its own Workflow/Process (Domain 7) pipeline/repo
+│       instance against DevOps's cross-cutting standard (resolved
+│       2026-09-22, see 00-qa.md Q10)
 │
 ├── **DevOps / Release Engineering** (#ccdept-devops-release-engineering)
-│   ├── Ownership of Domain 7 (Workflow/Process) under revision (2026-09-22) — see
-│   │   00-qa.md; each domain department is expected to own its own
-│   │   workflow/CI-CD instance, with DevOps's coordinating role (if any)
-│   │   not yet decided. Domain 7 itself not yet drafted.
+│   ├── Cross-cutting standards/platform owner for Domain 7
+│   │   (Workflow/Process — not yet drafted): defines the shared CI/CD
+│   │   pattern (pipeline stages, branch strategy, repository scaffolding
+│   │   conventions) that Platform Engineering, Application Engineering,
+│   │   Data Governance & Engineering, Business Intelligence & Analytics,
+│   │   and AI/ML Platform each instantiate as their own pipeline/repo
+│   │   instance — same cross-cutting-not-owner shape as Security &
+│   │   Compliance. Resolved 2026-09-22, replacing the earlier
+│   │   single-owner model (see 00-qa.md Q10)
 │   └── Positional Roles: none defined yet
 │
 ├── **AI/ML Platform** (#ccdept-ai-ml-platform)
 │   ├── Owns: Domain 8 (Harness) — not yet drafted
-│   └── Defines the operational boundary for System Actor: AI Agent/Harness (#ccrole-ai-agent-harness)
+│   ├── Defines the operational boundary for System Actor: AI Agent/Harness (#ccrole-ai-agent-harness)
+│   └── Instantiates its own Workflow/Process (Domain 7) pipeline/repo
+│       instance against DevOps's cross-cutting standard (resolved
+│       2026-09-22, see 00-qa.md Q10)
 │
 ├── **Security & Compliance** (#ccdept-security-compliance)
-│   ├── Cross-cutting reviewer/approver across Domains 1–9 (not an owner of any one domain)
+│   ├── Cross-cutting reviewer/approver across Domains 1–8 (not an owner of any one domain)
 │   └── Positional Role: Security/Compliance (#ccrole-security-compliance)
 │
 └── **IT Training & Change Management** (#ccdept-training-change-management)
-    ├── Owns: Domain 9 (Interface/Human) — not yet drafted
+    ├── Cross-cutting standards/platform owner for Training Requirements
+    │   (#ccorg-training-requirement) across all domains — not a domain
+    │   owner. Formerly owned a dedicated Interface/Human domain (9);
+    │   folded in 2026-09-22 (see 00-qa.md Q11)
     └── Positional Roles: none defined yet
 
 **Business Function Departments** (added 2026-09-22, see 00-qa.md Q9) —

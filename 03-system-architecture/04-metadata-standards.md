@@ -46,8 +46,9 @@ this column.
 - **Owning Team** has no owning Definitions term — it's an organizational
   concept, not a system-architecture one. Flagged, same boundary
   Infrastructure and Networking both hit with role/ownership fields;
-  candidate for formal ownership once the Interface/Human domain (7) is
-  drafted.
+  candidate for formal ownership by cross-cutting/roles-and-departments/
+  (Interface/Human, the domain this item originally deferred to, was
+  folded into that pillar 2026-09-22 — see its 00-qa.md Q11).
 - **Repository Reference** and its naming/URL convention are a forward
   reference to Workflow/Process (domain 7, not yet built) — this field
   only asserts that a reference must exist, not its format. Revisit once

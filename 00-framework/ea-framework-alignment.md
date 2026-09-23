@@ -23,7 +23,7 @@ Rough mapping:
 | Technology Architecture | Domain 1 (Infrastructure) + Domain 2 (Networking) |
 | Data Architecture | Domain 4 (Data Platform) + Domain 5 (Data/Metadata) |
 | Application Architecture | Domain 3 (System Architecture) |
-| Business Architecture | Domain 9 (Interface/Human) + the Roles & Departments cross-cutting pillar (org structure, reporting lines) |
+| Business Architecture | Roles & Departments cross-cutting pillar (org structure, reporting lines, and — since 2026-09-22 — Training Requirements, after Interface/Human was folded in; see 00-qa.md Q11) |
 
 Three domains fall outside classical BDAT, by design:
 
@@ -47,8 +47,13 @@ Three domains fall outside classical BDAT, by design:
 - **Domain 8 (Harness)** has no TOGAF equivalent at all — TOGAF predates
   AI agents as architectural actors. It's this framework's own extension,
   positioned where it is because it depends on Workflow/Process (an agent
-  needs something to plug into) and precedes Interface/Human (a human
-  ultimately supervises it).
+  needs something to plug into); a human ultimately supervises it via the
+  Roles & Departments cross-cutting pillar rather than a dedicated
+  Interface/Human domain (folded in 2026-09-22, see
+  cross-cutting/roles-and-departments/00-qa.md Q11 — it never had
+  technical artifacts of its own, only training/change-management
+  requirements that are better attached directly to the Role or
+  Department they gate).
 
 TOGAF's own architecture-governance discipline (not a BDAT domain) is the
 closest analog to this framework's Governance/Security/Roles & Departments
@@ -72,7 +77,7 @@ framework's concerns:
 | What (Data) | Domain 4 (Data Platform), Domain 5 (Data/Metadata) |
 | How (Function/Process) | Domain 3 (System Architecture), Domain 7 (Workflow/Process) |
 | Where (Network) | Domain 1 (Infrastructure), Domain 2 (Networking) |
-| Who (People) | Roles & Departments cross-cutting pillar, Domain 9 (Interface/Human) |
+| Who (People) | Roles & Departments cross-cutting pillar (including Training Requirements, since Interface/Human was folded in 2026-09-22 — see 00-qa.md Q11) |
 | When (Time) | Domain 7 (Workflow/Process) — lifecycle states, release sequencing; also each domain's own has-lifecycle-state ontology relations |
 | Why (Motivation) | Governance cross-cutting pillar (Policies columns) |
 

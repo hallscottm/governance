@@ -20,7 +20,6 @@ definitions depend on the domain(s) below it.
 | 6 | Business Intelligence / Reporting | Reports, dashboards, self-service report-level models, metrics as consumed — where data becomes a decision-facing artifact |
 | 7 | Workflow/Process | Git, CI/CD, SOPs, directory conventions |
 | 8 | Harness | Role/department-specific AI scaffolding |
-| 9 | Interface/Human | Training, change management, human engagement |
 
 Renumbering history:
 - 2026-09-22: Data Platform inserted as #4 (split out of System
@@ -33,16 +32,32 @@ Renumbering history:
   (calculated fields, extracts) that can diverge from the official
   Semantic Layer/Metric definitions. Workflow/Process shifted 6→7,
   Harness 7→8, Interface/Human 8→9.
+- 2026-09-22 (same day, third change — a removal, not an insertion):
+  Interface/Human (was #9) folded into the Roles & Departments
+  cross-cutting pillar rather than kept as a domain — training/
+  change-management requirements didn't have artifacts of their own
+  (no Definitions/Taxonomy/Ontology distinct from the Role or Department
+  they train) once tested against the "noun-oriented artifact domain"
+  test applied to every domain this session. Replaced by a Training
+  Requirement mechanism (`ccorg-training-requirement`) attached directly
+  to Roles/Departments and referenced from each domain's Access Rules
+  column — see cross-cutting/roles-and-departments/00-qa.md Q11. No
+  renumbering needed (it was the last domain); Harness (8) is now the
+  last domain on the axis.
 
-See 00-framework/ea-framework-alignment.md for why each of these two
-insertions was kept as its own domain rather than folded into an
-existing one.
+See 00-framework/ea-framework-alignment.md for why each of these changes
+was made — the two insertions kept as their own domain, the one removal
+folded into an existing cross-cutting pillar instead.
 
 Cross-cutting (not rows, expressed through the Policies / Access Rules /
 Risk Tiers columns at every domain): Governance, Security, Roles &
 Departments (added 2026-09-22 — see cross-cutting/roles-and-departments/;
 Access Rules is this pillar's primary point of contact, though a role can
-be referenced from any column that needs to name who acts).
+be referenced from any column that needs to name who acts). Roles &
+Departments also now carries training/change-management requirements
+(the Training Requirement mechanism, `ccorg-training-requirement`) after
+Interface/Human was folded in — see the renumbering history above and
+00-qa.md Q11.
 
 Activates partway (not from domain 1): Sandbox — becomes relevant starting
 at the Workflow/Process domain, once there is something real to test

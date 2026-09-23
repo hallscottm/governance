@@ -3,59 +3,56 @@
 # 1. Clear the stale lock (safe if no other git process is actually running)
 if (Test-Path ".git\index.lock") {
     Write-Host "Removing stale .git\index.lock..."
-    Remove-Item ".git\index.lock" -Force
+    Remove-Item -Force ".git\index.lock"
 }
 
-# 2. Show what changed since your last commit, before staging anything
-Write-Host "=== Last commit ==="
-git log -1 --format="%H  %ci  %s"
-Write-Host " "
-Write-Host "=== Files changed since then (summary) ==="
+# 2. Show context before committing
+Write-Host "`n--- Last commit ---"
+git log -1
+Write-Host "`n--- Diff stat (last 20 lines) ---"
 git diff --stat HEAD | Select-Object -Last 20
-Write-Host " "
-Write-Host "=== Full file list ==="
+Write-Host "`n--- Status ---"
 git status --short
 
-# 3. Pause for a sanity check before staging/committing
-Read-Host "Review the above. Press Enter to stage + commit everything, or Ctrl+C to abort"
+Read-Host "`nReview the above. Press Enter to stage and commit, or Ctrl+C to abort"
 
-# 4. Stage everything
+# 3. Stage everything
 git add -A
 
-# 5. Write the commit message to a temp file, then commit from it
-$commitMsg = @'
-Add Business Function Departments (Marketing, Sales, Finance & Accounting, HR, Legal) with Data Owner authority
+# 4. Write commit message to a temp file (avoids PowerShell quoting issues)
+@'
+Resolve DevOps/Workflow-Process ownership; fold Interface/Human into Roles & Departments
 
-- Add five Business Function Departments to the Roles & Departments
-  registry, distinct from the existing IT/technical departments: they
-  hold Data Owner authority (already-defined role) over Data/Metadata's
-  Business Glossary Terms and Metrics for their function, rather than
-  owning a technical domain outright.
-- Each carries a Standards note for AI understanding: GAAP/IFRS/SOX/
-  ASC 606/XBRL (Finance & Accounting), EEOC/FLSA/ADA/FMLA/ISO 30414 (HR),
-  EDRM/GDPR/CCPA (Legal), CAN-SPAM/GDPR-CCPA consent (Marketing).
-- Legal becomes the retroactive Data Owner for Data/Metadata's
-  previously-unowned Legal Hold term and Data Privacy & Regulatory
-  subdomain.
-- Resolves how a domain-specific report (Marketing/Sales/Finance report)
-  traces its Calculated Fields back to an owned Metric: the Metric's
-  Data Owner is now the business function, not Data Governance &
-  Engineering, which remains the Data Steward (enforces quality, doesn't
-  set the definition).
-- Deliberately did not draw formal ontology edges from the generic
-  Data Owner role to each new department (would misrepresent a shared
-  role as exclusive); captured as prose + a dedicated alignment table
-  instead. Logged as Q9 in the registry's Q&A log.
-'@
+DevOps / Release Engineering becomes a cross-cutting standards/platform
+owner for Workflow/Process (domain 7), not its sole owner -- Platform
+Engineering, Application Engineering, Data Governance & Engineering,
+Business Intelligence & Analytics, and AI/ML Platform each instantiate
+their own pipeline/repo instance against DevOps's shared standard,
+mirroring the earlier Data Platform ownership fix. See 00-qa.md Q10.
 
-$commitMsg | Out-File -FilePath ".git\COMMIT_MSG.tmp" -Encoding utf8
+Interface/Human (domain 9) folded into the Roles & Departments
+cross-cutting pillar rather than kept as a domain -- it never had
+technical artifacts of its own. Replaced by a new Training Requirement
+mechanism (ccorg-training-requirement), attached directly to the Role or
+Department it gates and referenced from each domain's Access Rules
+column. IT Training & Change Management becomes the cross-cutting owner
+of this mechanism, the same shape Security & Compliance and DevOps now
+have. 09-interface-human/ (stub files only) removed; domain-axis
+definition, EA alignment notes, term-linking prefixes, and setup.sh
+updated to match. See 00-qa.md Q11.
+
+Also fixed two stale forward-references (Infrastructure Access Rules,
+System Architecture Metadata Standards) that were waiting on the
+now-folded Interface/Human domain.
+'@ | Out-File -Encoding utf8 ".git\COMMIT_MSG.tmp"
 
 git commit -F ".git\COMMIT_MSG.tmp"
-
 Remove-Item ".git\COMMIT_MSG.tmp"
 
-# 6. Confirm
-Write-Host " "
-Write-Host "=== Done ==="
-git log -1 --format="%H  %ci  %s"
+# 5. Confirm
+Write-Host "`n--- New commit ---"
+git log -1
+Write-Host "`n--- Status after commit ---"
 git status --short
+
+Write-Host "`nDone. Run 'git push' separately to push to GitHub."

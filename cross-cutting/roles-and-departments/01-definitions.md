@@ -66,6 +66,21 @@ A cross-departmental group convened to make or ratify decisions spanning
 multiple Departments — broader than any single Department's own internal
 leadership. Source: Common organizational governance practice.
 
+### Training Requirement {#ccorg-training-requirement}
+A defined competency, certification, or onboarding requirement gating a
+Role's or Department's Access Rules within a specific domain — e.g. "must
+complete Data Handling training before being granted a Data Steward role's
+access." Replaces the former Interface/Human domain (folded in here
+2026-09-22, see 00-qa.md Q11): training/change-management requirements
+did not have technical artifacts of their own (no Definitions/Taxonomy/
+Ontology distinct from the Role or Department they train), so rather than
+a domain of its own, a Training Requirement is attached directly to the
+Role or Department it gates and referenced from that domain's Access
+Rules column — same reference-stub mechanic as any other cross-cutting
+term. Owned/curated by IT Training & Change Management. Source: Common
+organizational practice (unlike Interface/Human, this is not tied to a
+formal external standards body).
+
 ---
 
 ## Role Types
@@ -272,11 +287,19 @@ undocumented, diverging models the domain exists to govern. Source:
 Common organizational practice; added 2026-09-22 (see 00-qa.md Q8).
 
 ### DevOps / Release Engineering {#ccdept-devops-release-engineering}
-Owns Workflow/Process domain resources — CI/CD, repository standards,
-release management (domain 7, not yet drafted). Ownership model under revision as of 2026-09-22 (single-department
-ownership of a cross-department domain is being reconsidered — see
-00-qa.md); treat as provisional.
-Source: Common organizational practice.
+Cross-cutting standards/platform owner for Workflow/Process domain
+resources (CI/CD, repository standards, release management — domain 7,
+not yet drafted) — defines the shared pattern (pipeline stages, branch
+strategy, repository scaffolding conventions) every domain department
+instantiates against, the same cross-cutting-not-owner shape Security &
+Compliance already has across Domains 1-8. Resolved 2026-09-22 (see
+00-qa.md Q10), replacing the earlier single-owner model: Platform
+Engineering, Application Engineering, Data Governance & Engineering,
+Business Intelligence & Analytics, and AI/ML Platform each own and
+operate their *own instance* of Workflow/Process's artifacts (their own
+repository, their own pipeline) against DevOps's standard, rather than
+DevOps owning every domain's pipeline directly. Source: Common
+organizational practice.
 
 ### AI/ML Platform {#ccdept-ai-ml-platform}
 Owns Harness domain resources — AI/ML tooling, harness scope definitions,
@@ -292,9 +315,17 @@ Access Rules/Risk Tiers columns. Home Department for the
 Security/Compliance role. Source: Common organizational practice.
 
 ### IT Training & Change Management {#ccdept-training-change-management}
-Owns Interface/Human domain resources — training, adoption, change
-management, end-user support (domain 9, not yet drafted). Source: Common
-organizational practice.
+Cross-cutting standards/platform owner for Training Requirements
+(`ccorg-training-requirement`) across every domain — not a domain owner
+itself. Curates the training/adoption/change-management/end-user-support
+requirements that gate other Departments' Roles' Access Rules, the same
+cross-cutting-not-owner shape Security & Compliance and (since 2026-09-22,
+see 00-qa.md Q10) DevOps / Release Engineering already have. Formerly
+modeled as owning a dedicated Interface/Human domain (9); folded in
+2026-09-22 after that domain failed the "noun-oriented artifact domain"
+test (no Definitions/Taxonomy/Ontology of its own distinct from the Roles/
+Departments it trains) — see 00-qa.md Q11. Source: Common organizational
+practice.
 
 ---
 

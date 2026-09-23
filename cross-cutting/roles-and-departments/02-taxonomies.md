@@ -4,7 +4,7 @@ Status: Draft — pending review
 Ratified: No
 Last updated: 2026-09-22
 Provenance: see 00-qa.md in this directory
-Built on: 01-definitions.md (34 owned terms)
+Built on: 01-definitions.md (35 owned terms)
 
 Structure: strict single-parent tree, consistent with every domain's
 Taxonomies column. Only terms owned by this registry are classified here
@@ -18,7 +18,10 @@ Taxonomies column. Only terms owned by this registry are classified here
 │   ├── Department (#ccdept-department)
 │   ├── Org Chart (#ccorg-org-chart)
 │   ├── Reporting Line (#ccorg-reporting-line)
-│   └── Governance Body (#ccgov-governance-body)
+│   ├── Governance Body (#ccgov-governance-body)
+│   └── Training Requirement (#ccorg-training-requirement) — added
+│       2026-09-22, replaces the folded-in Interface/Human domain (see
+│       00-qa.md Q11)
 │
 ├── Role Types
 │   ├── Human Role (#ccrole-human-role)
@@ -78,14 +81,14 @@ reviewer touches every domain without owning any of them).
 
 | Department | Primary Domain(s) | Alignment Type |
 |---|---|---|
-| Platform Engineering | 1 (Infrastructure), 2 (Networking) | Owns |
-| Application Engineering | 3 (System Architecture) | Owns |
-| Data Governance & Engineering | 4 (Data Platform), 5 (Data/Metadata) | Owns both — Data Platform (4) jointly via its Data Architect, Data Engineer, and Analytics Engineer roles (2026-09-22, replacing Application Engineering's earlier co-ownership stake, see 00-qa.md Q7/Q8); Data/Metadata (5) outright |
-| Business Intelligence & Analytics | 6 (Business Intelligence / Reporting) | Owns — via Business Analyst/Report Builder and BI Analyst/Developer roles; added 2026-09-22 (see 00-qa.md Q8) |
-| DevOps / Release Engineering | 7 (Workflow/Process) | Under revision — see 00-qa.md; the single-owner model shown here is being reconsidered in favor of each domain department owning its own workflow/CI-CD instance, with DevOps's exact role (cross-cutting standards owner vs. folded into Platform Engineering vs. no coordinating department) not yet decided |
-| AI/ML Platform | 8 (Harness) | Owns |
-| Security & Compliance | 1–9 (all domains) | Cross-cutting reviewer/approver, not an owner of any domain |
-| IT Training & Change Management | 9 (Interface/Human) | Owns |
+| Platform Engineering | 1 (Infrastructure), 2 (Networking), 7 (Workflow/Process — own instance) | Owns 1, 2; instantiates its own Workflow/Process pipeline/repo (7) against DevOps's cross-cutting standard (resolved 2026-09-22, see 00-qa.md Q10) |
+| Application Engineering | 3 (System Architecture), 7 (Workflow/Process — own instance) | Owns 3; instantiates its own Workflow/Process pipeline/repo (7) against DevOps's cross-cutting standard (resolved 2026-09-22, see 00-qa.md Q10) |
+| Data Governance & Engineering | 4 (Data Platform), 5 (Data/Metadata), 7 (Workflow/Process — own instance) | Owns both 4 and 5 — Data Platform (4) jointly via its Data Architect, Data Engineer, and Analytics Engineer roles (2026-09-22, replacing Application Engineering's earlier co-ownership stake, see 00-qa.md Q7/Q8); Data/Metadata (5) outright; instantiates its own Workflow/Process pipeline/repo (7) against DevOps's cross-cutting standard (resolved 2026-09-22, see 00-qa.md Q10) |
+| Business Intelligence & Analytics | 6 (Business Intelligence / Reporting), 7 (Workflow/Process — own instance) | Owns 6 — via Business Analyst/Report Builder and BI Analyst/Developer roles; added 2026-09-22 (see 00-qa.md Q8); instantiates its own Workflow/Process pipeline/repo (7) against DevOps's cross-cutting standard (resolved 2026-09-22, see 00-qa.md Q10) |
+| DevOps / Release Engineering | 7 (Workflow/Process) | Cross-cutting standards/platform owner, not sole domain owner — defines the shared CI/CD pattern (pipeline stages, branch strategy, repository scaffolding) that Platform Engineering, Application Engineering, Data Governance & Engineering, Business Intelligence & Analytics, and AI/ML Platform each instantiate as their own instance; same cross-cutting-not-owner shape as Security & Compliance. Resolved 2026-09-22, replacing the earlier single-owner model (see 00-qa.md Q10) |
+| AI/ML Platform | 8 (Harness), 7 (Workflow/Process — own instance) | Owns 8; instantiates its own Workflow/Process pipeline/repo (7) against DevOps's cross-cutting standard (resolved 2026-09-22, see 00-qa.md Q10) |
+| Security & Compliance | 1–8 (all domains) | Cross-cutting reviewer/approver, not an owner of any domain |
+| IT Training & Change Management | Cross-cutting (Training Requirement) | Cross-cutting standards/platform owner, not a domain owner — curates Training Requirements gating other Departments' Roles across all domains; formerly owned a dedicated Interface/Human domain (9), folded in 2026-09-22 (see 00-qa.md Q11) |
 
 **This table is illustrative, not prescriptive:** an organization adopting
 this framework may combine, split, or rename these Departments to match

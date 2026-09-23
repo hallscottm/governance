@@ -80,8 +80,11 @@ environments (POL-4 applies to all environments, not just Production).
   roles-and-departments/, resolved earlier than the original plan of
   waiting for the Interface/Human domain.
 - No access rule yet defined for who may set/change a resource's DR Tier
-  classification (POL-3). Revisit once Interface/Human domain clarifies
-  role structure, or address directly if it becomes urgent before then.
+  classification (POL-3). Role structure is already owned by
+  cross-cutting/roles-and-departments/ (Interface/Human, the domain this
+  item originally deferred to, was folded into that pillar 2026-09-22 —
+  see its 00-qa.md Q11); revisit directly against that registry, or
+  address now if it becomes urgent before then.
 - AI Agent/Harness is treated here as a single generic actor type; once
   the Harness domain (08-harness) is drafted, this will likely need to
   differentiate between harness scopes/roles rather than one flat
