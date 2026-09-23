@@ -1,0 +1,25 @@
+intake_id: dq-metrics-dashboard
+source: direct-request
+raised_by: J. Rivera
+core_answers:
+  problem_goal: >
+    Stand up an internal dashboard summarizing the team's weekly
+    data-quality metrics, so the team can check it each Monday.
+    Should pull from whatever data the team's existing data-quality
+    checks already produce (not build new checks).
+  urgency: >
+    No hard deadline stated. Requester expressed a soft preference
+    for "before end of quarter" — not confirmed as a firm commitment.
+  rough_domains:
+    - BI / analytics
+    - data quality
+    - internal reporting/dashboarding
+  risk_signals: []
+type_pack_used: Request/Ad Hoc (core set treated as sufficient; see open_gaps on type)
+type_pack_answers: {}
+open_gaps:
+  - "Engagement type is not fully confirmed: request reads as either Project (new dashboard build) or Request/Ad Hoc (simple, 'nothing fancy' ask). Recommending Project as best read; final call belongs to Planning Agent."
+  - "Source system(s)/tool(s) that produce the existing data-quality checks are not named."
+  - "Intended audience/access scope for the dashboard (just BI team, or wider) not specified."
+  - "Whether 'end of quarter' is a real target to plan against, or purely aspirational, not confirmed."
+recommended_engagement_type: Project

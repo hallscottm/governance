@@ -47,11 +47,17 @@ dependencies: [dq-dash-t1-define-metrics]
 ```
 
 Notice what *didn't* need re-deriving: the BI Report Builder role, its
-Capability Scope, and the report-building Skill all already existed in
-the Agent/Skill Library (not yet built — see 09-open-decisions.md #3)
-— this Project Document just referenced them. That's the efficiency
-payoff this whole area is for: most Engagements should read like this,
-mostly references, not fresh reasoning every time.
+Capability Scope, and the report-building Skill are shown here already
+registered in the Agent/Skill Library. **Illustrative, not live:** as of
+2026-09-23 the Library (10-skill-library.md, 11-agent-library.md) is
+genuinely empty — Build-on-Demand means nothing gets pre-populated.
+`agent-lib/bi-analyst-developer-v1` and `skill-lib/build-bi-report-v3`
+show the *reference* shape once they exist, not a claim that they do
+yet; a real first run of this Project routes through the Factory
+(13-factory.md) first — see implementation/pilots/dq-metrics-dashboard/
+for that actual run. That's still the efficiency payoff this whole area
+is for: once built once, most Engagements after the first should read
+like this, mostly references, not fresh reasoning every time.
 
 **Quality bar check:**
 - [x] Simple — one abridged example, both document types

@@ -66,3 +66,5 @@ Not every top-level directory is a domain or a cross-cutting pillar. `00-framewo
 Activates partway (not from domain 1): Sandbox — becomes relevant starting
 at the Workflow/Process domain, once there is something real to test
 against.
+
+`implementation/` (added 2026-09-23) is a reference runtime, not a governance area at all - it compiles engagements/ Agent Library entries into real, runnable agents and holds pilot-run output. Deliberately temporary placement: in a real org it would be its own repo, kept here for now only because a single-person POC benefits from tight spec<->implementation iteration. See implementation/00-overview.md.

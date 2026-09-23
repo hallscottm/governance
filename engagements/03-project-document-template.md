@@ -24,7 +24,13 @@ created_date: <date>
 last_updated: <date>
 
 owning_department: <ccdept-* anchor>
-owning_team_lead: <ccrole-owning-team-lead instance>
+owning_team_lead: <the domain-appropriate accountable-lead role for what's
+  being built, not always ccrole-owning-team-lead literally - that role is
+  scoped to Service/Application/API/Database (03-system-architecture). A
+  Report/Dashboard deliverable resolves to Report Owner instead
+  (ccrole-business-analyst-report-builder or ccrole-bi-analyst-developer,
+  06-bi-reporting/04-metadata-standards.md). Resolve per the entity type
+  actually being created; leave explicitly open if no domain defines one yet>
 requester: <ccrole-requester instance>
 approver: <ccrole-approver instance>   # never the same as requester — CCAR-2
 
@@ -41,10 +47,15 @@ sandbox_required: true | false          # ties to cc-sandbox
 storage_location: <where files/data will live, if not source-controlled>
 
 source_control_and_delivery:
-  # required once applicable_domains includes System Architecture,
-  # Infrastructure, Networking, or Data Platform (a deliverable that is
-  # code, config, or infrastructure); optional/partial otherwise (e.g. a
-  # pure report Engagement may only fill repository, or omit this block).
+  # required when this Project's own DELIVERABLE is itself code, config,
+  # or infrastructure - i.e. it registers a new or materially changed
+  # Service/Application/API/Database/Infrastructure resource. Determine
+  # this from what's actually being built, not from which domains merely
+  # apply to it: a Report/Dashboard project can list Data Platform in
+  # applicable_domains purely because it reads from a data source,
+  # without the report itself needing a repository/pipeline/IaC of its
+  # own. Optional/partial otherwise (e.g. a pure report Engagement may
+  # omit this block entirely rather than filling it with open fields).
   # Planning-time record only - once a Service/Application entity is
   # registered, its own Repository Reference field
   # (03-system-architecture/04-metadata-standards.md) is the ongoing

@@ -1,0 +1,14 @@
+# Machine-readable status roll-up for this area.
+# Not a domain (00-framework/domain-axis-definition.md) - columns are
+# bespoke to this area's content, not the 11-column domain axis.
+# Values: not-started | draft | ratified | deprecated | superseded
+area: "implementation"
+columns:
+  00-overview: draft
+  agents/vetting-agent: draft
+  agents/planning-agent: draft
+  pilots/dq-metrics-dashboard: run-1-complete-findings-open
+  01-running-an-engagement: draft
+  agents/factory-agent: draft
+  pilots/skill-pilot-1: approved-and-registered
+  skills/csv-to-markdown-summary-v1: approved

@@ -48,6 +48,43 @@ place once it's `approved` — same reasoning as Harness's Model Version
 Pin requiring a fresh Eval Suite Run on change, not a silent in-place
 update.
 
+## Registered Skills
+
+First entry, registered 2026-09-23 via the first completed Factory Run
+(implementation/pilots/skill-pilot-1/). Implementation lives at
+implementation/skills/csv-to-markdown-summary-v1/ (a reference-runtime
+detail - not duplicated here, this row is the governance record).
+
+```yaml
+skill_id: skill-lib/csv-to-markdown-summary-v1
+name: CSV to Markdown Summary
+description: >
+  Reads a CSV file and produces a markdown file containing (a) a markdown
+  table rendering of the CSV's rows and columns, and (b) one summary line
+  stating the row count and column count. Runs the bundled script against
+  the input CSV to produce the output file; does not fabricate table
+  contents from memory.
+version: 1
+status: approved
+owning_domain: null
+requires_capability_scope: >
+  Read one local CSV file supplied as input; write one local markdown
+  file as output. No other file, network, or system access.
+requires_tool_permission_scope: >
+  Read: the single input CSV path passed to it. Write: the single output
+  markdown path passed to it. Execute: the bundled script only
+  (standard library only, no external packages, no network access).
+typical_risk_tier: Low
+eval_suite: implementation/pilots/skill-pilot-1/sandbox/eval-result.md
+  (5/5 cases passed, first attempt - normal input, ragged rows, embedded
+  pipe character, empty CSV, missing-file error path, plus a static
+  Tool Permission Scope check)
+provenance: factory-built factory-run-csv-to-markdown-summary
+created_date: 2026-09-23
+last_updated: 2026-09-23
+used_by: []
+```
+
 ## Lookup, reuse, escalation
 
 1. The Engagement Planning Agent needs a Skill for a Task (07's Skill
