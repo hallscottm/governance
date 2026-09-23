@@ -6,10 +6,10 @@ columns:
   01-definitions: draft
   02-taxonomies: draft
   03-ontologies: draft
-  04-metadata-standards: not-started
-  05-conventions: not-started
-  06-policies: not-started
-  07-access-rules: not-started
-  08-procedures: not-started
-  09-risk-tiers: not-started
-  10-tooling: not-started
+  04-metadata-standards: draft
+  05-conventions: draft
+  06-policies: draft
+  07-access-rules: draft
+  08-procedures: draft
+  09-risk-tiers: draft
+  10-tooling: draft

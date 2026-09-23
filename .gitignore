@@ -1,0 +1,4 @@
+# Scratch files used to work around this shell's PowerShell here-string
+# quoting issues when committing — not framework content.
+commit-message.txt
+commit-session.ps1

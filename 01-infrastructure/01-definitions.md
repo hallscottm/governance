@@ -81,23 +81,23 @@ Referenced by: System Architecture (Container Image)
 ### Inference Workload {#infra-inference-workload}
 Compute performing predictions using an already-trained AI model.
 Source: Common ML industry practice
-Referenced by: System Architecture, Harness (pending — domains not yet built)
+Referenced by: System Architecture, Harness (08-harness/01-definitions.md, resolved 2026-09-23)
 
 ### Training Workload {#infra-training-workload}
 Compute used to fit/update an AI model's parameters against data.
 Source: Common ML industry practice
-Referenced by: System Architecture, Harness (pending — domains not yet built)
+Referenced by: System Architecture, Harness (08-harness/01-definitions.md, resolved 2026-09-23)
 
 ### GPU Memory (VRAM) {#infra-gpu-memory}
 Dedicated high-bandwidth memory on a GPU, a key constraint for model size/
 batch size.
 Source: Common industry practice
-Referenced by: System Architecture, Harness (pending — domains not yet built)
+Referenced by: System Architecture, Harness (08-harness/01-definitions.md, resolved 2026-09-23)
 
 ### Model-Serving Node {#infra-model-serving-node}
 A compute unit dedicated to hosting a deployed model for inference requests.
 Source: Common ML industry practice
-Referenced by: System Architecture, Harness (pending — domains not yet built)
+Referenced by: System Architecture, Harness (08-harness/01-definitions.md, resolved 2026-09-23)
 
 ## Storage
 
