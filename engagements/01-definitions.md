@@ -140,6 +140,15 @@ produces still requires a human Approver's sign-off (CCAR-1/CCAR-2,
 cross-cutting/access-rules.md) before any Task's assigned Agent starts.
 Full spec: 07-planning-and-advisory-agents.md.
 
+### Skill {#eng-skill}
+A registered, reusable capability an Agent invokes — what a Task Document's `skills_invoked` field points to (`skill-lib/<slug>-vN`). Not an actor; something an Agent does. Built on demand (see 10-skill-library.md's Build-on-Demand Principle), never predicted in advance. Source: this area's own review pass; reuses no external standard.
+
+### Agent Template {#eng-agent-template}
+A reusable, pre-configured Agent role (`agent-lib/<slug>-vN`) an Engagement's `agents_required` list references instead of composing an Agent from scratch. Fields mirror Harness's Agent schema exactly (`harness-agent`, 08-harness/01-definitions.md). Full spec: 11-agent-library.md.
+
+### Model Catalog Entry {#eng-model-catalog-entry}
+One approved, externally available model (frontier API or self-hosted/local) an Agent's Model Version Pin (`harness-model-version-pin`) can be set to. Not built in-house like a Skill or Agent Template — a curated list plus a Selection Criteria rubric, closer in spirit to Harness's Tooling column. Full spec: 12-model-catalog.md.
+
 ---
 
 **Quality bar check (00-framework/quality-bar.md):**

@@ -14,16 +14,17 @@ your call.
    watches? (02-engagement-types.md)
 2. **YAML front matter + Markdown body format** — resolved by use:
    adopted throughout 03/04.
-3. **Skill Library and Agent Library** — open, next piece of work.
-   Referenced throughout (`skill-lib/...`, `agent-lib/...`) but not yet
-   designed. Model Catalog & Selection Criteria (#8, below) folds into
-   this same pass.
+3. **Skill Library and Agent Library** — resolved: see
+   10-skill-library.md and 11-agent-library.md. Build-on-Demand
+   Principle answers the earlier "predict vs. compose fresh" question
+   (neither — build on first genuine need, register on reuse).
 4. **Where this lives in the repo** — resolved: `engagements/`, a
    top-level area alongside `00-framework/` and `cross-cutting/`, not a
    domain (00-framework/domain-axis-definition.md).
 5. **The Factory itself** (draft -> sandbox -> eval -> approve ->
-   register) — open, referenced repeatedly, not yet specced. Natural
-   next piece after the Skill/Agent Library.
+   register) — still open, still next. The Skill/Agent/Model registries
+   (3, 8) now assume it exists and produces `status: approved` entries;
+   they don't say how.
 6. **Agent Accountability boundary** — resolved as a floor, open at the
    edges: CCP-4 (cross-cutting/policies.md) fixes Accountable as
    human-only at High risk tier. Open whether that's a bright line at
@@ -35,11 +36,23 @@ your call.
    organization's own governance, policies, ontologies, and
    institutional knowledge into this same structure quickly, without
    losing detail.
-8. **Model Catalog & Selection Criteria** — open. Harness already has
-   Model Version Pin (`harness-model-version-pin`) per Agent, but not
-   the decision rubric (frontier vs. local, which model, why) it should
-   be set from. Fold into the Skill/Agent Library pass (#3) — same
-   shape of problem, one registry effort.
+8. **Model Catalog & Selection Criteria** — resolved: see
+   12-model-catalog.md. Add/Update/Deprecate triggers defined; approver
+   is `ccrole-security-compliance` (Infrastructure Admin consulted on
+   cost, not approving).
+10. **"Close enough" threshold** — resolved: Capability Scope and
+    Tool Permission Scope must match exactly for a Skill/Agent Template
+    to count as reusable; Skills invoked may differ/be a subset; Model
+    Version Pin never factors into the match (Selection Criteria sets
+    it per-Task independently). Role Name is a label, not part of the
+    test.
+11. **Deprecation policy** (Skill/Agent/Model) — resolved: never a hard
+    delete. Three triggers — provider/dependency retirement,
+    Behavioral Drift or repeated Eval failure (auto-flags for review,
+    parallels HPOL-4), or superseded-and-unused (`used_by` empty).
+    `status: deprecated` blocks new Lookups; existing references keep
+    their historical record.
+
 9. **A2A protocol** — resolved for now: not adopted. All Agents share
    one harness and one owner; internal coordination is the
    Collaboration Log + orchestrator pattern. Revisit only if #7

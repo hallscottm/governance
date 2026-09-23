@@ -37,7 +37,7 @@ All 8 domains and all 3 cross-cutting pillars have been built in traversal order
 
 | Area | Location | Draft | Ratified | Not Started |
 |---|---|---|---|---|
-| Engagements | [engagements/](engagements/) | 10/10 | 0/10 | 0/10 |
+| Engagements | [engagements/](engagements/) | 13/13 | 0/13 | 0/13 |
 
 Unit-of-work planning layer on top of the domain axis - Engagement Documents (Project/Task), the Vetting Agent, and the Engagement Planning Agent. Consumes the Anchor layer (domains above) and Harness's Agent schema rather than duplicating either. Open items tracked in engagements/09-open-decisions.md, including the Skill/Agent Library and Factory process as the natural next pieces.
 

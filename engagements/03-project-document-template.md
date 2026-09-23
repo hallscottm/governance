@@ -2,12 +2,16 @@
 
 Status: Draft — pending review
 Ratified: No
-Last updated: 2026-09-23
+Last updated: 2026-09-23 (workflow_pattern field; Department/Domain note; source_control_and_delivery block added)
 
 Instance of `eng-project-document` (01-definitions.md). Required for
 Project and Decommission Engagement Types; optional wrapper for
 Maintenance and Governance/Review; not used for Monitoring & Alerting or
 the standalone types (02-engagement-types.md).
+
+**Department vs. Domain — not the same field.** `owning_department` is org-chart (`ccdept-*`, cross-cutting/roles-and-departments) — who asked, who's accountable day to day. `applicable_domains` is the technical axis (00-framework/domain-axis-definition.md) — which domains' governance/taxonomy/policy actually applies. A project requested by one Department routinely touches several Domains (a Marketing-requested report touches Data/Metadata and BI/Reporting, not a "Marketing domain" — Marketing isn't a row on that axis). Keep both fields filled independently; don't infer one from the other.
+
+**Source control, CI/CD, and IaC are planned here, not left implicit.** Workflow/Process (07-workflow-process) already owns the vocabulary — Repository, Branching Strategy, Pipeline, Deployment Gate, Infrastructure as Code — this schema's `source_control_and_delivery` block is where a specific Project's choices from that vocabulary get recorded, the same reference-not-restate pattern used everywhere else in this framework.
 
 ## Front matter (machine-readable)
 
@@ -34,9 +38,30 @@ applicable_taxonomy_terms: [list of anchors]
 applicable_conventions: [list of anchors]
 sandbox_required: true | false          # ties to cc-sandbox
 
-storage_location: <where files/data will live>
-scaffolding_template: <wf-repository-scaffolding reference used>
-repository: <wf-repository reference, once created>
+storage_location: <where files/data will live, if not source-controlled>
+
+source_control_and_delivery:
+  # required once applicable_domains includes System Architecture,
+  # Infrastructure, Networking, or Data Platform (a deliverable that is
+  # code, config, or infrastructure); optional/partial otherwise (e.g. a
+  # pure report Engagement may only fill repository, or omit this block).
+  # Planning-time record only - once a Service/Application entity is
+  # registered, its own Repository Reference field
+  # (03-system-architecture/04-metadata-standards.md) is the ongoing
+  # source of truth; not duplicated here after creation.
+  repository:
+    name: <follows wf-repository's Repository Naming Convention, 07-workflow-process/05-conventions.md>
+    location: <the org's Git host + org/repo path>
+    scaffolding_template: <wf-repository-scaffolding reference used>
+    branching_strategy: <wf-branching-strategy reference>
+  ci_cd:
+    pipeline: <wf-pipeline reference>
+    deployment_gates: [wf-deployment-gate references that apply, per applicable_domains]
+    rollback_plan: <wf-rollback reference - required once risk_tier is Moderate or High>
+  iac:
+    used: true | false
+    state_file_location: <wf-state-file reference, if used>
+    plan_review_required: true | false   # ties to wf-iac-plan / wf-iac-apply
 
 participants:
   - name: <human name, or agent role_name>
@@ -47,6 +72,13 @@ participants:
 
 tools_and_mcp_servers: [list]            # includes Channels — see eng-channel, 06
 tool_configurations: [list of standardized config profiles used]
+
+workflow_pattern: single-agent | sequential | parallel | orchestrator-workers | evaluator-optimizer
+  # shape of how this Project's Agents/Tasks coordinate, not per-task detail
+  # (that's each Task's own dependencies list, below). Named patterns per
+  # Anthropic's "Building Effective AI Agents" (engagements/00-standards-
+  # alignment.md). single-agent for the common one-Agent case; the rest
+  # only matter once agents_required has more than one entry.
 
 agents_required:
   - role_name: <string>
