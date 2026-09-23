@@ -101,31 +101,18 @@ mechanism; whether/when to actually start using it (for everything, or
 just for Factory Run registrations, or not yet at all while this is
 still one person iterating quickly) is your call, not mine to assume.
 
-## GitHub Actions setup (Tier 2 - implementation/04-agent-isolation-and-harnessing.md)
+## GitHub Actions (Tier 2) - designed, then removed (2026-09-23)
 
-Built 2026-09-23, not yet exercised end to end. To actually run a
-Factory Run through this pipeline instead of by hand:
-
-1. **Add the workflow file yourself.** `.github/workflows/*` is
-   blocked from remote-tool writes on purpose (it executes with repo
-   secrets) - add `.github/workflows/factory-run.yml` directly, with
-   the content handed to you separately from this doc.
-2. **Add four repo secrets** (Settings -> Secrets and variables ->
-   Actions -> New repository secret):
-   - `GOVERNANCE_APP_CLIENT_ID` - same value as your local `$env:GOVERNANCE_APP_CLIENT_ID`
-   - `GOVERNANCE_APP_INSTALLATION_ID` - same value as your local one
-   - `GOVERNANCE_APP_PRIVATE_KEY` - the **full contents** of the `.pem`
-     file (not a path - GitHub Actions secrets hold values, not files;
-     the workflow writes this to a runner-local temp file itself)
-   - `ANTHROPIC_API_KEY` - a real Anthropic API key, scoped to whatever
-     billing/usage limits you're comfortable with a CI runner having
-3. **Dispatch it manually** (Actions tab -> Factory Run -> Run
-   workflow), naming the Task Document, the agent file
-   (`implementation/agents/factory-agent.md`), and the write-scope
-   prefix (`implementation/factory-runs/<slug>/sandbox/`).
-4. It opens a PR, same review discipline as everything else here -
-   run the candidate's Eval Suite and get real Sandbox/Approval sign-off
-   before merging. **The PR existing is not approval of anything.**
+A Tier 2 GitHub Actions pipeline (`.github/workflows/factory-run.yml` +
+`implementation/github-auth/run-factory-agent.py`) was designed and
+briefly committed on 2026-09-23, then deleted the same day: it requires
+a real `ANTHROPIC_API_KEY` on a separate, pay-per-token Anthropic
+Console billing account, and the repo owner decided not to take that on
+right now. See `implementation/04-agent-isolation-and-harnessing.md`
+for the full record of what was designed and why it was pulled back
+out rather than left in the repo unexercised. Nothing here today
+depends on it - the GitHub App + branch-protection + required-PR-review
+setup above is the active mechanism.
 
 **Quality bar check (00-framework/quality-bar.md):**
 - [x] Simple — one script, one env-var contract, one workflow
