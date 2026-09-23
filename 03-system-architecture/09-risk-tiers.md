@@ -1,4 +1,4 @@
-# System Architecture Layer — Risk Tiers
+# System Architecture Domain — Risk Tiers
 
 Status: Draft — pending review
 Ratified: No
@@ -11,7 +11,7 @@ Built on: 02-taxonomies.md, 04-metadata-standards.md, 06-policies.md, cross-cutt
 **Extends:** cross-cutting/risk-tiers.md (FIPS 199-aligned Low/Moderate/
 High scale — not restated here).
 
-## Determining Factors (layer-specific)
+## Determining Factors (domain-specific)
 
 A resource's Risk Tier is the **highest** tier triggered by any applicable
 factor (cross-cutting maximum rule, per cross-cutting/risk-tiers.md).
@@ -39,7 +39,7 @@ Tier/Criticality or exposure factors, same "highest tier wins" rule.
 **Extends:** cross-cutting/risk-tiers.md's baseline (two-person sign-off
 for High risk, via CCAR-3).
 
-**Layer-specific additions beyond the baseline (already defined in full
+**Domain-specific additions beyond the baseline (already defined in full
 in 06-policies.md/07-access-rules.md — summarized here for visibility):**
 
 | Tier | System Architecture-Specific Policy Implication |
@@ -53,7 +53,7 @@ in 06-policies.md/07-access-rules.md — summarized here for visibility):**
 **Open items:**
 - (Resolved 2026-09-22) Data handled/sensitivity factor populated,
   sourced from Data/Metadata's Sensitivity Level field — resolved in one
-  pass across all three prior layers (Infrastructure, Networking, System
+  pass across all three prior domains (Infrastructure, Networking, System
   Architecture) once Data/Metadata was drafted, as anticipated.
 - SAPOL-1, SAPOL-3, SAPOL-4 confirmed uniform (not Risk-Tier-scaled) by
   design during Policies drafting — restated here for consistency with
@@ -61,7 +61,7 @@ in 06-policies.md/07-access-rules.md — summarized here for visibility):**
 
 **Quality bar check (00-framework/quality-bar.md):**
 - [x] Simple — 4 determining factors (1 unpopulated placeholder), reusing the cross-cutting scale
-- [x] Modular — layer-specific factors independent of Infrastructure's and Networking's
+- [x] Modular — domain-specific factors independent of Infrastructure's and Networking's
 - [x] Easy to update — cross-cutting scale updates once, applies here automatically
 - [x] Easy to maintain — factors derived from existing Definitions/Metadata Standards
 - [x] Easy to replace — standard-grounded (FIPS 199, inherited)

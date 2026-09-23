@@ -1,4 +1,4 @@
-# Infrastructure Layer — Tooling / Implementation
+# Infrastructure Domain — Tooling / Implementation
 
 Status: Draft — pending review
 Ratified: No

@@ -5,7 +5,7 @@ Ratified: No
 Last updated: 2026-09-22
 
 The column axis of the framework matrix. Columns are filled left-to-right
-within a layer, since each artifact type depends on the one(s) before it.
+within a domain, since each artifact type depends on the one(s) before it.
 
 | Order | Artifact Type | Captures | Depends on |
 |---|---|---|---|
@@ -21,5 +21,5 @@ within a layer, since each artifact type depends on the one(s) before it.
 | 10 | Tooling / Implementation | Tools/apps chosen to implement the above | all prior columns (filled last) |
 
 A Standards Alignment reference panel (established external standards
-relevant to the layer) is reviewed before column 1 and is not itself
+relevant to the domain) is reviewed before column 1 and is not itself
 'data' to fill in — it seeds columns 1-2 with existing vocabulary.

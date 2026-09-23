@@ -1,10 +1,10 @@
-# Infrastructure Layer — Standards Alignment
+# Infrastructure Domain — Standards Alignment
 
 Status: Draft — pending review
 Ratified: No
 Last updated: 2026-09-22
 
-Reference panel for this layer, consulted before drafting Definitions and
+Reference panel for this domain, consulted before drafting Definitions and
 Taxonomies. Not itself "data" to fill in — it seeds vocabulary so later
 columns align to existing standards rather than inventing new terms.
 Compiled from the citations actually used in 01-definitions.md.
@@ -20,12 +20,13 @@ Compiled from the citations actually used in 01-definitions.md.
 | **ISO/IEC 27001 Annex A** | ISO | Asset management, physical/environmental controls | Asset Tag |
 | **OCI (Open Container Initiative)** | OCI | Container image/runtime standards | Container, Container Runtime |
 | **FinOps Foundation** | FinOps Foundation | Cloud financial management terminology | Cost Center Tag, Chargeback Unit |
+| **NIST SP 500-292 (Cloud Reference Architecture)** | NIST | IaaS/PaaS/SaaS service-model boundaries | Added 2026-09-22 (see 00-framework/ea-framework-alignment.md) — clarifies what a given Compute Unit or environment actually is when service-model boundary matters |
 | **Common cloud provider practice** | AWS / Azure / GCP (de facto, not a formal body) | Widely-adopted terminology not codified by a standards org but consistent across major providers | vCPU, Instance Type, Reserved Capacity, Durability Class |
 | **Common industry practice** | — (no single body) | Terms in general technical use, not owned by any one standard | Majority of compute/storage/virtualization/scaling terms |
 
 **Not yet consulted, candidate for future passes:**
-- **DAMA-DMBOK** — relevant once Data/Metadata layer is drafted, not Infrastructure
-- **ISO/IEC 42001** — AI management systems; likely relevant once Governance-related (cross-cutting) terms appear in later layers, not needed for pure hardware/substrate vocabulary
+- **DAMA-DMBOK** — relevant once Data/Metadata domain is drafted, not Infrastructure
+- **ISO/IEC 42001** — AI management systems; likely relevant once Governance-related (cross-cutting) terms appear in later domains, not needed for pure hardware/substrate vocabulary
 - **NIST AI RMF** — same reasoning as above; flagged for Harness/Governance-adjacent work, not Infrastructure
 
 **Note on citation confidence:** NIST, ISO, TIA, Uptime Institute, OCI, and
@@ -42,4 +43,4 @@ ratifying, since standards do get revised.
 - [x] Easy to maintain — derived directly from what 01-definitions.md
       actually cites, not a separate parallel list to keep in sync by hand
 - [x] Easy to replace — no single standard is load-bearing for the whole
-      layer
+      domain

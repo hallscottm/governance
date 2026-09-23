@@ -23,10 +23,10 @@ added to all 5 source definitions.
 
 **Design note:** Two same-word-different-owner cases handled per
 00-framework/term-linking-convention.md, both flagged explicitly in the
-file: "API Schema" (this layer) vs. "Database Schema" (this layer, same
-layer but distinct entities — disambiguated by full term name, not by
-layer prefix, since both belong to System Architecture); and
-Infrastructure's "Container" (runtime isolation unit) vs. this layer's new
+file: "API Schema" (this domain) vs. "Database Schema" (this domain, same
+domain but distinct entities — disambiguated by full term name, not by
+domain prefix, since both belong to System Architecture); and
+Infrastructure's "Container" (runtime isolation unit) vs. this domain's new
 "Container Image" (the deployable build artifact) — related but distinct
 concepts, not a collision, cross-referenced explicitly in the Container
 Image entry.

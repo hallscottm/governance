@@ -1,4 +1,4 @@
-# Networking Layer — Procedures
+# Networking Domain — Procedures
 
 Status: Draft — pending review
 Ratified: No
@@ -10,10 +10,10 @@ Built on: 06-policies.md, 07-access-rules.md, cross-cutting/procedures.md
 
 CCPROC-1 (Production Provisioning Request & Approval), CCPROC-2
 (Metadata Completeness Validation), CCPROC-3 (Cost Attribution
-Validation), and CCPROC-4 (Break-Glass Override) apply to this layer's
+Validation), and CCPROC-4 (Break-Glass Override) apply to this domain's
 resources without restatement — see cross-cutting/procedures.md.
 
-## Layer-Specific Procedures
+## Domain-Specific Procedures
 
 ### NPROC-1 — Default-Deny Ingress Verification
 **Executes:** NPOL-1
@@ -50,13 +50,13 @@ resources without restatement — see cross-cutting/procedures.md.
 
 ---
 
-**Open items:** none for this pass — this layer's procedures were
+**Open items:** none for this pass — this domain's procedures were
 designed to close, not carry forward, the open items surfaced during
 Policies/Access Rules drafting (NPOL-3's "who approves" was resolved as
 NAR-1, and NPROC-3 now defines how that approval actually happens).
 
 **Quality bar check (00-framework/quality-bar.md):**
-- [x] Simple — 3 layer-specific procedures plus inherited cross-cutting ones
+- [x] Simple — 3 domain-specific procedures plus inherited cross-cutting ones
 - [x] Modular — NPROC-1/2/3 stand alone
 - [x] Easy to update — cross-cutting procedures update once, apply here automatically
 - [x] Easy to maintain — every procedure traces to a specific NPOL-/NAR- item

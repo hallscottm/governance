@@ -11,7 +11,7 @@ pattern Networking followed from Infrastructure.
 forward/org references rather than fully resolved.
 
 **Drafted:** 3 referenced fields (Resource ID, Cost Center Tag,
-Environment) from Infrastructure; 9 new fields owned by this layer
+Environment) from Infrastructure; 9 new fields owned by this domain
 (Service Name, Owning Team, Semantic Version, API Contract Reference,
 Database Engine, Repository Reference, Service Tier/Criticality, Health
 Check Endpoint, Dependency List); 4 entity types (Service, Application,
@@ -23,6 +23,6 @@ API, Database).
 - Repository Reference forward-references Workflow/Process (layer 5),
   not yet built.
 - Data Classification explicitly excluded — owned by Data/Metadata
-  (layer 4), not yet built.
+  (domain 5), not yet built.
 
 **Status:** Pending explicit review.

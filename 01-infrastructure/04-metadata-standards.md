@@ -1,4 +1,4 @@
-# Infrastructure Layer — Metadata Standards
+# Infrastructure Domain — Metadata Standards
 
 Status: Draft — pending review
 Ratified: No
@@ -10,12 +10,12 @@ Defines how real infrastructure instances (an actual server, VM, storage
 volume, etc.) get tagged/described so AI tooling and metadata catalogs
 (e.g., OpenMetadata — tool selection deferred to column 10) can reliably
 interpret them. Field definitions reference terms already defined in this
-layer rather than restating them (DRY, per
+domain rather than restating them (DRY, per
 00-framework/term-linking-convention.md).
 
 Standards grounding: ISO/IEC 11179 (Metadata Registries), DAMA-DMBOK
 (metadata management discipline, though DAMA is primarily the Data/
-Metadata layer's standard — cited here for the general metadata
+Metadata domain's standard — cited here for the general metadata
 governance practice it establishes).
 
 ---
@@ -54,8 +54,8 @@ by name; they do not redefine them.
 ---
 
 **Open items:**
-- Networking-layer metadata (e.g., IP allocation, VLAN tagging) is
-  explicitly out of scope here — belongs to the Networking layer once
+- Networking-domain metadata (e.g., IP allocation, VLAN tagging) is
+  explicitly out of scope here — belongs to the Networking domain once
   drafted, not duplicated into this registry.
 - Whether these fields should be *enforced* (rejected if missing) vs.
   *recommended* is a Policy-column decision (column 6), not a Metadata

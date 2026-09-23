@@ -11,3 +11,11 @@
 - Decision-weight: High
 - Resulting rule: NAR-1
 - Date answered: 2026-09-22
+
+## 2026-09-22 — Retrofit: Roles & Departments established as cross-cutting pillar
+
+**Context:** Same as Infrastructure's retrofit, same session.
+
+**Change:** Added a Role Vocabulary section linking Infrastructure Admin
+and Security/Compliance to their real cross-cutting anchors. No change
+to NAR-1's rule.

@@ -4,10 +4,10 @@
 ## Process note
 - Before drafting, surfaced and resolved a structural question: should
   universal policies (metadata completeness, cost tag, provisioning
-  approval) be cross-cutting rather than redrafted per layer? Human
+  approval) be cross-cutting rather than redrafted per domain? Human
   confirmed yes — see cross-cutting/policies.md and the retrofit logged
   in 01-infrastructure/_qa/06-policies.qa.md (Q-cc.1).
-- This layer's Policies column therefore extends CCP-1/CCP-2/CCP-3
+- This domain's Policies column therefore extends CCP-1/CCP-2/CCP-3
   without restating them, and adds only genuinely Networking-specific
   policies.
 

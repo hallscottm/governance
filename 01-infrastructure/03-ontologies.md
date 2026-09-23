@@ -1,4 +1,4 @@
-# Infrastructure Layer — Ontologies
+# Infrastructure Domain — Ontologies
 
 Status: Draft — pending review
 Ratified: No
@@ -8,7 +8,7 @@ Relation vocabulary: 00-framework/relation-types.md
 Built on: 01-definitions.md, 02-taxonomies.md
 
 Not every term appears below — only terms with a meaningful relationship
-to another term in this layer. See scope note in relation-types.md.
+to another term in this domain. See scope note in relation-types.md.
 
 ---
 
@@ -144,45 +144,45 @@ to another term in this layer. See scope note in relation-types.md.
 - [x] Modular — each relationship stands alone; removing one doesn't break others
 - [x] Easy to update — anchor-ID based, survives display-text renames
 - [x] Easy to maintain — grouped by subdomain, matches Definitions/Taxonomy structure
-- [x] Easy to replace — relation-type vocabulary is a shared framework asset, not layer-specific, so a change there is made once
+- [x] Easy to replace — relation-type vocabulary is a shared framework asset, not domain-specific, so a change there is made once
 
-## Cross-Layer References (relationships pointing into this layer)
+## Cross-Domain References (relationships pointing into this domain)
 
 Per 00-framework/relation-types.md's reverse-pointer rule, added
 retroactively once Networking's ontology created relationships into this
-layer.
+domain.
 
 - `infra-compute-unit`
-  Referenced by (cross-layer relationships):
+  Referenced by (cross-domain relationships):
   - Networking: `net-load-balancer --[runs-on]--> infra-compute-unit`
   - Networking: `net-reverse-proxy --[runs-on]--> infra-compute-unit`
   - System Architecture: `sysarch-serverless-architecture --[runs-on]--> infra-compute-unit`
-  - System Architecture: `sysarch-database --[runs-on]--> infra-compute-unit`
+  - Data Platform: `dp-database --[runs-on]--> infra-compute-unit` (moved from System Architecture 2026-09-22)
 - `infra-throughput`
-  Referenced by (cross-layer relationships):
+  Referenced by (cross-domain relationships):
   - Networking: `net-bandwidth --[constrains]--> infra-throughput`
 - `infra-container`
-  Referenced by (cross-layer relationships):
+  Referenced by (cross-domain relationships):
   - System Architecture: `sysarch-service --[runs-on]--> infra-container`
   - System Architecture: `sysarch-container-image --[produces]--> infra-container`
 - `infra-block-storage`
-  Referenced by (cross-layer relationships):
-  - System Architecture: `sysarch-database --[requires]--> infra-block-storage`
+  Referenced by (cross-domain relationships):
+  - Data Platform: `dp-database --[requires]--> infra-block-storage` (moved from System Architecture 2026-09-22)
 - `infra-horizontal-scaling`
-  Referenced by (cross-layer relationships):
+  Referenced by (cross-domain relationships):
   - System Architecture: `sysarch-stateless-service --[scales-via]--> infra-horizontal-scaling`
   - System Architecture: `sysarch-scalability --[scales-via]--> infra-horizontal-scaling`
 - `infra-environment-lifecycle`
-  Referenced by (cross-layer relationships):
+  Referenced by (cross-domain relationships):
   - System Architecture: `sysarch-release --[has-lifecycle-state]--> infra-environment-lifecycle`
 - `infra-redundancy`
-  Referenced by (cross-layer relationships):
+  Referenced by (cross-domain relationships):
   - System Architecture: `sysarch-resilience --[requires]--> infra-redundancy`
 - `infra-availability-tier`
-  Note: this anchor is the SOURCE (not target) of one cross-layer
+  Note: this anchor is the SOURCE (not target) of one cross-domain
   relationship — `infra-availability-tier --[constrains]--> sysarch-availability`
   — recorded in full in 03-system-architecture/03-ontologies.md. Listed
   here for discoverability since the relationship touches this term.
 - `infra-archive`
-  Referenced by (cross-layer relationships):
+  Referenced by (cross-domain relationships):
   - Data/Metadata: `data-archival --[requires]--> infra-archive`

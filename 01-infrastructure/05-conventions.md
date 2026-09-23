@@ -1,4 +1,4 @@
-# Infrastructure Layer — Conventions
+# Infrastructure Domain — Conventions
 
 Status: Draft — pending review
 Ratified: No
@@ -9,9 +9,9 @@ Built on: 01-definitions.md, 04-metadata-standards.md
 Scope: naming, tagging, and formatting conventions for infrastructure
 *resources themselves* (compute instances, storage volumes, physical
 assets). Code/repository layout conventions (Infrastructure-as-Code repo
-structure, module organization) belong to the Workflow/Process layer
-(05-workflow-process/05-conventions.md, not yet drafted) — kept separate
-so this file isn't duplicated or contradicted once that layer exists.
+structure, module organization) belong to the Workflow/Process domain
+(07-workflow-process/05-conventions.md, not yet drafted) — kept separate
+so this file isn't duplicated or contradicted once that domain exists.
 
 ---
 
@@ -21,8 +21,8 @@ so this file isn't duplicated or contradicted once that layer exists.
 
 | Segment | Values | Source |
 |---|---|---|
-| `<env>` | `dev`, `stg`, `prod` (abbreviations of `infra-environment-lifecycle`) | This layer, Definitions |
-| `<compute-env>` | `onprem`, `colo`, `pubcloud`, `privcloud`, `hybrid`, `edge` (abbreviations of `infra-compute-environment`) | This layer, Definitions |
+| `<env>` | `dev`, `stg`, `prod` (abbreviations of `infra-environment-lifecycle`) | This domain, Definitions |
+| `<compute-env>` | `onprem`, `colo`, `pubcloud`, `privcloud`, `hybrid`, `edge` (abbreviations of `infra-compute-environment`) | This domain, Definitions |
 | `<service>` | Short, lowercase, hyphenated identifier for the function the resource serves (org-specific vocabulary, not standardized here) | Org-specific |
 | `<seq>` | Zero-padded sequence number, 3 digits minimum (`001`, `002`, ...) | Convention |
 

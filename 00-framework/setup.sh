@@ -1,4 +1,10 @@
 #!/usr/bin/env bash
+# NOTE (2026-09-22): historical one-time bootstrap script. All directories
+# below already exist and are populated; write_if_missing guards mean
+# re-running this is safe but will NOT retrofit existing files to the
+# Domain terminology or the 04-data-platform insertion/renumbering
+# (00-framework/domain-axis-definition.md is the source of truth now).
+# LAYERS array below is kept current for any future re-scaffold only.
 set -euo pipefail
 
 ROOT="$(pwd)"
@@ -7,10 +13,12 @@ LAYERS=(
   "01-infrastructure"
   "02-networking"
   "03-system-architecture"
-  "04-data-metadata"
-  "05-workflow-process"
-  "06-harness"
-  "07-interface-human"
+  "04-data-platform"
+  "05-data-metadata"
+  "06-bi-reporting"
+  "07-workflow-process"
+  "08-harness"
+  "09-interface-human"
 )
 
 COLUMNS=(

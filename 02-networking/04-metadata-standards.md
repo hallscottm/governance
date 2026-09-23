@@ -1,4 +1,4 @@
-# Networking Layer — Metadata Standards
+# Networking Domain — Metadata Standards
 
 Status: Draft — pending review
 Ratified: No
@@ -21,7 +21,7 @@ Definitions). Links below point to the actual anchored term.
 - **Cost Center Tag** — field defined in Infrastructure's Metadata Standards, drawing from [01-infrastructure/01-definitions.md#infra-cost-center-tag](../01-infrastructure/01-definitions.md#infra-cost-center-tag) — applies unchanged
 - **Compute Environment / Environment (lifecycle)** — fields defined in Infrastructure's Metadata Standards, drawing from [01-infrastructure/01-definitions.md#infra-compute-environment](../01-infrastructure/01-definitions.md#infra-compute-environment) and [#infra-environment-lifecycle](../01-infrastructure/01-definitions.md#infra-environment-lifecycle) — a network resource belongs to an environment the same way a compute resource does
 
-## Field Registry (owned by this layer)
+## Field Registry (owned by this domain)
 
 | Field | Definition | Source Term | Required/Optional (default) |
 |---|---|---|---|
@@ -49,19 +49,19 @@ Definitions). Links below point to the actual anchored term.
 - Enforcement (whether these fields are mandatory-blocking vs.
   recommended) is deferred to Policies (column 6), same boundary as
   Infrastructure's Metadata Standards.
-- System Architecture-layer metadata (e.g., which application/service
+- System Architecture-domain metadata (e.g., which application/service
   uses a given network resource) is explicitly out of scope here.
 - Metadata Standards tables have no field-level anchors of their own
   (unlike Definitions/Ontology, which anchor every term). This means
-  there's no reverse-pointer mechanism yet for "which other layers'
+  there's no reverse-pointer mechanism yet for "which other domains'
   Metadata Standards reference this field" the way Definitions has
   "Referenced by" and Ontology now has reverse pointers. Flagged as a
   framework-level gap, not fixed here — revisit if it causes real
-  confusion once more layers reference Infrastructure's fields.
+  confusion once more domains reference Infrastructure's fields.
 
 **Quality bar check (00-framework/quality-bar.md):**
 - [x] Simple — one field registry (plus referenced fields), one matrix
 - [x] Modular — a field's definition changes once, applies everywhere referenced
 - [x] Easy to update — add an entity type as one matrix row
-- [x] Easy to maintain — fields reference Definitions terms, cross-layer where genuinely shared
+- [x] Easy to maintain — fields reference Definitions terms, cross-domain where genuinely shared
 - [x] Easy to replace — tool-agnostic, ISO/IEC 11179-grounded (same standard as Infrastructure)

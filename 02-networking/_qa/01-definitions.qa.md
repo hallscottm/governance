@@ -19,7 +19,7 @@
   00-framework/term-linking-convention.md
 - Human answer: pending explicit review (drafted, not yet vetted)
 - Decision-weight: Low (per-term); Medium (as a structural pass, given
-  the cross-layer dedup check)
+  the cross-domain dedup check)
 - Date answered: 2026-09-22 (drafted; awaiting explicit human review)
 
 ## Q1.1 — Confirmation

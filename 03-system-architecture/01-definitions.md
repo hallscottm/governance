@@ -1,15 +1,17 @@
-# System Architecture Layer — Definitions
+# System Architecture Domain — Definitions
 
 Status: Draft — pending review
 Ratified: No
 Last updated: 2026-09-22
 
-Scope: databases, applications, and services built on the compute/network
-substrate. Excludes physical/virtual compute (Infrastructure, layer 1) and
-connectivity (Networking, layer 2). Excludes the *meaning* of data
-(Data/Metadata, layer 4) and how software is built/deployed via pipelines
-(Workflow/Process, layer 5) — this layer defines what runs and how it's
-structured, not how it gets there or what its data means.
+Scope: applications and services built on the compute/network substrate.
+Excludes physical/virtual compute (Infrastructure, domain 1) and
+connectivity (Networking, domain 2). Excludes where data physically lives
+(Data Platform, domain 4 — moved here 2026-09-22) and the *meaning* of data
+(Data/Metadata, domain 5), and excludes how software is built/deployed via
+pipelines (Workflow/Process, domain 7) — this domain defines what runs and
+how it's structured, not where its data is stored, how it gets there, or
+what that data means.
 
 Anchor convention: `sysarch-<term-slug>`. See
 00-framework/term-linking-convention.md for the DRY/anti-drift rules this
@@ -19,7 +21,7 @@ file follows.
 
 ## Referenced Terms (owned elsewhere)
 
-Terms this layer uses but does not own. Do not redefine here — link to
+Terms this domain uses but does not own. Do not redefine here — link to
 the source.
 
 - **Container** — see [01-infrastructure/01-definitions.md#infra-container](../01-infrastructure/01-definitions.md#infra-container)
@@ -27,6 +29,14 @@ the source.
 - **TLS** — see [02-networking/01-definitions.md#net-tls](../02-networking/01-definitions.md#net-tls)
 - **Encryption in Transit** — see [02-networking/01-definitions.md#net-encryption-in-transit](../02-networking/01-definitions.md#net-encryption-in-transit)
 - **Load Balancer** — see [02-networking/01-definitions.md#net-load-balancer](../02-networking/01-definitions.md#net-load-balancer)
+- **Database** — owned by Data Platform (moved here 2026-09-22) →
+  [04-data-platform/01-definitions.md#dp-database](../04-data-platform/01-definitions.md#dp-database)
+- **Database Schema** — owned by Data Platform (moved here 2026-09-22) →
+  [04-data-platform/01-definitions.md#dp-database-schema](../04-data-platform/01-definitions.md#dp-database-schema)
+- **Connection Pool** — owned by Data Platform (moved here 2026-09-22) →
+  [04-data-platform/01-definitions.md#dp-connection-pool](../04-data-platform/01-definitions.md#dp-connection-pool)
+- **Schema Migration** — owned by Data Platform (moved here 2026-09-22) →
+  [04-data-platform/01-definitions.md#dp-schema-migration](../04-data-platform/01-definitions.md#dp-schema-migration)
 
 ---
 
@@ -45,7 +55,7 @@ Source: Industry-standard architectural pattern.
 
 ### Service-Oriented Architecture (SOA) {#sysarch-soa}
 An architectural style where functionality is provided as discrete,
-reusable services, typically coordinated by a broader integration layer.
+reusable services, typically coordinated by a broader integration domain.
 Predecessor/relative of Microservices Architecture, distinguished by
 heavier shared middleware. Source: Industry-standard architectural pattern.
 
@@ -55,15 +65,15 @@ consuming events, typically via a Message Queue or Event Bus, rather than
 direct synchronous calls. Source: Industry-standard architectural pattern.
 
 ### N-Tier Architecture {#sysarch-n-tier-architecture}
-An architectural style separating an application into logical layers
+An architectural style separating an application into logical domains
 (e.g., presentation, application/business logic, data), each of which may
 be deployed independently. Source: Industry-standard architectural pattern.
 
 ### Serverless Architecture (Function as a Service) {#sysarch-serverless-architecture}
 An architectural style where individual functions are deployed and
 executed without the caller managing the underlying Compute Unit directly
-— the Infrastructure layer's autoscaling/provisioning concepts apply, but
-this layer's concern is the function as the unit of deployment. Source:
+— the Infrastructure domain's autoscaling/provisioning concepts apply, but
+this domain's concern is the function as the unit of deployment. Source:
 Industry-standard architectural pattern; underlying compute concepts per
 01-infrastructure/01-definitions.md.
 
@@ -152,65 +162,6 @@ Source: General software engineering usage.
 ### SDK (Software Development Kit) {#sysarch-sdk}
 A packaged set of tools, Libraries, and documentation that simplifies
 integrating with a given API or platform. Source: General software
-engineering usage.
-
----
-
-## Databases & Storage
-
-### Database {#sysarch-database}
-An organized collection of structured data managed by a database
-engine, accessed and modified through Transactions. Distinct from
-Infrastructure's storage tiers/types, which describe the underlying media
-and access pattern, not the logical data organization. Source: ANSI/ISO
-SQL:2016 (for relational databases); general usage for non-relational.
-Referenced by: Data/Metadata
-
-### Database Schema {#sysarch-database-schema}
-The structural definition of a Database — its Tables, columns, types, and
-constraints. Distinct from API Schema (above). Source: ANSI/ISO SQL:2016.
-Referenced by: Data/Metadata
-
-### Table {#sysarch-table}
-A structured collection of rows and columns within a relational Database.
-Source: ANSI/ISO SQL:2016.
-
-### Index {#sysarch-index}
-A data structure that improves the speed of data retrieval from a Table
-at the cost of additional storage and write overhead. Source: ANSI/ISO
-SQL:2016.
-
-### Transaction {#sysarch-transaction}
-A unit of work against a Database that is executed according to ACID
-properties (below) — it either fully completes or has no effect. Source:
-ANSI/ISO SQL:2016.
-
-### ACID (Atomicity, Consistency, Isolation, Durability) {#sysarch-acid}
-The four properties that guarantee reliable processing of database
-Transactions. Source: ANSI/ISO SQL:2016; foundational relational database
-theory.
-
-### Database Replica {#sysarch-database-replica}
-A copy of a Database (or a subset of it) kept synchronized with a primary,
-used for read scaling, failover, or geographic distribution. Related to
-but distinct from Infrastructure's Replication Factor, which describes
-storage-level redundancy rather than database-level replication topology.
-Source: General database engineering usage.
-
-### Partitioning / Sharding {#sysarch-partitioning-sharding}
-Splitting a Database's data across multiple physical or logical divisions
-to improve scalability — partitioning within one database instance,
-sharding across multiple instances. Source: General database engineering
-usage.
-
-### Connection Pool {#sysarch-connection-pool}
-A cache of reusable Database connections maintained by a Service to avoid
-the overhead of establishing a new connection per request. Source:
-General software/database engineering usage.
-
-### Schema Migration {#sysarch-schema-migration}
-A versioned, applied change to a Database Schema, typically managed
-through an ordered set of migration scripts. Source: General software
 engineering usage.
 
 ---
@@ -320,13 +271,13 @@ practice.
 
 ## Application Security
 
-### Authentication (Application-Layer) {#sysarch-authentication}
+### Authentication (Application-Domain) {#sysarch-authentication}
 The process by which a Service verifies the identity of a caller
 (user or another Service). Distinct from Networking's Network Identity,
 which authenticates at the connection/device level rather than the
 application/user level. Source: OWASP ASVS.
 
-### Authorization (Application-Layer) {#sysarch-authorization}
+### Authorization (Application-Domain) {#sysarch-authorization}
 The process by which a Service determines what an authenticated caller
 is permitted to do. Source: OWASP ASVS.
 
@@ -342,7 +293,7 @@ form, or message) conforms to expected type, format, and range before it
 is processed, as a primary defense against injection and malformed-data
 vulnerabilities. Source: OWASP ASVS; OWASP Top 10.
 
-### Audit Logging (Application-Layer) {#sysarch-audit-logging}
+### Audit Logging (Application-Domain) {#sysarch-audit-logging}
 Recording security-relevant application events (authentication attempts,
 authorization decisions, data access) in a form suitable for later
 review. Source: OWASP ASVS; NIST SP 800-53 (AU family, referenced at the
@@ -352,20 +303,20 @@ application layer).
 
 ## Quality Attributes (ISO/IEC 25010)
 
-### Reliability (Application-Layer) {#sysarch-reliability}
+### Reliability (Application-Domain) {#sysarch-reliability}
 The degree to which a Service performs its specified functions correctly
 under stated conditions for a specified period. Source: ISO/IEC 25010.
 
-### Availability (Application-Layer) {#sysarch-availability}
+### Availability (Application-Domain) {#sysarch-availability}
 The proportion of time a Service is operational and able to serve
 requests, distinct from Infrastructure's Availability Tier, which
 describes the facility/hosting environment's design target rather than
 the running Service's measured uptime. Source: ISO/IEC 25010.
 
-### Scalability (Application-Layer) {#sysarch-scalability}
+### Scalability (Application-Domain) {#sysarch-scalability}
 A Service's ability to handle increased load by taking advantage of
 added resources — realized via Infrastructure's Vertical/Horizontal
-Scaling, but a property assessed at this layer against Service design
+Scaling, but a property assessed at this domain against Service design
 (e.g., whether it is Stateless). Source: ISO/IEC 25010.
 
 ### Maintainability {#sysarch-maintainability}
@@ -416,9 +367,9 @@ General software engineering usage.
 **Quality bar check (00-framework/quality-bar.md):**
 - [x] Simple — terms grouped into 10 subdomains, each independently
       scannable
-- [x] Modular — cross-layer references (Container, Environment, TLS,
+- [x] Modular — cross-domain references (Container, Environment, TLS,
       Encryption in Transit, Load Balancer) are links, not restatements;
-      this layer can be updated without touching Infrastructure or
+      this domain can be updated without touching Infrastructure or
       Networking
 - [x] Easy to update — new terms append to the relevant subdomain
       section without renumbering

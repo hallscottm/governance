@@ -1,4 +1,4 @@
-# Infrastructure Layer — Definitions
+# Infrastructure Domain — Definitions
 
 Status: Draft — pending review
 Ratified: No
@@ -6,9 +6,9 @@ Last updated: 2026-09-22
 Provenance: see _qa/01-definitions.qa.md
 Linking convention: see 00-framework/term-linking-convention.md (ID prefix: `infra`)
 
-Every term below is owned by this layer. Terms owned by other layers but
+Every term below is owned by this domain. Terms owned by other domains but
 relevant here will appear in a "Referenced Terms (owned elsewhere)" section
-once those layers exist.
+once those domains exist.
 
 ---
 
@@ -61,7 +61,7 @@ capacity offered as a unit.
 Source: Common cloud provider practice
 
 ### Bare Metal {#infra-bare-metal}
-A physical server provisioned without a hypervisor layer, dedicated to a
+A physical server provisioned without a hypervisor domain, dedicated to a
 single tenant.
 Source: Common industry practice
 
@@ -81,23 +81,23 @@ Referenced by: System Architecture (Container Image)
 ### Inference Workload {#infra-inference-workload}
 Compute performing predictions using an already-trained AI model.
 Source: Common ML industry practice
-Referenced by: System Architecture, Harness (pending — layers not yet built)
+Referenced by: System Architecture, Harness (pending — domains not yet built)
 
 ### Training Workload {#infra-training-workload}
 Compute used to fit/update an AI model's parameters against data.
 Source: Common ML industry practice
-Referenced by: System Architecture, Harness (pending — layers not yet built)
+Referenced by: System Architecture, Harness (pending — domains not yet built)
 
 ### GPU Memory (VRAM) {#infra-gpu-memory}
 Dedicated high-bandwidth memory on a GPU, a key constraint for model size/
 batch size.
 Source: Common industry practice
-Referenced by: System Architecture, Harness (pending — layers not yet built)
+Referenced by: System Architecture, Harness (pending — domains not yet built)
 
 ### Model-Serving Node {#infra-model-serving-node}
 A compute unit dedicated to hosting a deployed model for inference requests.
 Source: Common ML industry practice
-Referenced by: System Architecture, Harness (pending — layers not yet built)
+Referenced by: System Architecture, Harness (pending — domains not yet built)
 
 ## Storage
 
@@ -212,7 +212,7 @@ Source: Uptime Institute Tier Classification
 ## Virtualization
 
 ### Hypervisor {#infra-hypervisor}
-Software layer that creates and runs virtual machines on physical
+Software domain that creates and runs virtual machines on physical
 hardware.
 Source: Common industry practice
 
@@ -315,7 +315,7 @@ Source: FinOps Foundation
 
 **Scope decisions made this pass:**
 - AI-specific compute terms retained in Infrastructure (owner), tagged
-  Referenced by System Architecture and Harness for when those layers are
+  Referenced by System Architecture and Harness for when those domains are
   built.
 - Cost/FinOps terms included now rather than deferred.
 
@@ -332,5 +332,5 @@ are drafted and cross-reference back here.
 - [x] Easy to maintain — sourced to named standards, no ambiguity about
       ownership
 - [x] Easy to replace — adopting external standard vocabulary rather than a
-      custom scheme; cross-layer references are links, not copies (see
+      custom scheme; cross-domain references are links, not copies (see
       00-framework/term-linking-convention.md)

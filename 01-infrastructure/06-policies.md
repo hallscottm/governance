@@ -1,4 +1,4 @@
-# Infrastructure Layer — Policies
+# Infrastructure Domain — Policies
 
 Status: Draft — pending review
 Ratified: No
@@ -14,7 +14,7 @@ drafted. See _qa/06-policies.qa.md for the full reasoning trail.
 
 ### POL-1 — Metadata Completeness (Production)
 **Extends:** CCP-1 (cross-cutting/policies.md)
-**Rule:** As CCP-1, applied to this layer's entity types per
+**Rule:** As CCP-1, applied to this domain's entity types per
 04-metadata-standards.md.
 **Applies to:** Production environment only (per `infra-environment-lifecycle`).
 **Enforcement:** Hard block.
@@ -69,7 +69,7 @@ audits.
 
 ### POL-5 — Provisioning Approval
 **Extends:** CCP-3 (cross-cutting/policies.md)
-**Rule:** As CCP-3, applied to this layer's resources.
+**Rule:** As CCP-3, applied to this domain's resources.
 **Applies to:** Differentiated by `infra-environment-lifecycle` value.
 **Enforcement:** Approval gate (who approves: deferred to Access Rules,
 column 7 — see CCAR-1/CCAR-2 in cross-cutting/access-rules.md; how
@@ -82,7 +82,7 @@ retrofit as POL-1.
 
 ### POL-6 — Cost Center Tag Enforcement
 **Extends:** CCP-2 (cross-cutting/policies.md)
-**Rule:** As CCP-2, applied to this layer's resources.
+**Rule:** As CCP-2, applied to this domain's resources.
 **Applies to:** All environments (Cost Center Tag is "Required — always"
 in Metadata Standards; this policy makes that enforceable rather than
 aspirational).

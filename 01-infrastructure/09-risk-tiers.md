@@ -1,4 +1,4 @@
-# Infrastructure Layer — Risk Tiers
+# Infrastructure Domain — Risk Tiers
 
 Status: Draft — pending review
 Ratified: No
@@ -31,10 +31,10 @@ to elevate the whole resource).
 
 **Data sensitivity note (resolved 2026-09-22):** this factor is now
 sourced from Data/Metadata's Sensitivity Level field
-(04-data-metadata/04-metadata-standards.md), the layer that actually owns
+(05-data-metadata/04-metadata-standards.md), the domain that actually owns
 data classification. A resource holding data classified Restricted, or
-flagged Contains PII, is High risk regardless of its own layer-specific
-factors — same "highest tier wins" rule applied across layers.
+flagged Contains PII, is High risk regardless of its own domain-specific
+factors — same "highest tier wins" rule applied across domains.
 
 ## Regulatory Mapping (generalized — org fills in applicable regimes)
 
@@ -56,7 +56,7 @@ adopting this framework fills in which regimes apply to which Risk Tier.
 (the two-person sign-off rule for High risk lives there now, via CCAR-3 —
 not restated here).
 
-**Layer-specific additions beyond the baseline:**
+**Domain-specific additions beyond the baseline:**
 
 | Tier | Infrastructure-Specific Policy Implication |
 |---|---|
@@ -72,7 +72,7 @@ not restated here).
 - (Resolved 2026-09-22) AR-2 in 07-access-rules.md updated to require
   two-person sign-off (Infrastructure Admin + Security/Compliance) for
   High-risk break-glass overrides.
-- (Resolved 2026-09-22) Data sensitivity factor now sourced from Data/Metadata's Sensitivity Level field, once that layer was drafted.
+- (Resolved 2026-09-22) Data sensitivity factor now sourced from Data/Metadata's Sensitivity Level field, once that domain was drafted.
 - Regulatory mapping table is intentionally a template, not filled with
   real determinations — an org applying this framework completes it for
   their actual regulatory exposure.

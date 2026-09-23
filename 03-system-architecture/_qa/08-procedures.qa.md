@@ -1,7 +1,7 @@
 # Q&A Log — Procedures (System Architecture)
 # Append-only. Do not edit past entries; add new dated entries instead.
 
-## 2026-09-22 — Q8.1: Layer-specific procedure set
+## 2026-09-22 — Q8.1: Domain-specific procedure set
 
 **Bucket:** [Standard]/AI-draftable — each procedure mechanically
 executes an already-decided Policy/Access Rule; no new judgment calls

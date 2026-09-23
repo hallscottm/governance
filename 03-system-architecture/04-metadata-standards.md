@@ -1,4 +1,4 @@
-# System Architecture Layer — Metadata Standards
+# System Architecture Domain — Metadata Standards
 
 Status: Draft — pending review
 Ratified: No
@@ -17,7 +17,7 @@ this column.
 - **Cost Center Tag** — field defined in Infrastructure's Metadata Standards, drawing from [01-infrastructure/01-definitions.md#infra-cost-center-tag](../01-infrastructure/01-definitions.md#infra-cost-center-tag) — applies unchanged
 - **Environment (lifecycle)** — field defined in Infrastructure's Metadata Standards, drawing from [01-infrastructure/01-definitions.md#infra-environment-lifecycle](../01-infrastructure/01-definitions.md#infra-environment-lifecycle) — a service/database/release belongs to an environment the same way a compute or network resource does
 
-## Field Registry (owned by this layer)
+## Field Registry (owned by this domain)
 
 | Field | Definition | Source Term | Required/Optional (default) |
 |---|---|---|---|
@@ -25,11 +25,11 @@ this column.
 | **Owning Team** | The team or individual accountable for this service/database/API. | (organizational, no single Definitions term) | Required — no default owner assumed |
 | **Semantic Version** | The current version of this service/API/package, per SemVer. | `sysarch-semver` | Required for Service, API, Package entity types |
 | **API Contract Reference** | Link to the current API Schema/contract document for this service's exposed API, if any. | `sysarch-api-schema`, `sysarch-api-contract` | Required for API entity type; N/A for internal-only services |
-| **Database Engine** | The database engine/technology this entity is built on (e.g., relational, document, key-value — engine name is a Tooling-column concern, not named here). | `sysarch-database` | Required for Database entity type |
-| **Repository Reference** | Link to the source code repository for this service/application (format/convention owned by Workflow/Process, layer 5 — this field just requires that a reference exists). | (cross-layer, forward reference — Workflow/Process not yet built) | Required for Service, Application entity types |
+| **Database Engine** | The database engine/technology this entity is built on (e.g., relational, document, key-value — engine name is a Tooling-column concern, not named here). | `dp-database` (owned by Data Platform as of 2026-09-22; field kept in this shared registry since it's recorded alongside Service metadata) | Required for Database entity type |
+| **Repository Reference** | Link to the source code repository for this service/application (format/convention owned by Workflow/Process, domain 7 — this field just requires that a reference exists). | (cross-domain, forward reference — Workflow/Process not yet built) | Required for Service, Application entity types |
 | **Service Tier / Criticality** | A relative criticality classification for this service, used to prioritize incident response and inform Risk Tier determination (column 9). | (informs `sysarch-availability`, `sysarch-reliability`) | Required for Service, Database entity types |
 | **Health Check Endpoint** | The endpoint (see `sysarch-endpoint`) used to programmatically verify this service is operational. | `sysarch-endpoint` | Recommended for Service entity type |
-| **Dependency List** | The other services/databases this entity requires to function (see Ontology's `requires` relation type — this field is the per-instance record of that relationship). | `sysarch-service`, `sysarch-database` | Recommended for Service entity type |
+| **Dependency List** | The other services/databases this entity requires to function (see Ontology's `requires` relation type — this field is the per-instance record of that relationship). | `sysarch-service`, `dp-database` | Recommended for Service entity type |
 
 ## Entity Types & Field Applicability
 
@@ -46,14 +46,14 @@ this column.
 - **Owning Team** has no owning Definitions term — it's an organizational
   concept, not a system-architecture one. Flagged, same boundary
   Infrastructure and Networking both hit with role/ownership fields;
-  candidate for formal ownership once the Interface/Human layer (7) is
+  candidate for formal ownership once the Interface/Human domain (7) is
   drafted.
 - **Repository Reference** and its naming/URL convention are a forward
-  reference to Workflow/Process (layer 5, not yet built) — this field
+  reference to Workflow/Process (domain 7, not yet built) — this field
   only asserts that a reference must exist, not its format. Revisit once
-  that layer defines repository conventions.
+  that domain defines repository conventions.
 - **Data Classification** (e.g., what sensitivity level a database holds)
-  is explicitly out of scope here — owned by Data/Metadata (layer 4),
+  is explicitly out of scope here — owned by Data/Metadata (domain 5),
   not yet built. A Database entity type here does not include it.
 - Enforcement (whether these fields are mandatory-blocking vs.
   recommended) is deferred to Policies (column 6), same boundary as

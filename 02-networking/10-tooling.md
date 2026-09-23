@@ -1,4 +1,4 @@
-# Networking Layer — Tooling / Implementation
+# Networking Domain — Tooling / Implementation
 
 Status: Draft — pending review
 Ratified: No
@@ -72,10 +72,10 @@ so far.
 - No tools selected in any category — same as Infrastructure, this is
   the expected/acceptable state per artifact-axis-definition.md.
 - Category 5 (Public Exposure Monitoring) is the one category without a
-  clear Infrastructure-layer analog — it's a genuinely new capability
+  clear Infrastructure-domain analog — it's a genuinely new capability
   type, not a network-specific instance of something Infrastructure
   already needed. Worth noting when this framework eventually reaches a
-  Harness or Interface layer discussion of continuous monitoring more
+  Harness or Interface domain discussion of continuous monitoring more
   broadly.
 
 **Quality bar check (00-framework/quality-bar.md):**

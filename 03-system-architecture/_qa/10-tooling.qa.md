@@ -18,6 +18,6 @@ Execution & Gating — each tied to a specific SAPOL-/SAPROC- item, plus
 cross-category dependency notes (API Gateway likely shares a tool family
 with Networking's Load Balancer/Reverse Proxy; Container Image Registry
 constrained by Infrastructure's Container Runtime choice; Secrets
-Management likely org-wide, not per-layer).
+Management likely org-wide, not per-domain).
 
 **Status:** Pending explicit review.

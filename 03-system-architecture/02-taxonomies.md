@@ -1,16 +1,17 @@
-# System Architecture Layer — Taxonomies
+# System Architecture Domain — Taxonomies
 
 Status: Draft — pending review
 Ratified: No
 Last updated: 2026-09-22
 Provenance: see _qa/02-taxonomies.qa.md
-Built on: 01-definitions.md (64 owned terms)
+Built on: 01-definitions.md (54 owned terms, 10 migrated to Data Platform 2026-09-22)
 
 Structure: strict single-parent tree, consistent with the standard set
-during Infrastructure's Taxonomy column. Only terms owned by this layer
-are classified here — the 5 referenced terms (Container, Environment
+during Infrastructure's Taxonomy column. Only terms owned by this domain
+are classified here — the 9 referenced terms (Container, Environment
 lifecycle from Infrastructure; TLS, Encryption in Transit, Load Balancer
-from Networking) are not re-classified in this layer's tree.
+from Networking; Database, Database Schema, Connection Pool, Schema
+Migration from Data Platform) are not re-classified in this domain's tree.
 
 ---
 
@@ -42,18 +43,6 @@ from Networking) are not re-classified in this layer's tree.
 │   ├── Webhook (#sysarch-webhook)
 │   └── SDK (#sysarch-sdk)
 │
-├── Databases & Storage
-│   ├── Database (#sysarch-database)
-│   ├── Database Schema (#sysarch-database-schema)
-│   ├── Table (#sysarch-table)
-│   ├── Index (#sysarch-index)
-│   ├── Transaction (#sysarch-transaction)
-│   ├── ACID (#sysarch-acid)
-│   ├── Database Replica (#sysarch-database-replica)
-│   ├── Partitioning / Sharding (#sysarch-partitioning-sharding)
-│   ├── Connection Pool (#sysarch-connection-pool)
-│   └── Schema Migration (#sysarch-schema-migration)
-│
 ├── Integration & Messaging
 │   ├── Message Queue (#sysarch-message-queue)
 │   ├── Event Bus (#sysarch-event-bus)
@@ -78,16 +67,16 @@ from Networking) are not re-classified in this layer's tree.
 │   └── Backward Compatibility (#sysarch-backward-compatibility)
 │
 ├── Application Security
-│   ├── Authentication (Application-Layer) (#sysarch-authentication)
-│   ├── Authorization (Application-Layer) (#sysarch-authorization)
+│   ├── Authentication (Application-Domain) (#sysarch-authentication)
+│   ├── Authorization (Application-Domain) (#sysarch-authorization)
 │   ├── Application Secret (#sysarch-application-secret)
 │   ├── Input Validation (#sysarch-input-validation)
-│   └── Audit Logging (Application-Layer) (#sysarch-audit-logging)
+│   └── Audit Logging (Application-Domain) (#sysarch-audit-logging)
 │
 ├── Quality Attributes (ISO/IEC 25010)
-│   ├── Reliability (Application-Layer) (#sysarch-reliability)
-│   ├── Availability (Application-Layer) (#sysarch-availability)
-│   ├── Scalability (Application-Layer) (#sysarch-scalability)
+│   ├── Reliability (Application-Domain) (#sysarch-reliability)
+│   ├── Availability (Application-Domain) (#sysarch-availability)
+│   ├── Scalability (Application-Domain) (#sysarch-scalability)
 │   ├── Maintainability (#sysarch-maintainability)
 │   ├── Performance Efficiency (#sysarch-performance-efficiency)
 │   └── Resilience (#sysarch-resilience)

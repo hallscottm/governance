@@ -4,7 +4,7 @@ Status: Draft
 Ratified: No
 Last updated: 2026-09-22
 
-The standard vocabulary of relationships used in every layer's Ontology
+The standard vocabulary of relationships used in every domain's Ontology
 column (03-ontologies.md). Kept deliberately small — 9 types — to match
 the quality bar (simple, modular). Taxonomy (column 2) already handles
 hierarchical classification ("what category is this in"); Ontology
@@ -37,28 +37,28 @@ display text, so they stay valid if a term's wording changes later.
 
 Not every term needs to appear in a relationship. Ontology captures
 *meaningful* connections, not an exhaustive graph — a term with no
-natural relationship to others in its layer is left unconnected rather
+natural relationship to others in its domain is left unconnected rather
 than forced into an artificial one.
 
-## Cross-layer relationships and reverse pointers
+## Cross-domain relationships and reverse pointers
 
-A relationship may reference an anchor owned by a different layer (e.g.,
+A relationship may reference an anchor owned by a different domain (e.g.,
 Networking's `net-load-balancer --[runs-on]--> infra-compute-unit`). When
-this happens, the *owning* layer's Ontology file must carry a reverse
-pointer noting which other layer's relationship targets it — same
+this happens, the *owning* domain's Ontology file must carry a reverse
+pointer noting which other domain's relationship targets it — same
 discipline as Definitions' "Referenced by" tag, applied to relationships
 instead of terms.
 
 **Format:** in the owner's Ontology file, under a term's relationships (or
-in a dedicated "Referenced by other layers' relationships" note near it):
+in a dedicated "Referenced by other domains' relationships" note near it):
 ```
 ### infra-compute-unit
-Referenced by (cross-layer relationships):
+Referenced by (cross-domain relationships):
 - Networking: net-load-balancer --[runs-on]--> infra-compute-unit
 - Networking: net-reverse-proxy --[runs-on]--> infra-compute-unit
 ```
 
-This is added retroactively where needed — a layer drafted before this
+This is added retroactively where needed — a domain drafted before this
 rule existed (e.g., Infrastructure) gets its reverse pointers added the
-first time a later layer's ontology creates a cross-layer relationship
+first time a later domain's ontology creates a cross-domain relationship
 into it, not rebuilt wholesale.

@@ -1,4 +1,4 @@
-# System Architecture Layer — Ontologies
+# System Architecture Domain — Ontologies
 
 Status: Draft — pending review
 Ratified: No
@@ -7,13 +7,13 @@ Provenance: see _qa/03-ontologies.qa.md
 Relation vocabulary: 00-framework/relation-types.md
 Built on: 01-definitions.md, 02-taxonomies.md
 
-Relationships may reference anchors owned by other layers (Infrastructure,
-Networking) where a genuine cross-layer relationship exists — this is
+Relationships may reference anchors owned by other domains (Infrastructure,
+Networking) where a genuine cross-domain relationship exists — this is
 distinct from the "Referenced Terms" mechanism in Definitions, which is
 about term ownership, not relationships between terms. Per the
-reverse-pointer rule in 00-framework/relation-types.md, every cross-layer
+reverse-pointer rule in 00-framework/relation-types.md, every cross-domain
 relationship below has a matching reverse pointer added to the target
-layer's ontology file.
+domain's ontology file.
 
 ---
 
@@ -30,7 +30,7 @@ layer's ontology file.
 - `sysarch-event-driven-architecture` --[requires]--> `sysarch-event-bus`
   Rationale: event-driven architecture depends on a mechanism to distribute events between producers and consumers.
 - `sysarch-serverless-architecture` --[runs-on]--> `infra-compute-unit`
-  Rationale: cross-layer — a serverless function still executes on underlying compute, even though the caller doesn't manage it directly.
+  Rationale: cross-domain — a serverless function still executes on underlying compute, even though the caller doesn't manage it directly.
 
 ## Application Building Blocks
 
@@ -47,7 +47,7 @@ layer's ontology file.
 - `sysarch-build` --[produces]--> `sysarch-build-artifact`
   Rationale: a build process produces a build artifact as its output.
 - `sysarch-service` --[runs-on]--> `infra-container`
-  Rationale: cross-layer — a service instance commonly runs inside a container (the isolated runtime), though not exclusively.
+  Rationale: cross-domain — a service instance commonly runs inside a container (the isolated runtime), though not exclusively.
 
 ## Interfaces & APIs
 
@@ -65,31 +65,6 @@ layer's ontology file.
   Rationale: a webhook delivers events to a consumer-provided endpoint.
 - `sysarch-sdk` --[requires]--> `sysarch-api-contract`
   Rationale: an SDK is built against a specific API contract and breaks if that contract changes incompatibly.
-
-## Databases & Storage
-
-- `sysarch-database` --[contains]--> `sysarch-database-schema`
-  Rationale: a database's structure is defined by its schema.
-- `sysarch-database-schema` --[contains]--> `sysarch-table`
-  Rationale: a schema is composed of table definitions.
-- `sysarch-table` --[contains]--> `sysarch-index`
-  Rationale: an index is defined on and belongs to a specific table.
-- `sysarch-database` --[requires]--> `sysarch-acid`
-  Rationale: a (relational) database's transactional guarantees depend on ACID properties.
-- `sysarch-transaction` --[requires]--> `sysarch-acid`
-  Rationale: a transaction is only meaningful as a unit of work governed by ACID guarantees.
-- `sysarch-database-replica` --[requires]--> `sysarch-database`
-  Rationale: a replica exists only in relation to a primary database it mirrors.
-- `sysarch-database` --[scales-via]--> `sysarch-partitioning-sharding`
-  Rationale: partitioning/sharding is a primary mechanism for scaling a database beyond a single instance's capacity.
-- `sysarch-connection-pool` --[requires]--> `sysarch-database`
-  Rationale: a connection pool exists to manage reusable connections to a specific database.
-- `sysarch-schema-migration` --[produces]--> `sysarch-database-schema`
-  Rationale: applying a migration produces a new version of the database schema.
-- `sysarch-database` --[runs-on]--> `infra-compute-unit`
-  Rationale: cross-layer — a database engine executes on underlying compute, whether self-managed or a managed service.
-- `sysarch-database` --[requires]--> `infra-block-storage`
-  Rationale: cross-layer — relational and most transactional databases require durable block storage for their data files.
 
 ## Integration & Messaging
 
@@ -109,7 +84,7 @@ layer's ontology file.
 - `sysarch-cache` --[requires]--> `sysarch-cache-invalidation`
   Rationale: a cache without an invalidation strategy will serve stale data indefinitely.
 - `sysarch-stateless-service` --[scales-via]--> `infra-horizontal-scaling`
-  Rationale: cross-layer — statelessness is what makes a service safely scalable by adding interchangeable instances (Infrastructure's horizontal scaling mechanism).
+  Rationale: cross-domain — statelessness is what makes a service safely scalable by adding interchangeable instances (Infrastructure's horizontal scaling mechanism).
 
 ## Versioning & Release Management
 
@@ -118,11 +93,11 @@ layer's ontology file.
 - `sysarch-semver` --[constrains]--> `sysarch-release`
   Rationale: semantic versioning rules constrain how a release's version number may change relative to the prior one.
 - `sysarch-container-image` --[produces]--> `infra-container`
-  Rationale: cross-layer — running a container image is what instantiates a container (the runtime unit).
+  Rationale: cross-domain — running a container image is what instantiates a container (the runtime unit).
 - `sysarch-api-deprecation` --[requires]--> `sysarch-backward-compatibility`
   Rationale: a deprecation process is expected to preserve backward compatibility for the announced transition period before removal.
 - `sysarch-release` --[has-lifecycle-state]--> `infra-environment-lifecycle`
-  Rationale: cross-layer — a release progresses through lifecycle environments (Development, Staging/QA, Production) as it is promoted.
+  Rationale: cross-domain — a release progresses through lifecycle environments (Development, Staging/QA, Production) as it is promoted.
 
 ## Application Security
 
@@ -131,16 +106,16 @@ layer's ontology file.
 - `sysarch-input-validation` --[constrains]--> `sysarch-api`
   Rationale: input validation rules constrain what data an API will accept as well-formed.
 - `sysarch-service` --[requires]--> `net-encryption-in-transit`
-  Rationale: cross-layer — service-to-service and client-service calls require encryption in transit to protect data on the wire.
+  Rationale: cross-domain — service-to-service and client-service calls require encryption in transit to protect data on the wire.
 
 ## Quality Attributes (ISO/IEC 25010)
 
 - `sysarch-resilience` --[requires]--> `infra-redundancy`
-  Rationale: cross-layer — an application's resilience to failure depends in part on redundancy at the infrastructure layer beneath it.
+  Rationale: cross-domain — an application's resilience to failure depends in part on redundancy at the infrastructure domain beneath it.
 - `sysarch-scalability` --[scales-via]--> `infra-horizontal-scaling`
-  Rationale: cross-layer — application-layer scalability is realized through Infrastructure's horizontal (and vertical) scaling mechanisms.
+  Rationale: cross-domain — application-domain scalability is realized through Infrastructure's horizontal (and vertical) scaling mechanisms.
 - `infra-availability-tier` --[constrains]--> `sysarch-availability`
-  Rationale: cross-layer — the hosting facility's availability tier design target sets an upper bound on the application's achievable measured availability.
+  Rationale: cross-domain — the hosting facility's availability tier design target sets an upper bound on the application's achievable measured availability.
 
 ## Testing & Quality Gates
 
@@ -153,22 +128,6 @@ layer's ontology file.
 
 ---
 
-## Cross-Layer References (relationships pointing into this layer)
-
-Per 00-framework/relation-types.md's reverse-pointer rule, added once
-Data/Metadata's ontology created relationships into this layer.
-
-- `sysarch-database`
-  Referenced by (cross-layer relationships):
-  - Data/Metadata: `data-custodian --[requires]--> sysarch-database`
-  - Data/Metadata: `data-quality-rule --[constrains]--> sysarch-database`
-  - Data/Metadata: `data-dataset --[located-in]--> sysarch-database`
-- `sysarch-database-schema`
-  Referenced by (cross-layer relationships):
-  - Data/Metadata: `data-technical-metadata --[requires]--> sysarch-database-schema`
-  - Data/Metadata: `data-dictionary --[requires]--> sysarch-database-schema`
-  - Data/Metadata: `data-logical-model --[produces]--> sysarch-database-schema`
-
 ---
 
 **Open items:**
@@ -177,16 +136,14 @@ Data/Metadata's ontology created relationships into this layer.
   9-type vocabulary has no better fit for "formal artifact capturing an
   informal agreement"; flagged for reconsideration if a 10th relation
   type is ever added.
-- `sysarch-database-replica` and `infra-replication-factor` are related
-  concepts (database-level replication topology vs. storage-level
-  redundancy) but no direct relationship was drawn — left unconnected
-  per the "not every term needs a relationship" scope note, same as
-  Networking's Transit Gateway/Private Link case.
+- All Databases & Storage relationships (and the cross-domain references
+  section that used to sit here) migrated to Data Platform's own Ontology
+  column on 2026-09-22 — see 04-data-platform/03-ontologies.md.
 
 **Quality bar check (00-framework/quality-bar.md):**
-- [x] Simple — 50 relationships, grouped by subdomain, no forced edges
-- [x] Modular — each relationship stands alone; cross-layer edges are
+- [x] Simple — 42 relationships (Databases & Storage relationships migrated to Data Platform 2026-09-22), grouped by subdomain, no forced edges
+- [x] Modular — each relationship stands alone; cross-domain edges are
       clearly marked and reverse-pointed rather than silently assumed
 - [x] Easy to update — anchor-ID based, survives renames
 - [x] Easy to maintain — grouped by subdomain, matches Definitions/Taxonomy
-- [x] Easy to replace — relation-type vocabulary shared across all layers, no duplication
+- [x] Easy to replace — relation-type vocabulary shared across all domains, no duplication

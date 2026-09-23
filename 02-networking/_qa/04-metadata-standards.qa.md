@@ -5,7 +5,7 @@
 - Reused Infrastructure's established shape (shared field registry +
   entity-type applicability matrix) without re-asking — already decided
   as the standard approach.
-- First instance of cross-layer field reuse: Resource ID, Cost Center Tag,
+- First instance of cross-domain field reuse: Resource ID, Cost Center Tag,
   Compute Environment, Environment (lifecycle) referenced from
   Infrastructure rather than redefined. Caught and fixed a broken link
   during drafting (Metadata Standards has no field-level anchors of its

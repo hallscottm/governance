@@ -9,7 +9,7 @@
   rest of the framework)
 - Human answer: accepted recommended default
 - Decision-weight: Medium (governs metadata-standards structure for all
-  future layers)
+  future domains)
 - Date answered: 2026-09-22
 
 ## Q4.2 — Field registry and entity-type matrix content
@@ -19,7 +19,7 @@
   Instance, Physical Asset) mapped to required/optional fields
 - Human answer: pending explicit review (drafted, not yet vetted line-by-line)
 - Decision-weight: Low (per-field); Medium (as a structural pass)
-- Open items flagged inline: Networking-layer metadata explicitly out of
+- Open items flagged inline: Networking-domain metadata explicitly out of
   scope; enforcement mechanism deferred to Policies column (6)
 - Date answered: 2026-09-22 (drafted; awaiting explicit human review)
 

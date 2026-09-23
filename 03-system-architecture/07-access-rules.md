@@ -1,4 +1,4 @@
-# System Architecture Layer — Access Rules
+# System Architecture Domain — Access Rules
 
 Status: Draft — pending review
 Ratified: No
@@ -10,22 +10,27 @@ Built on: 06-policies.md, cross-cutting/access-rules.md
 
 CCAR-1 (AI Agent Provisioning Authority), CCAR-2 (Production Provisioning
 Approval Authority), and CCAR-3 (Hard-Block Override, Risk-Tier-Scaled)
-apply to this layer's resources without restatement — see
+apply to this domain's resources without restatement — see
 cross-cutting/access-rules.md. CCAR-3's override authority (Infrastructure
 Admin, plus Security/Compliance at High risk) covers overrides of this
-layer's hard-block policies (SAPOL-1, SAPOL-3, SAPOL-4) the same as any
-other layer.
+domain's hard-block policies (SAPOL-1, SAPOL-3, SAPOL-4) the same as any
+other domain.
 
-## New Role: Owning Team Lead
+## Role: Owning Team Lead (ownership transferred 2026-09-22)
 
-**Introduced here** (provisional, same caveat as all other roles pending
-Interface/Human layer): the accountable lead for a specific service,
-application, API, or database, as named in that entity's Owning Team
-metadata field (04-metadata-standards.md). Distinct from Infrastructure
-Admin, who has no natural authority over application code or schema
-decisions specific to a team's own service.
+**Originally introduced here** as a provisional role: the accountable
+lead for a specific service, application, API, or database, as named in
+that entity's Owning Team metadata field (04-metadata-standards.md).
+Distinct from Infrastructure Admin, who has no natural authority over
+application code or schema decisions specific to a team's own service.
 
-## Layer-Specific Access Rules
+**Now owned by** [cross-cutting/roles-and-departments/01-definitions.md#ccrole-owning-team-lead](../cross-cutting/roles-and-departments/01-definitions.md#ccrole-owning-team-lead)
+— formalized as a cross-cutting Positional Role once Roles & Departments
+was established, rather than staying a one-off local introduction. This
+domain's SAAR-1/SAAR-2 below are unchanged; only the role's ownership
+moved.
+
+## Domain-Specific Access Rules
 
 ### SAAR-1 — Schema Migration Review Authority (Scaled by Risk Tier)
 **Rule:** Authority to approve a SAPOL-2 schema migration is scaled by
@@ -61,7 +66,7 @@ two-tier escalation pattern.
 
 **Cross-references:**
 - SAAR-2 and Networking's NAR-1 both gate public exposure of the same
-  resource, from different angles (this layer's security posture vs. the
+  resource, from different angles (this domain's security posture vs. the
   network boundary itself) — a public-facing High-risk service needs
   both NAR-1 (Infrastructure Admin or Security/Compliance approves
   network exposure) and SAAR-2 (Security/Compliance verifies ASVS L3)
@@ -70,13 +75,13 @@ two-tier escalation pattern.
   it is not a blanket elevated-privilege role like Infrastructure Admin.
 
 **Open items:**
-- Owning Team Lead, like all other roles in this framework, is
-  provisional until the Interface/Human layer (7) formally owns role
-  definitions.
+- (Resolved 2026-09-22) Owning Team Lead's ownership transferred to
+  cross-cutting/roles-and-departments/, resolved earlier than the
+  original plan of waiting for the Interface/Human domain.
 
 **Quality bar check (00-framework/quality-bar.md):**
-- [x] Simple — 2 layer-specific access rules plus inherited cross-cutting ones
+- [x] Simple — 2 domain-specific access rules plus inherited cross-cutting ones
 - [x] Modular — SAAR-1/SAAR-2 stand alone from each other and from CCAR-1/2/3
 - [x] Easy to update — cross-cutting rules update once, apply here automatically
 - [x] Easy to maintain — each rule traces directly to its Policy
-- [x] Easy to replace — role vocabulary remains provisional, consistent with all prior layers
+- [x] Easy to replace — role vocabulary now owned centrally by cross-cutting/roles-and-departments/ (retrofitted 2026-09-22)

@@ -1,4 +1,4 @@
-# System Architecture Layer — Policies
+# System Architecture Domain — Policies
 
 Status: Draft — pending review
 Ratified: No
@@ -8,12 +8,12 @@ Built on: 01-definitions.md, 04-metadata-standards.md, cross-cutting/policies.md
 
 ## Extends Cross-Cutting Policies
 
-This layer's resources are subject to CCP-1 (Metadata Completeness),
+This domain's resources are subject to CCP-1 (Metadata Completeness),
 CCP-2 (Cost Attribution), and CCP-3 (Production Provisioning Approval)
-from cross-cutting/policies.md, applied to this layer's own entity types
+from cross-cutting/policies.md, applied to this domain's own entity types
 (04-metadata-standards.md). Not restated here.
 
-## Layer-Specific Policies
+## Domain-Specific Policies
 
 ### SAPOL-1 — Backward Compatibility Required (Production APIs)
 **Rule:** A Production API cannot ship a breaking change (per
@@ -27,7 +27,11 @@ change in Production is a direct consumer-facing failure, the same
 severity class as Networking's NPOL-1/NPOL-2.
 
 ### SAPOL-2 — Database Schema Migration Review (Scaled by Risk Tier)
-**Rule:** A schema migration (`sysarch-schema-migration`) targeting a
+**Rule:** A schema migration (`dp-schema-migration`, owned by Data
+Platform as of 2026-09-22 — kept here as a System Architecture policy
+since it governs a deployment/release gate on a Service's database
+dependency, not database mechanics themselves; candidate for moving to
+Data Platform's own Policies column in a future pass) targeting a
 Production database requires review before being applied, scaled by the
 database entity's Risk Tier (09-risk-tiers.md, extending
 cross-cutting/risk-tiers.md):
@@ -37,7 +41,7 @@ cross-cutting/risk-tiers.md):
   file before the migration is applied.
 **Applies to:** Production environment, Database entity type.
 **Enforcement:** Approval gate, scaled as above. Who qualifies as
-reviewer/lead is deferred to this layer's Access Rules (column 7).
+reviewer/lead is deferred to this domain's Access Rules (column 7).
 **Rationale:** Explicitly chosen to scale by Risk Tier — mirrors
 Infrastructure's POL-2/POL-3 pattern, established once Risk Tiers existed
 and applied here proactively rather than needing a later retrofit.
@@ -58,11 +62,11 @@ well-understood, severe risk categories.
 unless its associated automated tests (Unit Test, Integration Test —
 `sysarch-unit-test`, `sysarch-integration-test`) have passed. This policy
 asserts the requirement only — the mechanism that enforces it (a CI
-pipeline gate) belongs to Workflow/Process (layer 5, not yet built).
+pipeline gate) belongs to Workflow/Process (domain 7, not yet built).
 **Applies to:** Production environment, Service/Application/API entity
 types.
 **Enforcement:** Hard block, mechanism deferred to Workflow/Process and/or
-this layer's Tooling (column 10).
+this domain's Tooling (column 10).
 **Rationale:** Explicitly chosen as a hard block — consistent with
 SAPOL-1's treatment of Production-bound changes; a specific test coverage
 threshold is deliberately not set here (no bounded, defensible number
@@ -89,7 +93,7 @@ than a single uniform baseline.
 
 **Cross-references:**
 - SAPOL-5 and Networking's NPOL-3 both govern public-facing exposure,
-  from different layers — SAPOL-5 covers the service's own security
+  from different domains — SAPOL-5 covers the service's own security
   posture, NPOL-3 covers the network-boundary approval to expose it at
   all. Neither restates the other.
 - SAPOL-2 and SAPOL-5 both scale by Risk Tier, applied proactively from
@@ -101,10 +105,10 @@ than a single uniform baseline.
 - Who qualifies as "Owning Team lead" (SAPOL-2) and who performs the
   SAPOL-5 verification are deferred to Access Rules (column 7), next.
 - SAPOL-4's enforcement mechanism is a genuine forward reference to
-  Workflow/Process (layer 5) — flagged, not resolved here.
+  Workflow/Process (domain 7) — flagged, not resolved here.
 
 **Quality bar check (00-framework/quality-bar.md):**
-- [x] Simple — 5 layer-specific policies plus inherited cross-cutting ones, no duplication
+- [x] Simple — 5 domain-specific policies plus inherited cross-cutting ones, no duplication
 - [x] Modular — each SAPOL stands alone; Risk Tier scaling is declared, not duplicated per tier as separate policies
 - [x] Easy to update — cross-cutting rules update once, apply here automatically
 - [x] Easy to maintain — every policy traces to a specific term/field

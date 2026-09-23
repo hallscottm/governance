@@ -1,4 +1,4 @@
-# Networking Layer — Risk Tiers
+# Networking Domain — Risk Tiers
 
 Status: Draft — pending review
 Ratified: No
@@ -11,7 +11,7 @@ Built on: 02-taxonomies.md, 06-policies.md, cross-cutting/risk-tiers.md
 **Extends:** cross-cutting/risk-tiers.md (FIPS 199-aligned Low/Moderate/
 High scale — not restated here).
 
-## Determining Factors (layer-specific)
+## Determining Factors (domain-specific)
 
 A resource's Risk Tier is the **highest** tier triggered by any applicable
 factor (cross-cutting averaging rule, per cross-cutting/risk-tiers.md).
@@ -34,7 +34,7 @@ different, deserving its own approval step regardless of other factors.
 **Extends:** cross-cutting/risk-tiers.md's baseline (two-person sign-off
 for High risk, via CCAR-3).
 
-**Layer-specific additions beyond the baseline:**
+**Domain-specific additions beyond the baseline:**
 
 | Tier | Networking-Specific Policy Implication |
 |---|---|
@@ -50,13 +50,13 @@ for High risk, via CCAR-3).
   requirement are baseline security hygiene, not proportional controls
   that should relax for lower-risk resources.
 - (Resolved 2026-09-22) Data sensitivity factor added, sourced from
-  Data/Metadata's Sensitivity Level field, now that layer is drafted —
+  Data/Metadata's Sensitivity Level field, now that domain is drafted —
   network exposure/trust boundary factors remain as additional
   network-specific factors, not a substitute for this one.
 
 **Quality bar check (00-framework/quality-bar.md):**
 - [x] Simple — 4 determining factors, reusing the cross-cutting scale
-- [x] Modular — layer-specific factors independent of Infrastructure's
+- [x] Modular — domain-specific factors independent of Infrastructure's
 - [x] Easy to update — cross-cutting scale updates once, applies here automatically
 - [x] Easy to maintain — factors derived from existing Definitions terms
 - [x] Easy to replace — standard-grounded (FIPS 199, inherited)

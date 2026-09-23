@@ -1,4 +1,4 @@
-# System Architecture Layer — Procedures
+# System Architecture Domain — Procedures
 
 Status: Draft — pending review
 Ratified: No
@@ -10,10 +10,10 @@ Built on: 06-policies.md, 07-access-rules.md, cross-cutting/procedures.md
 
 CCPROC-1 (Production Provisioning Request & Approval), CCPROC-2
 (Metadata Completeness Validation), CCPROC-3 (Cost Attribution
-Validation), and CCPROC-4 (Break-Glass Override) apply to this layer's
+Validation), and CCPROC-4 (Break-Glass Override) apply to this domain's
 resources without restatement — see cross-cutting/procedures.md.
 
-## Layer-Specific Procedures
+## Domain-Specific Procedures
 
 ### SAPROC-1 — Backward Compatibility Check (Production API Releases)
 **Executes:** SAPOL-1
@@ -57,7 +57,7 @@ resources without restatement — see cross-cutting/procedures.md.
    before deployment.
 3. The only path past a failed check is CCPROC-4's break-glass override.
    The pipeline mechanism that runs these tests is a forward reference to
-   Workflow/Process (layer 5, not yet built) — this procedure defines the
+   Workflow/Process (domain 7, not yet built) — this procedure defines the
    gate, not the pipeline.
 
 ### SAPROC-5 — Public-Facing Security Baseline Verification (Scaled by Risk Tier)
@@ -78,12 +78,12 @@ resources without restatement — see cross-cutting/procedures.md.
 ---
 
 **Open items:** none for this pass — consistent with Networking's
-Procedures column, this layer's procedures were designed to close the
+Procedures column, this domain's procedures were designed to close the
 open items surfaced during Policies/Access Rules (who reviews, who
 verifies) rather than carry them forward.
 
 **Quality bar check (00-framework/quality-bar.md):**
-- [x] Simple — 5 layer-specific procedures plus inherited cross-cutting ones
+- [x] Simple — 5 domain-specific procedures plus inherited cross-cutting ones
 - [x] Modular — SAPROC-1 through 5 stand alone
 - [x] Easy to update — cross-cutting procedures update once, apply here automatically
 - [x] Easy to maintain — every procedure traces to a specific SAPOL-/SAAR- item

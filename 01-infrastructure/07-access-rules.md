@@ -1,4 +1,4 @@
-# Infrastructure Layer — Access Rules
+# Infrastructure Domain — Access Rules
 
 Status: Draft — pending review
 Ratified: No
@@ -8,23 +8,20 @@ Built on: 06-policies.md
 
 Defines who/what can act on the rules established in Policies (column 6).
 
-## Provisional Role Vocabulary
+## Role Vocabulary (resolved 2026-09-22)
 
-Roles referenced below are provisional plain-text labels, not yet formal
-owned terms with anchor IDs. Role definitions properly belong to the
-Interface/Human layer (07-interface-human), not yet drafted (row-major
-traversal — we're still on layer 1). Once that layer exists, these
-references should be converted to proper cross-layer links per
-00-framework/term-linking-convention.md, with Interface/Human as owner.
-Flagged here so this isn't lost.
+Roles referenced below are real, anchored terms owned by
+cross-cutting/roles-and-departments/01-definitions.md, retrofitted
+2026-09-22 — this section previously carried a provisional plain-text
+table pending the Interface/Human domain; Roles & Departments was
+established as a cross-cutting pillar instead, resolving this earlier
+than row-major order would have.
 
-| Role (provisional) | Description |
-|---|---|
-| **Requester** | Anyone requesting/initiating provisioning of a resource. |
-| **Approver** | A role, distinct from Requester, authorized to approve Production provisioning. |
-| **Infrastructure Admin** | Role with override/exception authority for hard-blocked policies. |
-| **Security/Compliance Role** | Role authorized to certify compliance-sensitive actions (e.g., sanitization). |
-| **AI Agent/Harness** | An AI system acting within a defined harness scope — treated as a first-class actor type, not a human role, with its own permission boundary. |
+- **Requester** — [cross-cutting/roles-and-departments/01-definitions.md#ccrole-requester](../cross-cutting/roles-and-departments/01-definitions.md#ccrole-requester)
+- **Approver** — [cross-cutting/roles-and-departments/01-definitions.md#ccrole-approver](../cross-cutting/roles-and-departments/01-definitions.md#ccrole-approver)
+- **Infrastructure Admin** — [cross-cutting/roles-and-departments/01-definitions.md#ccrole-infrastructure-admin](../cross-cutting/roles-and-departments/01-definitions.md#ccrole-infrastructure-admin)
+- **Security/Compliance** — [cross-cutting/roles-and-departments/01-definitions.md#ccrole-security-compliance](../cross-cutting/roles-and-departments/01-definitions.md#ccrole-security-compliance)
+- **AI Agent/Harness** — [cross-cutting/roles-and-departments/01-definitions.md#ccrole-ai-agent-harness](../cross-cutting/roles-and-departments/01-definitions.md#ccrole-ai-agent-harness)
 
 ---
 
@@ -32,7 +29,7 @@ Flagged here so this isn't lost.
 
 ### AR-1 — AI Agent Provisioning Authority
 **Extends:** CCAR-1 (cross-cutting/access-rules.md)
-**Rule:** As CCAR-1, applied to this layer.
+**Rule:** As CCAR-1, applied to this domain.
 **Applies to:** AI Agent/Harness actor type, Production environment.
 **Ties to:** POL-5 (which extends CCP-3).
 **Revision note:** converted to extend CCAR-1 on 2026-09-22, first
@@ -40,7 +37,7 @@ application of a cross-cutting access rule.
 
 ### AR-2 — Hard-Block Override (Break-Glass)
 **Extends:** CCAR-3 (cross-cutting/access-rules.md)
-**Rule:** As CCAR-3, applied to this layer's hard-block policies (POL-1,
+**Rule:** As CCAR-3, applied to this domain's hard-block policies (POL-1,
 POL-2, POL-6).
 **Applies to:** Infrastructure Admin role (all risk tiers); Security/
 Compliance role additionally required for High-risk. No other role, and
@@ -54,7 +51,7 @@ CCAR-3 later the same day once Networking needed the identical rule.
 
 ### AR-3 — Production Provisioning Approval
 **Extends:** CCAR-2 (cross-cutting/access-rules.md)
-**Rule:** As CCAR-2, applied to this layer.
+**Rule:** As CCAR-2, applied to this domain.
 **Applies to:** Approver role, Production environment.
 **Ties to:** POL-5 (which extends CCP-3).
 **Revision note:** converted to extend CCAR-2 on 2026-09-22.
@@ -79,21 +76,22 @@ environments (POL-4 applies to all environments, not just Production).
   open item below rather than silently assumed.
 
 **Open items:**
-- Role vocabulary above is provisional (see note at top) — pending formal
-  ownership transfer to Interface/Human layer once drafted.
+- (Resolved 2026-09-22) Role vocabulary now owned by cross-cutting/
+  roles-and-departments/, resolved earlier than the original plan of
+  waiting for the Interface/Human domain.
 - No access rule yet defined for who may set/change a resource's DR Tier
-  classification (POL-3). Revisit once Interface/Human layer clarifies
+  classification (POL-3). Revisit once Interface/Human domain clarifies
   role structure, or address directly if it becomes urgent before then.
 - AI Agent/Harness is treated here as a single generic actor type; once
-  the Harness layer (06-harness) is drafted, this will likely need to
+  the Harness domain (08-harness) is drafted, this will likely need to
   differentiate between harness scopes/roles rather than one flat
   "AI Agent" category.
 
 **Quality bar check (00-framework/quality-bar.md):**
 - [x] Simple — 4 access rules, each tied to exactly one or more named policies
 - [x] Modular — each rule stands alone; changing AR-2 doesn't affect AR-3
-- [x] Easy to update — role vocabulary is provisional and explicitly
-      flagged for future migration, not hard-locked into this layer
+- [x] Easy to update — role vocabulary is owned centrally by
+      cross-cutting/roles-and-departments/, not hard-locked into this domain
 - [x] Easy to maintain — every rule traces to a specific Policy; no
       free-floating access rules
 - [x] Easy to replace — AI Agent/Harness treated as a distinct actor type

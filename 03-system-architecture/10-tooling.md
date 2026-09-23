@@ -1,4 +1,4 @@
-# System Architecture Layer — Tooling / Implementation
+# System Architecture Domain — Tooling / Implementation
 
 Status: Draft — pending review
 Ratified: No
@@ -8,7 +8,7 @@ Built on: all prior columns (00-09)
 
 Same posture as Infrastructure and Networking: capability categories only,
 no specific product/vendor recommendations — deferred entirely per
-explicit choice, confirmed again for this layer.
+explicit choice, confirmed again for this domain.
 
 ## Capability Categories
 
@@ -28,8 +28,8 @@ only recommendation.
 ### Secrets Management
 Provides the managed secret storage required by SAPOL-3, and the scanning
 capability that detects secrets embedded in source or Build Artifacts
-(SAPROC-3). Cross-layer note: secrets management is typically one
-organization-wide tool, not selected per layer — flagged the same way
+(SAPROC-3). Cross-domain note: secrets management is typically one
+organization-wide tool, not selected per domain — flagged the same way
 Networking flagged its IaC tooling likely being shared with Infrastructure.
 
 ### Application Security Testing (SAST / DAST / Dependency Scanning)
@@ -47,8 +47,8 @@ is constrained by what the target runtime can pull from.
 ### Automated Test Execution & Gating
 Runs Unit Tests and Integration Tests and enforces the SAPOL-4 gate before
 Production deployment. This category's actual execution mechanism is a
-forward reference to Workflow/Process (layer 5, not yet built) — listed
-here because the gate itself (what must pass) is owned by this layer, even
+forward reference to Workflow/Process (domain 7, not yet built) — listed
+here because the gate itself (what must pass) is owned by this domain, even
 though the pipeline that runs it is not.
 
 ---
@@ -56,19 +56,19 @@ though the pipeline that runs it is not.
 **Cross-category dependency notes:**
 - API Gateway/Management should likely be the same tool family as
   Networking's Load Balancer/Reverse Proxy selection, not chosen
-  independently — third instance of this kind of cross-layer tooling
+  independently — third instance of this kind of cross-domain tooling
   dependency (after Infrastructure/Networking's IaC-platform note).
 - Container Image Registry choice is constrained by Infrastructure's
   Container Runtime/Orchestrator choice — must be pullable by whatever
   runtime Infrastructure selects.
 - Secrets Management is very likely one org-wide tool spanning all
-  layers, not a per-layer selection — flagged, not resolved, since no
-  layer "owns" org-wide tooling decisions in this framework's current
+  domains, not a per-domain selection — flagged, not resolved, since no
+  domain "owns" org-wide tooling decisions in this framework's current
   design.
 
 **Open items:**
 - Automated Test Execution & Gating's actual mechanism depends on
-  Workflow/Process (layer 5), not yet built — same forward reference
+  Workflow/Process (domain 7), not yet built — same forward reference
   already flagged in 06-policies.md (SAPOL-4) and 08-procedures.md
   (SAPROC-4).
 

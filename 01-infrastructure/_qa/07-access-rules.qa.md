@@ -62,6 +62,17 @@
   approval separation of duties) are genuinely universal.
 - Resolution: cross-cutting/access-rules.md created (CCAR-1, CCAR-2,
   CCAR-3); AR-1, AR-2, AR-3 updated to "Extends: CCAR-X". AR-4
-  (decommissioning sign-off) remains layer-specific.
+  (decommissioning sign-off) remains domain-specific.
 - Decision-weight: High
 - Date answered: 2026-09-22
+
+## 2026-09-22 — Retrofit: Roles & Departments established as cross-cutting pillar
+
+**Context:** User paused before Workflow/Process to vet the role-vocabulary
+gap. Roles & Departments became a third cross-cutting pillar (alongside
+Governance, Security) instead of waiting for the Interface/Human domain.
+
+**Change:** The "Provisional Role Vocabulary" table replaced with links
+to cross-cutting/roles-and-departments/01-definitions.md's real anchored
+terms (Requester, Approver, Infrastructure Admin, Security/Compliance,
+AI Agent/Harness). No change to AR-1 through AR-4's rules themselves.

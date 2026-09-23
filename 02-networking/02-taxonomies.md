@@ -1,4 +1,4 @@
-# Networking Layer — Taxonomies
+# Networking Domain — Taxonomies
 
 Status: Draft — pending review
 Ratified: No
@@ -7,9 +7,9 @@ Provenance: see _qa/02-taxonomies.qa.md
 Built on: 01-definitions.md (47 owned terms)
 
 Structure: strict single-parent tree, consistent with the standard set
-during Infrastructure's Taxonomy column. Only terms owned by this layer
+during Infrastructure's Taxonomy column. Only terms owned by this domain
 are classified here — the 3 referenced Infrastructure terms (Throughput,
-Redundancy, Failover) are not re-classified in this layer's tree.
+Redundancy, Failover) are not re-classified in this domain's tree.
 
 ---
 

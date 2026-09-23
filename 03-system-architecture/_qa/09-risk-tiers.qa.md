@@ -1,7 +1,7 @@
 # Q&A Log — Risk Tiers (System Architecture)
 # Append-only. Do not edit past entries; add new dated entries instead.
 
-## 2026-09-22 — Q9.1: Determining factors for this layer
+## 2026-09-22 — Q9.1: Determining factors for this domain
 
 **Bucket:** [Standard]/AI-draftable, reusing the already-established
 cross-cutting scale and the "highest tier wins" rule.
@@ -16,12 +16,12 @@ SAPOL-5's already-confirmed Risk Tier scaling.
 
 ## 2026-09-22 — Retrofit: Data-sensitivity factor resolved
 
-**Context:** Data/Metadata layer (layer 4) drafted; its Sensitivity Level
+**Context:** Data/Metadata domain (domain 5) drafted; its Sensitivity Level
 field (data-sensitivity-level) is now the authoritative source for this
-layer's previously provisional/excluded Data-sensitivity Risk Tier
+domain's previously provisional/excluded Data-sensitivity Risk Tier
 factor.
 
 **Change:** Data-sensitivity factor row now populated with real Low/
 Moderate/High values sourced from Data/Metadata, instead of being a
-placeholder or an excluded factor. See 04-data-metadata/09-risk-tiers.md
+placeholder or an excluded factor. See 05-data-metadata/09-risk-tiers.md
 for the authoritative definitions.

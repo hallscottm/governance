@@ -1,4 +1,4 @@
-# Infrastructure Layer — Taxonomies
+# Infrastructure Domain — Taxonomies
 
 Status: Draft — pending review
 Ratified: No
@@ -8,7 +8,7 @@ Built on: 01-definitions.md (58 terms)
 
 Structure: strict single-parent tree. Each term is classified under
 exactly one category. Cross-domain relevance (e.g., a term mattering to
-another layer, or two terms being related without one containing the
+another domain, or two terms being related without one containing the
 other) is handled separately via the Referenced-by/extends mechanism in
 00-framework/term-linking-convention.md — not by taxonomy placement.
 
@@ -104,7 +104,7 @@ other) is handled separately via the Referenced-by/extends mechanism in
 above, one category each. No orphaned terms, no term under two categories.
 
 **Note on category ownership:** the 11 top-level categories are themselves
-now stable identifiers for this layer's structure. If a future term is
+now stable identifiers for this domain's structure. If a future term is
 added to Definitions, it must be placed under one of these 11 categories,
 or — if it genuinely doesn't fit any of them — that's a signal the
 taxonomy itself needs a new top-level category, not that the term should

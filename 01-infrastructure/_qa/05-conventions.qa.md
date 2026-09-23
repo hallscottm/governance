@@ -17,7 +17,7 @@
 - Type: Fact/Judgment mix · Bulk-draft-and-veto · AI-draftable
 - Drafted: tag key naming rules (kebab-case, locked to Metadata Standards
   registry), abbreviation registry (9 entries), explicit scope boundary
-  excluding code/repo conventions (deferred to Workflow/Process layer)
+  excluding code/repo conventions (deferred to Workflow/Process domain)
 - Human answer: pending explicit review (drafted, not yet vetted)
 - Decision-weight: Low (per-item); Medium (scope-boundary decision)
 - Open items flagged inline: <service> vocabulary left org-specific;

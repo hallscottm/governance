@@ -1,7 +1,7 @@
 # Q&A Log — Policies (System Architecture)
 # Append-only. Do not edit past entries; add new dated entries instead.
 
-## 2026-09-22 — Q6.1: Layer-specific policy set and enforcement levels
+## 2026-09-22 — Q6.1: Domain-specific policy set and enforcement levels
 
 **Bucket:** [Org-decision]/Human-only for enforcement levels and Risk
 Tier scaling; [Standard]/AI-draftable for rule content and rationale.

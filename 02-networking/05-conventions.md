@@ -1,4 +1,4 @@
-# Networking Layer — Conventions
+# Networking Domain — Conventions
 
 Status: Draft — pending review
 Ratified: No
@@ -9,7 +9,7 @@ Built on: 01-definitions.md, 04-metadata-standards.md
 Scope: naming and tagging conventions for network resources themselves
 (VPCs, subnets, security groups, load balancers, DNS zones). Code/repo
 layout conventions remain reserved for Workflow/Process
-(05-workflow-process/05-conventions.md, not yet drafted), same boundary
+(07-workflow-process/05-conventions.md, not yet drafted), same boundary
 established in Infrastructure's Conventions.
 
 ---
@@ -29,7 +29,7 @@ specific service.
 |---|---|---|
 | `<env>` | `dev`, `stg`, `prod` | Referenced from Infrastructure's abbreviation registry (01-infrastructure/05-conventions.md) |
 | `<compute-env>` | `onprem`, `colo`, `pubcloud`, `privcloud`, `hybrid`, `edge` | Referenced from Infrastructure's abbreviation registry |
-| `<resource-type>` | `vpc`, `subnet`, `sg` (security group), `fw` (firewall), `lb` (load balancer), `dns` (DNS zone), `vpn` | This layer's abbreviation registry, below |
+| `<resource-type>` | `vpc`, `subnet`, `sg` (security group), `fw` (firewall), `lb` (load balancer), `dns` (DNS zone), `vpn` | This domain's abbreviation registry, below |
 | `<seq>` | Zero-padded sequence number, 3 digits minimum | Convention (same rule as Infrastructure) |
 
 **Example:** `prod-pubcloud-vpc-001`, `prod-pubcloud-sg-002`
@@ -55,7 +55,7 @@ the registry.
 | DNS Zone | `dns` | `net-domain-name` |
 | VPN Connection | `vpn` | `net-vpn` |
 
-This registry is this layer's addition to the naming pattern; `<env>` and
+This registry is this domain's addition to the naming pattern; `<env>` and
 `<compute-env>` segments continue to draw from Infrastructure's registry
 rather than duplicating it.
 

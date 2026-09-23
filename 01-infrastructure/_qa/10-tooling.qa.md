@@ -9,7 +9,7 @@
 - Human answer: defer entirely — categories only, no specific tool
   recommendations
 - Decision-weight: High (governs how Tooling columns are approached
-  across all future layers, not just this one)
+  across all future domains, not just this one)
 - Date answered: 2026-09-22
 
 ## Q10.2 — Category structure and requirements

@@ -6,13 +6,13 @@ Last updated: 2026-09-22
 
 ## Row-major, with a reconciliation safeguard
 
-Fill order: complete all columns for Layer 1 (Infrastructure) before
-starting Layer 2 (Networking), and so on, bottom-to-top per the layer
-axis definition.
+Fill order: complete all columns for Domain 1 (Infrastructure) before
+starting Domain 2 (Networking), and so on, in ascending # order per the
+domain axis definition (00-framework/domain-axis-definition.md).
 
-After each layer's Definitions column (column 1) is completed, run a
-terminology reconciliation pass: compare the new layer's Definitions
-against all previously completed layers' Definitions, flag collisions
+After each domain's Definitions column (column 1) is completed, run a
+terminology reconciliation pass: compare the new domain's Definitions
+against all previously completed domains' Definitions, flag collisions
 or near-duplicate terms.
 
 ## Q&A provenance rule
@@ -27,7 +27,7 @@ of how it got there.
 ## Open items (future phases, not yet designed)
 
 - State/history management for ratified content that changes later
-  (correction vs. evolution, versioning scheme, dependent-layer
+  (correction vs. evolution, versioning scheme, dependent-domain
   re-validation flags)
 - Migration path from file-based source of truth to a queryable
   structured store (e.g. for harness runtime consumption)

@@ -1,4 +1,4 @@
-# Infrastructure Layer — Procedures
+# Infrastructure Domain — Procedures
 
 Status: Draft — pending review
 Ratified: No
@@ -17,7 +17,7 @@ process to be enforceable, not just stated.
 **Extends:** CCPROC-1 (cross-cutting/procedures.md)
 **Executes:** POL-5, AR-1, AR-3 (which extend CCP-3, CCAR-1, CCAR-2)
 **Steps:** (base sequence per CCPROC-1, with step 3 extended for this
-layer's DR Tier confirmation — see CCPROC-1's "Layer-specific extensions"
+domain's DR Tier confirmation — see CCPROC-1's "Domain-specific extensions"
 note)
 1. Requester (human or AI Agent/Harness drafting on a human's behalf)
    submits a provisioning request specifying the resource, its required
@@ -77,7 +77,7 @@ note)
 ### PROC-5 — Break-Glass Override
 **Extends:** CCPROC-4 (cross-cutting/procedures.md)
 **Executes:** AR-2 (which extends CCAR-3)
-**Steps:** (identical to CCPROC-4, applied to this layer's hard-block policies)
+**Steps:** (identical to CCPROC-4, applied to this domain's hard-block policies)
 1. Requester or Approver identifies a case where POL-1, POL-2, or POL-6
    must be bypassed for a legitimate reason.
 2. Request for override is submitted to an Infrastructure Admin with the

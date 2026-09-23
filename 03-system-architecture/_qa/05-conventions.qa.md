@@ -4,7 +4,7 @@
 ## 2026-09-22 — Q5.1: Should Service/Application names include environment?
 
 **Context:** Infrastructure and Networking both embed `<env>` in the
-resource name. Whether that pattern extends to this layer is a real
+resource name. Whether that pattern extends to this domain is a real
 design decision, not mechanical — a service is conventionally a stable
 identity across environments, unlike a VPC or compute instance which is a
 distinct resource per environment.

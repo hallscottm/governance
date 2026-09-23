@@ -51,11 +51,11 @@
 - Date: 2026-09-22
 - Context: same retrofit pattern as Policies/Access Rules — closing the
   open item logged when cross-cutting/policies.md was first created,
-  which flagged Procedures as the next candidate once a second layer
+  which flagged Procedures as the next candidate once a second domain
   needed the same steps.
 - Resolution: cross-cutting/procedures.md created (CCPROC-1 through
   CCPROC-4); PROC-1, PROC-2, PROC-5, PROC-6 updated to "Extends: CCPROC-X".
   PROC-3 (tier verification) and PROC-4 (decommissioning) remain
-  layer-specific.
-- Decision-weight: High (governs Procedures structure for all future layers)
+  domain-specific.
+- Decision-weight: High (governs Procedures structure for all future domains)
 - Date answered: 2026-09-22

@@ -12,13 +12,13 @@
 ## Q2.2 — Tree shape: single-parent vs. multi-parent
 - Type: Judgment (structural) · Required · Human-only
 - Human raised a clarifying question first: how are conflicting
-  definitions across layers/standards handled? (Answered in conversation —
+  definitions across domains/standards handled? (Answered in conversation —
   resolved by the existing reconciliation-pass mechanism in
   00-framework/traversal-order.md; not a taxonomy-structure question,
-  a cross-layer Definitions-column concern.)
+  a cross-domain Definitions-column concern.)
 - AI recommendation: strict single-parent tree — cross-domain relevance
   already handled via Referenced-by/extends, not taxonomy placement
 - Human answer: accepted recommended default (strict single-parent)
 - Decision-weight: Medium (governs taxonomy structure for all future
-  layers, not just this one, for consistency)
+  domains, not just this one, for consistency)
 - Date answered: 2026-09-22

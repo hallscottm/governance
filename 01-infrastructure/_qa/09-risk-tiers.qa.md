@@ -7,7 +7,7 @@
   with Critical / custom
 - AI recommendation: 3-tier FIPS 199-aligned — genuine standard, simple
 - Human answer: accepted recommended default
-- Decision-weight: High (governs risk classification for all future layers)
+- Decision-weight: High (governs risk classification for all future domains)
 - Resulting artifact: 09-risk-tiers.md Risk Scale section
 - Date answered: 2026-09-22
 
@@ -34,10 +34,10 @@
   generic. Human confirmed extraction, same pattern as
   Policies/Access Rules/Procedures.
 - Resolution: cross-cutting/risk-tiers.md created with the Risk Scale
-  table and a baseline Consequences by Tier table; this layer's Risk
+  table and a baseline Consequences by Tier table; this domain's Risk
   Scale and Consequences by Tier sections updated to "Extends:
-  cross-cutting/risk-tiers.md" with only layer-specific additions kept.
-- Decision-weight: High (governs Risk Tiers structure for all future layers)
+  cross-cutting/risk-tiers.md" with only domain-specific additions kept.
+- Decision-weight: High (governs Risk Tiers structure for all future domains)
 - Date answered: 2026-09-22
 
 ## Q-fix.1 — Stale text correction in Consequences by Tier
@@ -56,12 +56,12 @@
 
 ## 2026-09-22 — Retrofit: Data-sensitivity factor resolved
 
-**Context:** Data/Metadata layer (layer 4) drafted; its Sensitivity Level
+**Context:** Data/Metadata domain (domain 5) drafted; its Sensitivity Level
 field (data-sensitivity-level) is now the authoritative source for this
-layer's previously provisional/excluded Data-sensitivity Risk Tier
+domain's previously provisional/excluded Data-sensitivity Risk Tier
 factor.
 
 **Change:** Data-sensitivity factor row now populated with real Low/
 Moderate/High values sourced from Data/Metadata, instead of being a
-placeholder or an excluded factor. See 04-data-metadata/09-risk-tiers.md
+placeholder or an excluded factor. See 05-data-metadata/09-risk-tiers.md
 for the authoritative definitions.

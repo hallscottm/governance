@@ -1,4 +1,4 @@
-# Networking Layer — Ontologies
+# Networking Domain — Ontologies
 
 Status: Draft — pending review
 Ratified: No
@@ -7,8 +7,8 @@ Provenance: see _qa/03-ontologies.qa.md
 Relation vocabulary: 00-framework/relation-types.md
 Built on: 01-definitions.md, 02-taxonomies.md
 
-Relationships may reference anchors owned by other layers (e.g.,
-Infrastructure) where a genuine cross-layer relationship exists — this is
+Relationships may reference anchors owned by other domains (e.g.,
+Infrastructure) where a genuine cross-domain relationship exists — this is
 distinct from the "Referenced Terms" mechanism in Definitions, which is
 about term ownership, not relationships between terms.
 
@@ -85,29 +85,29 @@ about term ownership, not relationships between terms.
 - `net-load-balancer` --[requires]--> `net-traffic-policy`
   Rationale: a load balancer distributes traffic according to a defined policy.
 - `net-reverse-proxy` --[runs-on]--> `infra-compute-unit`
-  Rationale: cross-layer — a reverse proxy is software that executes on some compute unit (may be abstracted/managed, but a compute unit exists underneath).
+  Rationale: cross-domain — a reverse proxy is software that executes on some compute unit (may be abstracted/managed, but a compute unit exists underneath).
 - `net-load-balancer` --[runs-on]--> `infra-compute-unit`
-  Rationale: cross-layer — same reasoning as reverse proxy; even a managed load balancer service runs on underlying compute.
+  Rationale: cross-domain — same reasoning as reverse proxy; even a managed load balancer service runs on underlying compute.
 
 ## Transport Security
 
 - `net-tls` --[produces]--> `net-encryption-in-transit`
   Rationale: TLS is the primary mechanism producing encryption in transit (not the only one — e.g., IPsec — but the dominant case).
 
-## Performance Metrics (cross-layer)
+## Performance Metrics (cross-domain)
 
 - `net-bandwidth` --[constrains]--> `infra-throughput`
-  Rationale: cross-layer — available bandwidth is the ceiling on achievable throughput; throughput can never exceed bandwidth.
+  Rationale: cross-domain — available bandwidth is the ceiling on achievable throughput; throughput can never exceed bandwidth.
 
 ---
 
-## Cross-Layer References (relationships pointing into this layer)
+## Cross-Domain References (relationships pointing into this domain)
 
 Per 00-framework/relation-types.md's reverse-pointer rule, added once
-System Architecture's ontology created a relationship into this layer.
+System Architecture's ontology created a relationship into this domain.
 
 - `net-encryption-in-transit`
-  Referenced by (cross-layer relationships):
+  Referenced by (cross-domain relationships):
   - System Architecture: `sysarch-service --[requires]--> net-encryption-in-transit`
 
 ---

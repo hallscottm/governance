@@ -1,4 +1,4 @@
-# Networking Layer — Policies
+# Networking Domain — Policies
 
 Status: Draft — pending review
 Ratified: No
@@ -8,13 +8,13 @@ Built on: 01-definitions.md, 04-metadata-standards.md, cross-cutting/policies.md
 
 ## Extends Cross-Cutting Policies
 
-This layer's resources are subject to CCP-1 (Metadata Completeness),
+This domain's resources are subject to CCP-1 (Metadata Completeness),
 CCP-2 (Cost Attribution), and CCP-3 (Production Provisioning Approval)
 from cross-cutting/policies.md, applied to Networking's own entity types
 (04-metadata-standards.md). Not restated here — see the cross-cutting
 file for the rule text.
 
-## Layer-Specific Policies
+## Domain-Specific Policies
 
 ### NPOL-1 — Default-Deny Ingress (Production)
 **Rule:** Production network boundaries default to denying all ingress
@@ -34,7 +34,7 @@ cross-boundary traffic).
 **Enforcement:** Hard block — a Production resource/connection lacking
 `net-encryption-in-transit` is non-compliant.
 **Rationale:** Explicitly chosen as the strongest option — consistent
-with this layer's zero-trust-adjacent Definitions/Ontology grounding
+with this domain's zero-trust-adjacent Definitions/Ontology grounding
 (NIST SP 800-207), which doesn't assume internal traffic is inherently
 safe.
 
@@ -46,7 +46,7 @@ approval.
 access, any environment (not limited to Production — a public-facing
 Dev/Staging resource is still a real exposure risk).
 **Enforcement:** Approval gate, distinct from CCP-3/CCAR-2 (who grants
-this specific approval: deferred to this layer's Access Rules, column 7).
+this specific approval: deferred to this domain's Access Rules, column 7).
 **Rationale:** Explicitly chosen — public exposure is a categorically
 different risk than ordinary Production provisioning and deserves its own
 checkpoint rather than being folded into general approval.
@@ -55,8 +55,8 @@ checkpoint rather than being folded into general approval.
 
 **Cross-references:**
 - NPOL-1, NPOL-2 are hard blocks alongside the inherited CCP-1/CCP-2 —
-  this layer now has more hard-block policies than any single one alone,
-  consistent with networking's role as a security boundary layer.
+  this domain now has more hard-block policies than any single one alone,
+  consistent with networking's role as a security boundary domain.
 - NPOL-3 deliberately does NOT scope to Production only, unlike NPOL-1/
   NPOL-2 — public exposure risk doesn't track environment tier the way
   other network policies do.
@@ -70,7 +70,7 @@ checkpoint rather than being folded into general approval.
   and/or Tooling (column 10), same boundary as Infrastructure.
 
 **Quality bar check (00-framework/quality-bar.md):**
-- [x] Simple — 3 layer-specific policies plus inherited cross-cutting ones, no duplication
+- [x] Simple — 3 domain-specific policies plus inherited cross-cutting ones, no duplication
 - [x] Modular — NPOL-1/2/3 stand alone from each other and from CCP-1/2/3
 - [x] Easy to update — cross-cutting rules update once, apply here automatically
 - [x] Easy to maintain — every policy traces to a specific term/field

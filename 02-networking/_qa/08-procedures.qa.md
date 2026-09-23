@@ -7,7 +7,7 @@
   once Networking needed the identical flows. See
   01-infrastructure/_qa/08-procedures.qa.md Q-cc.1 for that retrofit.
 
-## Q8.1 — Three layer-specific procedures drafted
+## Q8.1 — Three domain-specific procedures drafted
 - Type: Fact/derived · Bulk-draft-and-veto · AI-draftable
 - Procedures: NPROC-1 (default-deny verification), NPROC-2 (encryption
   in transit verification), NPROC-3 (public exposure approval)

@@ -1,4 +1,4 @@
-# Networking Layer — Definitions
+# Networking Domain — Definitions
 
 Status: Draft — pending review
 Ratified: No
@@ -31,7 +31,7 @@ The sixth version of the Internet Protocol, using 128-bit addresses, designed to
 Source: IETF RFC 8200
 
 ### MAC Address {#net-mac-address}
-A hardware identifier assigned to a network interface at the link layer.
+A hardware identifier assigned to a network interface at the link domain.
 Source: IEEE 802.3
 
 ### Port {#net-port}
