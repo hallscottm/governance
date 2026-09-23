@@ -14,6 +14,7 @@ This file is derived from every domain's 06-policies.md, 07-access-rules.md, and
 - CCP-1 — Metadata Completeness (Production)
 - CCP-2 — Cost Attribution Required
 - CCP-3 — Production Provisioning Approval
+- CCP-4 — Agent Accountability Boundary
 
 **Access Rules** ([cross-cutting/access-rules.md](cross-cutting/access-rules.md)):
 - CCAR-1 — AI Agent/Harness Provisioning Authority

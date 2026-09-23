@@ -25,6 +25,7 @@ SOURCES = [
     ("06-bi-reporting/01-definitions.md", "Business Intelligence / Reporting"),
     ("07-workflow-process/01-definitions.md", "Workflow/Process"),
     ("08-harness/01-definitions.md", "Harness"),
+    ("engagements/01-definitions.md", "Engagements"),
     ("cross-cutting/roles-and-departments/01-definitions.md", "Cross-Cutting: Roles & Departments"),
     ("cross-cutting/sandbox-activation.md", "Cross-Cutting: Sandbox"),
 ]

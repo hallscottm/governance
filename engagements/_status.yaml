@@ -1,0 +1,16 @@
+# Machine-readable status roll-up for this area.
+# Not a domain (00-framework/domain-axis-definition.md) — columns are
+# bespoke to this area's content, not the 11-column domain axis.
+# Values: not-started | draft | ratified | deprecated | superseded
+area: "engagements"
+columns:
+  00-standards-alignment: draft
+  01-definitions: draft
+  02-engagement-types: draft
+  03-project-document-template: draft
+  04-task-document-template: draft
+  05-intake-and-vetting: draft
+  06-participants-collaboration-and-channels: draft
+  07-planning-and-advisory-agents: draft
+  08-worked-example: draft
+  09-open-decisions: draft

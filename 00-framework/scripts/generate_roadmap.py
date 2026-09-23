@@ -23,6 +23,13 @@ DOMAINS = [
     ("08-harness", "Harness", "AI/ML Platform"),
 ]
 
+ENGAGEMENTS_COLS = [
+    "00-standards-alignment", "01-definitions", "02-engagement-types",
+    "03-project-document-template", "04-task-document-template",
+    "05-intake-and-vetting", "06-participants-collaboration-and-channels",
+    "07-planning-and-advisory-agents", "08-worked-example", "09-open-decisions",
+]
+
 CROSS_CUTTING_PILLARS = [
     ("Governance & Security", "Every domain's 06-policies.md/07-access-rules.md/09-risk-tiers.md extends cross-cutting/policies.md, access-rules.md, procedures.md, risk-tiers.md", "Security & Compliance (cross-cutting reviewer/approver)"),
     ("Roles & Departments", "cross-cutting/roles-and-departments/", "Every department; IT Training & Change Management owns the Training Requirement mechanism cross-cuttingly"),
@@ -106,6 +113,27 @@ def render():
     lines.append("|---|---|---|")
     for name, loc, owner in CROSS_CUTTING_PILLARS:
         lines.append(f"| {name} | `{loc}` | {owner} |")
+    lines.append("")
+
+    lines.append("**Engagements Area** (new 2026-09-23, not a domain - 00-framework/domain-axis-definition.md):")
+    lines.append("")
+    eng_cols = load_status("engagements/_status.yaml")
+    eng_counts = {}
+    for s in STATUS_ORDER:
+        eng_counts[s] = sum(1 for c in ENGAGEMENTS_COLS if eng_cols.get(c) == s)
+    lines.append("| Area | Location | Draft | Ratified | Not Started |")
+    lines.append("|---|---|---|---|---|")
+    lines.append(f"| Engagements | [engagements/](engagements/) | {eng_counts['draft']}/{len(ENGAGEMENTS_COLS)} | {eng_counts['ratified']}/{len(ENGAGEMENTS_COLS)} | {eng_counts['not-started']}/{len(ENGAGEMENTS_COLS)} |")
+    lines.append("")
+    lines.append(
+        "Unit-of-work planning layer on top of the domain axis - Engagement "
+        "Documents (Project/Task), the Vetting Agent, and the Engagement "
+        "Planning Agent. Consumes the Anchor layer (domains above) and "
+        "Harness's Agent schema rather than duplicating either. Open "
+        "items tracked in engagements/09-open-decisions.md, including the "
+        "Skill/Agent Library and Factory process as the natural next "
+        "pieces."
+    )
     lines.append("")
 
     lines.append("---")

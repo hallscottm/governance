@@ -42,6 +42,13 @@ creation. Dev and Staging/QA environments are self-service.
 cross-cutting/access-rules.md for who approves.
 **Originally drafted as:** Infrastructure POL-5 (2026-09-22); generalized 2026-09-22.
 
+### CCP-4 — Agent Accountability Boundary
+**Rule:** The Accountable RACI designation on an Engagement (`eng-participant`, engagements/01-definitions.md) must be held by a human, not an Agent, for any Engagement at High Risk Tier — including vision/direction-setting Engagements drafted by an advisory-role Agent. An Agent may hold Responsible, Consulted, or Informed at any Risk Tier.
+**Applies to:** Any Agent (`harness-agent`) named on an Engagement's Participants list, High Risk Tier, any domain.
+**Enforcement:** Hard block on Engagement Document approval.
+**Rationale:** Generalizes CCAR-1's no-self-approval rule and the Requester/Approver separation (CCAR-2) from Production provisioning to accountability for an Engagement's outcome more broadly — accountability is already a human-only category everywhere else in this framework; this closes the gap an advisory/strategic Agent role would otherwise open.
+**Originally drafted as:** engagements/07-planning-and-advisory-agents.md's Accountability Boundary (2026-09-23); generalized here since the rule isn't engagements-specific in principle, only first surfaced there. Whether it should flex below High Risk Tier is open — see engagements/09-open-decisions.md #6.
+
 ---
 
 **Open items:**

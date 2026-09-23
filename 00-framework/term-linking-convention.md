@@ -61,6 +61,7 @@ holds a link, never a duplicate definition.
 | Cross-Cutting: Roles & Departments (governance bodies) | `ccgov` |
 | Cross-Cutting: Roles & Departments (org/reporting/training mechanisms) | `ccorg` |
 | Cross-Cutting: standalone pillars (e.g. Sandbox) not tied to a role/department/domain | `cc` |
+| Engagements — top-level area, not a domain, sits above the domain axis | `eng` |
 
 `bi` added 2026-09-22 when Business Intelligence / Reporting was split
 out as its own domain (see 00-framework/ea-framework-alignment.md) —
@@ -80,6 +81,8 @@ stewardship, catalog, governance).
 into the Roles & Departments cross-cutting pillar (`ccorg` prefix; see
 cross-cutting/roles-and-departments/00-qa.md Q11). It had no drafted
 content, so no anchors needed migrating.
+
+`eng` added 2026-09-23 for the Engagements area (engagements/) — the unit-of-work planning layer (Engagement Documents, Vetting/Planning Agents) that sits above the domain axis and consumes it, rather than adding a ninth technology-layer row. Not cross-cutting either (it isn't expressed through every domain's Policies/Access Rules columns) — its own top-level area, alongside 00-framework/ and cross-cutting/. See 00-framework/domain-axis-definition.md's "Areas outside the domain axis" note and engagements/01-definitions.md.
 
 Cross-cutting prefixes follow the same anchor/reference-stub/reverse-tag
 mechanics as domain prefixes — a role or department is defined once in

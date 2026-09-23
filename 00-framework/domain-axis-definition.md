@@ -59,6 +59,10 @@ Departments also now carries training/change-management requirements
 Interface/Human was folded in — see the renumbering history above and
 00-qa.md Q11.
 
+## Areas outside the domain axis
+
+Not every top-level directory is a domain or a cross-cutting pillar. `00-framework/` (meta: conventions, generators), `cross-cutting/` (pillars threaded through every domain's own columns), and `roadmap/` (generated status rollup) sit outside this axis by construction. `engagements/` (added 2026-09-23) is the newest of these — the unit-of-work planning layer (Engagement Documents, Vetting Agent, Engagement Planning Agent) that consumes this axis's content plus Harness's Agent machinery, rather than adding a ninth technology-layer row. It failed the same "noun-oriented artifact domain" test Interface/Human failed above, for a different reason: it isn't tech-layer-shaped at all, it's a process layer above every layer. See engagements/01-definitions.md.
+
 Activates partway (not from domain 1): Sandbox — becomes relevant starting
 at the Workflow/Process domain, once there is something real to test
 against.
