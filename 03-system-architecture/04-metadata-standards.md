@@ -26,7 +26,7 @@ this column.
 | **Semantic Version** | The current version of this service/API/package, per SemVer. | `sysarch-semver` | Required for Service, API, Package entity types |
 | **API Contract Reference** | Link to the current API Schema/contract document for this service's exposed API, if any. | `sysarch-api-schema`, `sysarch-api-contract` | Required for API entity type; N/A for internal-only services |
 | **Database Engine** | The database engine/technology this entity is built on (e.g., relational, document, key-value — engine name is a Tooling-column concern, not named here). | `dp-database` (owned by Data Platform as of 2026-09-22; field kept in this shared registry since it's recorded alongside Service metadata) | Required for Database entity type |
-| **Repository Reference** | Link to the source code repository for this service/application (format/convention owned by Workflow/Process, domain 7 — this field just requires that a reference exists). | (cross-domain, forward reference — Workflow/Process not yet built) | Required for Service, Application entity types |
+| **Repository Reference** | Link to the source code repository for this service/application (naming convention owned by Workflow/Process). | `wf-repository` (07-workflow-process/05-conventions.md's Repository Naming Convention) | Required for Service, Application entity types |
 | **Service Tier / Criticality** | A relative criticality classification for this service, used to prioritize incident response and inform Risk Tier determination (column 9). | (informs `sysarch-availability`, `sysarch-reliability`) | Required for Service, Database entity types |
 | **Health Check Endpoint** | The endpoint (see `sysarch-endpoint`) used to programmatically verify this service is operational. | `sysarch-endpoint` | Recommended for Service entity type |
 | **Dependency List** | The other services/databases this entity requires to function (see Ontology's `requires` relation type — this field is the per-instance record of that relationship). | `sysarch-service`, `dp-database` | Recommended for Service entity type |
@@ -56,8 +56,9 @@ this column.
   `sysarch-service --[requires]--> wf-repository`
   (07-workflow-process/03-ontologies.md).
 - **Data Classification** (e.g., what sensitivity level a database holds)
-  is explicitly out of scope here — owned by Data/Metadata (domain 5),
-  not yet built. A Database entity type here does not include it.
+  is explicitly out of scope here — owned by Data/Metadata
+  (`data-classification`, 05-data-metadata/01-definitions.md). A Database
+  entity type here does not include it.
 - Enforcement (whether these fields are mandatory-blocking vs.
   recommended) is deferred to Policies (column 6), same boundary as
   Infrastructure's and Networking's Metadata Standards.

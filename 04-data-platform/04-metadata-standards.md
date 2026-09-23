@@ -30,7 +30,7 @@ registry + entity-type applicability matrix).
 | **Topic Partition Count** | The number of partitions a Stream/Topic is split across, for parallel consumption. | `dp-stream-topic` | Required for Stream/Topic entity type |
 | **Schema Registry Reference** | Link to the record-schema contract governing a Stream/Topic's payload structure, if the topic carries structured records. | `dp-stream-topic` | Recommended for Stream/Topic entity type; N/A for unstructured/binary streams |
 | **Embedding Model Reference** | Which model (name + version) produced the Vector Embeddings stored in a Vector Database, so similarity search isn't silently run across embeddings from two different, incompatible models. | `dp-vector-embedding` | Required for Vector Database entity type |
-| **Orchestration Reference** | Link to the scheduling/orchestration definition that runs a Data Pipeline (format/convention owned by Workflow/Process, domain 7 — this field only requires that a reference exists). | (cross-domain, forward reference — Workflow/Process not yet built) | Required for Data Pipeline entity type |
+| **Orchestration Reference** | Link to the scheduling/orchestration definition that runs a Data Pipeline. | `wf-dag`, `wf-orchestration-engine` (07-workflow-process/03-ontologies.md, 10-tooling.md) | Required for Data Pipeline entity type |
 | **ETL/ELT Mode** | Whether a Data Pipeline transforms before loading (ETL) or after (ELT). | `dp-etl-elt` | Required for Data Pipeline entity type |
 
 ## Entity Types & Field Applicability

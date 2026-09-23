@@ -75,6 +75,11 @@ domain's Ontology file.
   Rationale: a resolved incident produces a structured post-incident review.
 - `wf-postmortem` --[produces]--> `wf-change-request`
   Rationale: a postmortem's follow-up actions are typically tracked as change requests.
+- `wf-postmortem` --[consumes]--> `harness-agent-incident`
+  Rationale: cross-domain — when an incident's root cause is an agent's
+  own action, the postmortem consumes Harness's Agent-Caused Incident
+  Classification as input to its narrative (added 2026-09-23, once
+  Harness was drafted).
 - `wf-change-request` --[requires]--> `ccrole-approver`
   Rationale: cross-domain — a change request needs a designated approver, the same Requester/Approver separation-of-duties concept cross-cutting/access-rules.md already establishes (CCAR-2).
 
@@ -117,8 +122,8 @@ Per 00-framework/relation-types.md's reverse-pointer rule.
   drafted), same treatment SemVer received before this domain existed.
 
 **Quality bar check (00-framework/quality-bar.md):**
-- [x] Simple — 26 relationships, grouped by subdomain
-- [x] Modular — cross-domain edges (7 total: into System Architecture x3, Data Platform x1, Infrastructure x1, Cross-Cutting Roles & Departments x1, plus 1 inbound from System Architecture) clearly marked, reverse-pointed
+- [x] Simple — 27 relationships, grouped by subdomain
+- [x] Modular — cross-domain edges (8 total: into System Architecture x3, Data Platform x1, Infrastructure x1, Cross-Cutting Roles & Departments x1, Harness x1, plus 1 inbound from System Architecture) clearly marked, reverse-pointed
 - [x] Easy to update — anchor-ID based, survives renames
 - [x] Easy to maintain — grouped by subdomain, matches Definitions/Taxonomy
 - [x] Easy to replace — relation-type vocabulary shared across all domains

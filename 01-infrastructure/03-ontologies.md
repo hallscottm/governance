@@ -187,3 +187,10 @@ domain.
 - `infra-archive`
   Referenced by (cross-domain relationships):
   - Data/Metadata: `data-archival --[requires]--> infra-archive`
+- `infra-model-serving-node`
+  Referenced by (cross-domain relationships):
+  - Harness: `harness-agent --[runs-on]--> infra-model-serving-node` (added 2026-09-23)
+- `infra-inference-workload`
+  Referenced by (cross-domain relationships):
+  - Harness: `harness-agent --[consumes]--> infra-inference-workload` (added 2026-09-23)
+  - Harness: `harness-cost-per-task --[requires]--> infra-inference-workload` (added 2026-09-23)

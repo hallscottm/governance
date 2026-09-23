@@ -59,6 +59,8 @@ holds a link, never a duplicate definition.
 | Cross-Cutting: Roles & Departments (roles) | `ccrole` |
 | Cross-Cutting: Roles & Departments (departments) | `ccdept` |
 | Cross-Cutting: Roles & Departments (governance bodies) | `ccgov` |
+| Cross-Cutting: Roles & Departments (org/reporting/training mechanisms) | `ccorg` |
+| Cross-Cutting: standalone pillars (e.g. Sandbox) not tied to a role/department/domain | `cc` |
 
 `bi` added 2026-09-22 when Business Intelligence / Reporting was split
 out as its own domain (see 00-framework/ea-framework-alignment.md) —
@@ -85,6 +87,20 @@ cross-cutting/roles-and-departments/01-definitions.md, and every domain's
 Access Rules column links to it rather than restating it. Added
 2026-09-22 when Roles & Departments was established as a third
 cross-cutting pillar alongside Governance and Security.
+
+`ccorg` added 2026-09-22 alongside the Interface/Human fold-in above —
+covers the Org Chart / Reporting Line / Training Requirement mechanisms
+that moved into Roles & Departments rather than the roles (`ccrole`),
+departments (`ccdept`), or governance-body (`ccgov`) registries proper.
+
+`cc` added 2026-09-22 for cross-cutting concepts that aren't a role,
+department, governance body, or org mechanism at all — the first use is
+Sandbox (`cc-sandbox`, cross-cutting/sandbox-activation.md), one of this
+framework's three cross-cutting pillars (Governance/Security, Roles &
+Departments, Sandbox) rather than a domain row. Reserved for genuinely
+standalone cross-cutting terms; a term that fits an existing cross-cutting
+registry (role, department, governance body, org mechanism) still uses
+that registry's prefix instead.
 
 ## Inheritance (`extends`) — for genuine specialization, not homonyms
 

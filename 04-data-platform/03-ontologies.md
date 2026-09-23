@@ -83,6 +83,7 @@ source of truth on these edges).
   - Data/Metadata: `data-custodian --[requires]--> dp-database`
   - Data/Metadata: `data-quality-rule --[constrains]--> dp-database`
   - Data/Metadata: `data-dataset --[located-in]--> dp-database`
+  - Harness: `harness-retrieval-source --[requires]--> dp-database` (added 2026-09-23)
 - `dp-database-schema`
   Referenced by (cross-domain relationships):
   - Data/Metadata: `data-technical-metadata --[requires]--> dp-database-schema`
