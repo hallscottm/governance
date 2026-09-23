@@ -164,10 +164,12 @@ engine, accessed and modified through Transactions. Distinct from
 Infrastructure's storage tiers/types, which describe the underlying media
 and access pattern, not the logical data organization. Source: ANSI/ISO
 SQL:2016 (for relational databases); general usage for non-relational.
+Referenced by: Data/Metadata
 
 ### Database Schema {#sysarch-database-schema}
 The structural definition of a Database — its Tables, columns, types, and
 constraints. Distinct from API Schema (above). Source: ANSI/ISO SQL:2016.
+Referenced by: Data/Metadata
 
 ### Table {#sysarch-table}
 A structured collection of rows and columns within a relational Database.

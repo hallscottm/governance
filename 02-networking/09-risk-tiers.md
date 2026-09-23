@@ -22,6 +22,7 @@ factor (cross-cutting averaging rule, per cross-cutting/risk-tiers.md).
 | Network exposure | Internal-only (`net-network-zone` fully internal) | Cross-zone, internal boundary crossing | Publicly internet-facing (triggers NPOL-3) |
 | Trust boundary classification | N/A | Inside a defined trust boundary | Crossing or undefined trust boundary (`net-trust-boundary`) |
 | Segmentation posture | Micro-segmented (`net-microsegmentation`) | Zone-segmented (`net-network-zone`) | Flat/unsegmented |
+| Data sensitivity of traffic carried (referenced from Data/Metadata, `data-sensitivity-level`) | Public or Internal | Confidential | Restricted, or Contains PII = true |
 
 **Note on Network exposure factor:** public internet-facing exposure is
 automatically High risk, not just a triggering factor to weigh — this is
@@ -48,10 +49,10 @@ for High risk, via CCAR-3).
   regardless of Risk Tier — a default-deny posture and encryption
   requirement are baseline security hygiene, not proportional controls
   that should relax for lower-risk resources.
-- Data sensitivity factor (same provisional status as Infrastructure's)
-  is not included as a Networking-specific factor — network exposure and
-  trust boundary factors were judged sufficient proxies for this layer;
-  revisit once Data/Metadata layer exists.
+- (Resolved 2026-09-22) Data sensitivity factor added, sourced from
+  Data/Metadata's Sensitivity Level field, now that layer is drafted —
+  network exposure/trust boundary factors remain as additional
+  network-specific factors, not a substitute for this one.
 
 **Quality bar check (00-framework/quality-bar.md):**
 - [x] Simple — 4 determining factors, reusing the cross-cutting scale

@@ -183,3 +183,6 @@ layer.
   relationship — `infra-availability-tier --[constrains]--> sysarch-availability`
   — recorded in full in 03-system-architecture/03-ontologies.md. Listed
   here for discoverability since the relationship touches this term.
+- `infra-archive`
+  Referenced by (cross-layer relationships):
+  - Data/Metadata: `data-archival --[requires]--> infra-archive`

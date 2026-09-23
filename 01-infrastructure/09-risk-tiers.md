@@ -26,14 +26,15 @@ to elevate the whole resource).
 |---|---|---|---|
 | Environment (`infra-environment-lifecycle`) | Dev | Staging/QA | Production |
 | Availability Tier (`infra-availability-tier-*`) | Tier I–II | Tier III | Tier IV |
-| Data sensitivity | Non-sensitive/public | Internal-use | Regulated/PII/confidential — **see open item below** |
+| Data sensitivity (`data-sensitivity-level`) | Public or Internal | Confidential | Restricted, or Contains PII = true regardless of stated classification |
 | Workload type | General compute | — | AI Training/Inference on regulated data (`infra-training-workload`, `infra-inference-workload`) |
 
-**Data sensitivity note:** this factor genuinely belongs to the Data/
-Metadata layer (not yet drafted), which will own the actual data
-classification taxonomy. Referenced here provisionally, same pattern as
-the role vocabulary in 07-access-rules.md — flagged for ownership
-transfer once that layer exists.
+**Data sensitivity note (resolved 2026-09-22):** this factor is now
+sourced from Data/Metadata's Sensitivity Level field
+(04-data-metadata/04-metadata-standards.md), the layer that actually owns
+data classification. A resource holding data classified Restricted, or
+flagged Contains PII, is High risk regardless of its own layer-specific
+factors — same "highest tier wins" rule applied across layers.
 
 ## Regulatory Mapping (generalized — org fills in applicable regimes)
 
@@ -71,7 +72,7 @@ not restated here).
 - (Resolved 2026-09-22) AR-2 in 07-access-rules.md updated to require
   two-person sign-off (Infrastructure Admin + Security/Compliance) for
   High-risk break-glass overrides.
-- Data sensitivity factor is provisional pending Data/Metadata layer.
+- (Resolved 2026-09-22) Data sensitivity factor now sourced from Data/Metadata's Sensitivity Level field, once that layer was drafted.
 - Regulatory mapping table is intentionally a template, not filled with
   real determinations — an org applying this framework completes it for
   their actual regulatory exposure.

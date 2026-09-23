@@ -153,6 +153,24 @@ layer's ontology file.
 
 ---
 
+## Cross-Layer References (relationships pointing into this layer)
+
+Per 00-framework/relation-types.md's reverse-pointer rule, added once
+Data/Metadata's ontology created relationships into this layer.
+
+- `sysarch-database`
+  Referenced by (cross-layer relationships):
+  - Data/Metadata: `data-custodian --[requires]--> sysarch-database`
+  - Data/Metadata: `data-quality-rule --[constrains]--> sysarch-database`
+  - Data/Metadata: `data-dataset --[located-in]--> sysarch-database`
+- `sysarch-database-schema`
+  Referenced by (cross-layer relationships):
+  - Data/Metadata: `data-technical-metadata --[requires]--> sysarch-database-schema`
+  - Data/Metadata: `data-dictionary --[requires]--> sysarch-database-schema`
+  - Data/Metadata: `data-logical-model --[produces]--> sysarch-database-schema`
+
+---
+
 **Open items:**
 - `sysarch-api-schema --[measured-by]--> sysarch-api-contract` reads
   slightly unusual (a schema measuring a contract) — kept because the

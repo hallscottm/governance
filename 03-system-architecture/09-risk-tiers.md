@@ -21,19 +21,18 @@ factor (cross-cutting maximum rule, per cross-cutting/risk-tiers.md).
 | Environment (referenced from Infrastructure) | Dev | Staging/QA | Production |
 | Service Tier / Criticality (04-metadata-standards.md) | Non-critical, internal tooling | Business-important, moderate user impact if down | Business-critical, severe impact if down |
 | Public exposure | Internal-only (no public Endpoint) | N/A — this factor has no Moderate value | Publicly internet-facing (triggers SAPOL-5, and Networking's NPOL-3) |
-| Data handled (provisional) | — | — | — |
+| Data handled (referenced from Data/Metadata, `data-sensitivity-level`) | Public or Internal | Confidential | Restricted, or Contains PII = true |
 
 **Note on Public exposure factor:** same treatment as Networking's
 identical factor — public internet-facing exposure is automatically High
 risk, not just a weighted input, consistent with SAPOL-5 and NPOL-3 both
 treating public exposure as categorically different.
 
-**Note on Data handled factor:** left as a placeholder row, not populated
-— same provisional status as Infrastructure's and Networking's Data
-sensitivity factor. A service/database's Risk Tier here is currently
-driven by Service Tier/Criticality and exposure, not by what sensitivity
-of data it processes; revisit once Data/Metadata (layer 4) exists and can
-supply an actual classification to reference.
+**Note on Data handled factor (resolved 2026-09-22):** now sourced from
+Data/Metadata's Sensitivity Level field for whatever Dataset(s) this
+Service/Database handles — a Service handling Restricted data, or data
+flagged Contains PII, is High risk regardless of its own Service
+Tier/Criticality or exposure factors, same "highest tier wins" rule.
 
 ## Consequences by Tier
 
@@ -52,11 +51,10 @@ in 06-policies.md/07-access-rules.md — summarized here for visibility):**
 ---
 
 **Open items:**
-- Data handled/sensitivity factor remains unpopulated — third layer in a
-  row to carry this open item forward (Infrastructure, Networking, now
-  System Architecture); will very likely be resolved in a single pass
-  once Data/Metadata (layer 4) is drafted, rather than three separate
-  future edits.
+- (Resolved 2026-09-22) Data handled/sensitivity factor populated,
+  sourced from Data/Metadata's Sensitivity Level field — resolved in one
+  pass across all three prior layers (Infrastructure, Networking, System
+  Architecture) once Data/Metadata was drafted, as anticipated.
 - SAPOL-1, SAPOL-3, SAPOL-4 confirmed uniform (not Risk-Tier-scaled) by
   design during Policies drafting — restated here for consistency with
   how Networking's Risk Tiers column documents the same kind of decision.

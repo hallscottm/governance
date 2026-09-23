@@ -13,3 +13,15 @@ Consequences-by-tier table restated (not newly decided) from SAPOL-2/
 SAPOL-5's already-confirmed Risk Tier scaling.
 
 **Status:** Pending explicit review.
+
+## 2026-09-22 — Retrofit: Data-sensitivity factor resolved
+
+**Context:** Data/Metadata layer (layer 4) drafted; its Sensitivity Level
+field (data-sensitivity-level) is now the authoritative source for this
+layer's previously provisional/excluded Data-sensitivity Risk Tier
+factor.
+
+**Change:** Data-sensitivity factor row now populated with real Low/
+Moderate/High values sourced from Data/Metadata, instead of being a
+placeholder or an excluded factor. See 04-data-metadata/09-risk-tiers.md
+for the authoritative definitions.

@@ -24,7 +24,7 @@ A logically or physically isolated instance of infrastructure used for a
 specific stage of the software/data lifecycle. Standard tiers: Development,
 Staging/QA, Production.
 Source: Common industry practice
-Referenced by: Networking, System Architecture
+Referenced by: Networking, System Architecture, Data/Metadata
 
 ### Compute Unit {#infra-compute-unit}
 The smallest independently provisionable unit of processing capacity (e.g.,
@@ -165,6 +165,7 @@ Source: Common industry practice
 Long-term, infrequently accessed data retention, often for compliance
 rather than operational recovery.
 Source: Common industry practice
+Referenced by: Data/Metadata
 
 ## Facility / Physical
 
