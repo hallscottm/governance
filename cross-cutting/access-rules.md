@@ -2,7 +2,7 @@
 
 Status: Draft — pending review
 Ratified: No
-Last updated: 2026-09-22
+Last updated: 2026-09-23
 
 Authored registry of access rules that are genuinely universal, paired
 with cross-cutting/policies.md the same way a domain's Access Rules column
@@ -43,6 +43,38 @@ no AI Agent/Harness, may grant this override at any risk tier.
 **Originally drafted as:** Infrastructure AR-2 (2026-09-22, later revised
 same day once Risk Tiers introduced the two-person rule); generalized 2026-09-22.
 
+### CCAR-4 — Approval Identity Assurance
+**Rule:** An Approval Gate decision, a CCAR-2 Production approval, or
+any `approved_by`/Accountable designation recorded anywhere in this
+framework must resolve to an identity authenticated through the
+organization's own IAM/SSO system — never asserted by name or role
+alone. High Risk Tier decisions require step-up (re-)authentication at
+the moment of approval (NIST SP 800-63B Authenticator Assurance
+Level 2 minimum; AAL3 recommended). The audit record (Harness's Agent
+Trace/Transcript, `harness-trace`, or the relevant Engagement
+Document's Approval log) must capture the authentication method and
+timestamp, not the approver's name alone.
+**Applies to:** Every Approval Gate ([harness-approval-gate](../08-harness/01-definitions.md#harness-approval-gate)),
+CCAR-2/CCAR-3 sign-off, and Engagement Document `approved_by` field,
+any domain — assurance strength scales with Risk Tier the same way
+CCAR-3's sign-off count does.
+**Enforcement:** Hard block — an approval recorded without a
+resolvable authenticated identity is not a valid approval and does not
+satisfy CCAR-1/CCAR-2.
+**Distinct from:** System Architecture's Authentication
+([sysarch-authentication](../03-system-architecture/01-definitions.md#sysarch-authentication)),
+which is a Service verifying a caller's identity generally — CCAR-4
+is specifically about the identity behind a governance approval
+decision.
+**Not built here:** the actual IAM/SSO/MFA mechanism — this framework
+governs the requirement, not the implementation; use the
+organization's existing identity provider rather than a parallel one,
+same build-vs-buy posture as engagements/00-standards-alignment.md.
+**Originally drafted as:** raised directly during the Engagements
+review ("how do we verify the Approver is actually the Approver") —
+generalized here since it constrains every approval gate in the
+framework, not only Engagements.
+
 ---
 
 **Role vocabulary note (resolved 2026-09-22):** Requester, Approver,
@@ -53,7 +85,7 @@ Human Role/System Actor distinction (AI Agent/Harness is a System Actor,
 not a Human Role).
 
 **Quality bar check (00-framework/quality-bar.md):**
-- [x] Simple — 3 access rules, paired 1:1 with cross-cutting policies
+- [x] Simple — 4 access rules; CCAR-1/2/3 pair 1:1 with cross-cutting policies, CCAR-4 stands alone (identity-assurance is a cross-cutting requirement, not a new policy)
 - [x] Modular — each domain still owns domain-specific access rules independently
 - [x] Easy to update — one edit updates the rule for every referencing domain
 - [x] Easy to maintain — "Originally drafted as" line preserves provenance

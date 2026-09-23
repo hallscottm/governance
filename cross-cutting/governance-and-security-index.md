@@ -20,6 +20,7 @@ This file is derived from every domain's 06-policies.md, 07-access-rules.md, and
 - CCAR-1 — AI Agent/Harness Provisioning Authority
 - CCAR-2 — Production Provisioning Approval Authority
 - CCAR-3 — Hard-Block Override (Break-Glass), Risk-Tier-Scaled
+- CCAR-4 — Approval Identity Assurance
 
 **Procedures** ([cross-cutting/procedures.md](cross-cutting/procedures.md)):
 - CCPROC-1 — Production Provisioning Request & Approval

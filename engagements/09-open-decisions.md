@@ -21,10 +21,11 @@ your call.
 4. **Where this lives in the repo** — resolved: `engagements/`, a
    top-level area alongside `00-framework/` and `cross-cutting/`, not a
    domain (00-framework/domain-axis-definition.md).
-5. **The Factory itself** (draft -> sandbox -> eval -> approve ->
-   register) — still open, still next. The Skill/Agent/Model registries
-   (3, 8) now assume it exists and produces `status: approved` entries;
-   they don't say how.
+5. **The Factory itself** — resolved: see 13-factory.md. Factory Agent
+   role, Factory Run = an ordinary Task Document (no new schema),
+   standing Factory Project deferred (Build-on-Demand), explicit
+   `attempt_count` field for retry tracking, deliberate Library re-check
+   redundancy confirmed intentional.
 6. **Agent Accountability boundary** — resolved as a floor, open at the
    edges: CCP-4 (cross-cutting/policies.md) fixes Accountable as
    human-only at High risk tier. Open whether that's a bright line at

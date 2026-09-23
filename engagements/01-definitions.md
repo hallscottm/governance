@@ -149,6 +149,9 @@ A reusable, pre-configured Agent role (`agent-lib/<slug>-vN`) an Engagement's `a
 ### Model Catalog Entry {#eng-model-catalog-entry}
 One approved, externally available model (frontier API or self-hosted/local) an Agent's Model Version Pin (`harness-model-version-pin`) can be set to. Not built in-house like a Skill or Agent Template — a curated list plus a Selection Criteria rubric, closer in spirit to Harness's Tooling column. Full spec: 12-model-catalog.md.
 
+### Factory Agent {#eng-factory-agent}
+The Agent role (Agent Type: Assistant) that drafts a candidate Skill or Agent Template when the Planning Agent's Skill/Agent Library Lookup finds no “close enough” match and escalates. A Factory Run is an ordinary Task Document (`eng-task-document`), not a new document type — the requesting Task lists it as a dependency. Pre-built like the Vetting Agent and Engagement Planning Agent (domain-agnostic infrastructure, not a guess about domain-specific work). Full spec: 13-factory.md.
+
 ---
 
 **Quality bar check (00-framework/quality-bar.md):**

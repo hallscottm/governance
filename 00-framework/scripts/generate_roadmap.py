@@ -28,7 +28,7 @@ ENGAGEMENTS_COLS = [
     "03-project-document-template", "04-task-document-template",
     "05-intake-and-vetting", "06-participants-collaboration-and-channels",
     "07-planning-and-advisory-agents", "08-worked-example", "09-open-decisions",
-    "10-skill-library", "11-agent-library", "12-model-catalog",
+    "10-skill-library", "11-agent-library", "12-model-catalog", "13-factory",
 ]
 
 CROSS_CUTTING_PILLARS = [
