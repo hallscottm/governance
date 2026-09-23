@@ -109,38 +109,80 @@ prospective, not retroactive, and this paragraph says so explicitly so
 it doesn't read as an already-binding rule the pilot's own prior work
 silently ignored.
 
-## What Tier 2 requires to actually exist (not yet built)
+## What Tier 2 requires to actually exist (built 2026-09-23, untested against a real run)
 
-This finding motivates, and is the first concrete piece of, the
-broader "enterprise-grade harnessing" question already raised
-(GitHub Actions as a substrate, devcontainers, security configuration
-across local/Actions/devcontainer). Scoped narrowly to just closing
-this gap:
+Built, matching the plan above:
 
-1. A GitHub Actions workflow that: checks out the repo, mints a
-   short-lived installation token from the existing App (reusing
-   `implementation/github-auth/mint-token.py`'s logic, adapted to run
-   from a GitHub Actions secret holding the private key rather than a
-   local file path), runs the Factory Agent's actual work (whatever
-   produced the candidate Skill/Agent/artifact) against the checked-out
-   copy, and opens a PR with the result instead of committing directly.
-2. The Factory Agent's "write the candidate" step changes from "edit
-   files in the working tree via `device_bash`" to "produce files, let
-   the workflow commit them to a branch and open the PR" — the agent's
-   job stays the same, only the write path changes.
-3. The mechanical scope-check (`implementation/github-auth/scope-check.py`)
-   runs as a required CI check on the PR, not as a manual step I run
-   after the fact — so a scope violation blocks the PR from even being
-   mergeable, on top of the human-approval requirement.
-4. Where this pilot's agents currently run (as subagents of this
-   session, via the `Agent` tool) either stays as Tier-1 development
-   iteration, or is itself moved into the Actions runner once step 1-3
-   exist — worth deciding explicitly rather than by default, since it's
-   the difference between "the framework's own agents are harnessed
-   for real" and "only the artifacts they produce are reviewed for
-   real."
+1. `.github/workflows/factory-run.yml` - a manually-dispatched workflow
+   (a Factory Agent "never initiates a build on its own," so this
+   requires an explicit human trigger naming the exact Task Document
+   and write-scope prefix, not an automatic trigger). Checks out the
+   repo, writes the App's private key from a GitHub Actions secret to a
+   runner-local temp file, mints a short-lived installation token
+   (reusing `implementation/github-auth/mint-token.py` unchanged - it
+   already reads from env vars, so no CI-specific fork was needed),
+   runs the Factory Agent, runs `scope-check.py` as a **hard gate**
+   (non-zero exit fails the job before anything is pushed), then opens
+   a PR using the minted token - never commits to `main` directly.
+   **Not yet added to the repo** - `.github/workflows/` files are
+   blocked from remote-tool writes by design (they execute with repo
+   secrets), so this needs to be added by a human directly. Content
+   handed to the user to add themselves, 2026-09-23.
+2. `implementation/github-auth/run-factory-agent.py` (new) - runs the
+   Factory Agent for real via the Anthropic API in the runner, with a
+   real agentic tool loop (`read_file`/`write_file`/`list_dir`). The
+   load-bearing piece: `write_file` is a **code-level gate**, not an
+   instruction - it resolves and checks every path against the run's
+   declared `--allow-prefix` list and refuses (does not silently
+   redirect, does not comply) anything outside it, before the file ever
+   touches disk. This is what makes Tier 2 different in kind from
+   Tier 1, not just in degree: Tier 1's "reduced attack surface" relied
+   on the agent choosing to respect a boundary it was told about; here,
+   an out-of-scope write physically cannot execute, independent of what
+   the model decides to try. `scope-check.py` as a required CI gate
+   (item 1) is defense in depth on top of this, not the only thing
+   standing between a bad write and the real repo.
+3. Step 3 from the original plan (mechanical scope-check as a required
+   CI gate) is implemented as part of item 1 above, not separately.
+4. **Still an open decision, not resolved by this build:** where this
+   pilot's agents run day-to-day (Vetting, Planning - still subagents
+   of this session via the `Agent` tool) stays Tier-1/orchestrator-run
+   for now. Only Factory Runs move to Tier 2 in this pass, since
+   Factory Runs are the ones that write candidate Skills/Agents - the
+   highest-consequence write path. Moving Vetting/Planning into Actions
+   runners too is a real follow-on, not assumed here.
 
-None of this is built yet. Recorded here as the next concrete piece of
-work, not committed to a timeline — flagging it as a decision point
-before starting, per how the last few "how should we build this" turns
-in this pilot have gone.
+**Status as of 2026-09-23: designed and code-complete, deliberately not
+activated.** The workflow file and `run-factory-agent.py` exist and are
+believed correct by inspection, but no live GitHub Actions run has
+exercised this pipeline end to end. Activating it requires a real
+`ANTHROPIC_API_KEY` - a pay-per-token key from a separate Anthropic
+Console account/billing relationship, not something covered by any
+claude.ai plan. The repo owner (hallscottm@gmail.com) considered that
+cost/account tradeoff on 2026-09-23 and chose not to take it on right
+now. That is a legitimate, recorded decision, not an abandoned task:
+
+- This is not a security gap. Tier 1 (this session, running as an
+  orchestrator/subagent via the `Agent` tool) plus the GitHub App +
+  branch-protection + required-PR-review pipeline (`02-github-access.md`)
+  remains the active control for all engagement work today, and that
+  control is real and already proven end to end (two real push-rejection
+  -> bypass-list -> PR -> merge cycles completed by the repo owner).
+  Tier 2 only tightens *how the agent itself* is boundaried during a
+  Factory Run; it does not replace human review as the actual gate
+  before anything reaches `main`.
+- **Do not activate Tier 2 by working around the missing key** (e.g.
+  routing Factory Agent execution through this session's own model
+  access instead of a real Actions-runner-to-Anthropic-API call). That
+  would silently put Tier 1's instructed boundary back underneath a
+  label that claims Tier 2's enforced one - exactly the kind of gap
+  this file exists to catch.
+- Revisit if/when the API cost or a real operational need (e.g. Factory
+  Runs becoming frequent enough that Tier 1's process is a bottleneck)
+  makes taking on the Console billing relationship worthwhile. Until
+  then, `.github/workflows/factory-run.yml` and `run-factory-agent.py`
+  stay in the repo, undeployed/inert, as ready-to-activate work rather
+  than dead code - re-verify this section's claims are still accurate
+  before flipping the switch, same discipline this
+file has applied to every other claim in this pilot.
+

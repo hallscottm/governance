@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Weekly Data Quality Dashboard</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  :root { color-scheme: light; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+    background: #f9f9f7;
+    color: #0b0b0b;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:where(:not([data-theme="light"])) { color-scheme: dark; }
+    body:where(:not([data-theme="light"] body)) { background: #0d0d0d; color: #ffffff; }
+  }
+  :root[data-theme="dark"] body { background: #0d0d0d; color: #ffffff; }
+
+  .viz-root {
+    --surface-1: #fcfcfb;
+    --page-plane: #f9f9f7;
+    --text-primary: #0b0b0b;
+    --text-secondary: #52514e;
+    --text-muted: #898781;
+    --gridline: #e1e0d9;
+    --baseline: #c3c2b7;
+    --border: rgba(11,11,11,0.10);
+    --good: #0ca30c;
+    --warning: #fab219;
+    --serious: #ec835a;
+    --critical: #d03b3b;
+    --series-1: #2a78d6;
+    --series-2: #eb6834;
+    --series-3: #1baf7a;
+    --series-4: #eda100;
+    --series-5: #e87ba4;
+    --series-6: #008300;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:where(:not([data-theme="light"])) .viz-root {
+      --surface-1: #1a1a19;
+      --page-plane: #0d0d0d;
+      --text-primary: #ffffff;
+      --text-secondary: #c3c2b7;
+      --text-muted: #898781;
+      --gridline: #2c2c2a;
+      --baseline: #383835;
+      --border: rgba(255,255,255,0.10);
+      --good: #0ca30c;
+      --warning: #fab219;
+      --serious: #ec835a;
+      --critical: #e66767;
+      --series-1: #3987e5;
+      --series-2: #d95926;
+      --series-3: #199e70;
+      --series-4: #c98500;
+      --series-5: #d55181;
+      --series-6: #008300;
+    }
+  }
+  :root[data-theme="dark"] .viz-root {
+    --surface-1: #1a1a19;
+    --page-plane: #0d0d0d;
+    --text-primary: #ffffff;
+    --text-secondary: #c3c2b7;
+    --text-muted: #898781;
+    --gridline: #2c2c2a;
+    --baseline: #383835;
+    --border: rgba(255,255,255,0.10);
+    --series-1: #3987e5;
+    --series-2: #d95926;
+    --series-3: #199e70;
+    --series-4: #c98500;
+    --series-5: #d55181;
+    --series-6: #008300;
+  }
+
+  .page { max-width: 1080px; margin: 0 auto; padding: 24px 16px 64px; }
+  .banner {
+    font-size: 13px;
+    color: var(--text-secondary);
+    background: var(--surface-1);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 10px 14px;
+    margin-bottom: 20px;
+  }
+  .banner b { color: var(--text-primary); }
+  header h1 { font-size: 22px; margin: 0 0 4px; }
+  header p.sub { color: var(--text-secondary); margin: 0 0 20px; font-size: 14px; }
+
+  .stat-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin-bottom: 24px; }
+  .stat-tile {
+    background: var(--surface-1);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 14px 16px;
+  }
+  .stat-tile .label { font-size: 12px; color: var(--text-muted); margin-bottom: 6px; }
+  .stat-tile .value { font-size: 26px; font-weight: 600; font-variant-numeric: tabular-nums; }
+  .stat-tile .delta { font-size: 12px; margin-top: 4px; }
+  .stat-tile .delta.good { color: var(--good); }
+  .stat-tile .delta.bad { color: var(--critical); }
+
+  .card {
+    background: var(--surface-1);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 18px;
+    margin-bottom: 20px;
+  }
+  .card h2 { font-size: 15px; margin: 0 0 2px; }
+  .card p.desc { font-size: 12px; color: var(--text-secondary); margin: 0 0 14px; }
+
+  .legend { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 10px; font-size: 12px; }
+  .legend-item { display: flex; align-items: center; gap: 6px; cursor: pointer; user-select: none; }
+  .legend-item .swatch { width: 10px; height: 10px; border-radius: 2px; flex: none; }
+  .legend-item.dimmed { opacity: 0.35; }
+  .legend-item span.name { color: var(--text-secondary); }
+
+  svg.chart { width: 100%; height: 320px; display: block; overflow: visible; }
+  .gridline { stroke: var(--gridline); stroke-width: 1; }
+  .baseline { stroke: var(--baseline); stroke-width: 1; }
+  .axis-label { fill: var(--text-muted); font-size: 11px; }
+  .series-line { fill: none; stroke-width: 2; }
+  .series-dot { r: 3.5; }
+  .hover-line { stroke: var(--text-muted); stroke-width: 1; stroke-dasharray: 3 3; opacity: 0; pointer-events: none; }
+
+  .tooltip {
+    position: absolute;
+    background: var(--surface-1);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 8px 10px;
+    font-size: 12px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.1s;
+    z-index: 10;
+    min-width: 150px;
+  }
+  .tooltip .tt-week { color: var(--text-muted); margin-bottom: 4px; font-size: 11px; }
+  .tooltip .tt-row { display: flex; justify-content: space-between; gap: 12px; padding: 1px 0; }
+  .tooltip .tt-row .sw { width: 8px; height: 8px; border-radius: 2px; display: inline-block; margin-right: 5px; }
+  .tooltip .tt-row .val { font-variant-numeric: tabular-nums; font-weight: 600; }
+
+  table.dq-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  table.dq-table th, table.dq-table td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--gridline); }
+  table.dq-table th { color: var(--text-muted); font-weight: 500; font-size: 11px; text-transform: uppercase; letter-spacing: 0.02em; }
+  table.dq-table td.num { font-variant-numeric: tabular-nums; text-align: right; }
+  .status-pill { display: inline-flex; align-items: center; gap: 5px; padding: 2px 8px; border-radius: 999px; font-size: 11px; font-weight: 600; }
+  .status-pill .dot { width: 7px; height: 7px; border-radius: 50%; }
+  .status-pill.good { color: var(--good); }
+  .status-pill.warning { color: #8a6400; }
+  .status-pill.critical { color: var(--critical); }
+  @media (prefers-color-scheme: dark) {
+    :root:where(:not([data-theme="light"])) .status-pill.warning { color: var(--warning); }
+  }
+  :root[data-theme="dark"] .status-pill.warning { color: var(--warning); }
+  .status-pill.good .dot { background: var(--good); }
+  .status-pill.warning .dot { background: var(--warning); }
+  .status-pill.critical .dot { background: var(--critical); }
+
+  .view-toggle { display: inline-flex; gap: 4px; background: var(--page-plane); border: 1px solid var(--border); border-radius: 8px; padding: 3px; margin-bottom: 14px; }
+  .view-toggle button {
+    font: inherit; font-size: 12px; border: none; background: transparent; color: var(--text-secondary);
+    padding: 5px 12px; border-radius: 6px; cursor: pointer;
+  }
+  .view-toggle button.active { background: var(--surface-1); color: var(--text-primary); box-shadow: 0 1px 2px rgba(0,0,0,0.08); }
+  footer { font-size: 11px; color: var(--text-muted); margin-top: 24px; }
+</style>
+</head>
+<body>
+<div class="viz-root page">
+
+  <div class="banner">
+    <b>Synthetic test data.</b> Generated by the registered Skill
+    <code>skill-lib/dq-metrics-dummy-data-generator-v1</code> (seed 42) — no real
+    data-quality-checks source is connected yet. Not a substitute for a real
+    report; built to prove the report-building step of this pilot end to end.
+  </div>
+
+  <header>
+    <h1>Weekly Data Quality Dashboard</h1>
+    <p class="sub">6 checks &middot; 8 weeks &middot; 2026-08-03 through 2026-09-21 &middot; Internal distribution</p>
+  </header>
+
+  <div class="stat-row" id="statRow"></div>
+
+  <div class="card">
+    <h2>Pass rate over time</h2>
+    <p class="desc">Weekly pass rate by check &amp; table. Click a legend item to isolate a series.</p>
+    <div class="legend" id="legend"></div>
+    <div style="position:relative">
+      <svg class="chart" id="chart" viewBox="0 0 920 320" preserveAspectRatio="none"></svg>
+      <div class="tooltip" id="tooltip"></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:8px;">
+      <div>
+        <h2>Latest week (2026-09-21)</h2>
+        <p class="desc">Sorted worst pass rate first.</p>
+      </div>
+    </div>
+    <table class="dq-table" id="latestTable"></table>
+  </div>
+
+  <footer>
+    Governance framework pilot &middot; implementation/pilots/dq-metrics-dashboard &middot;
+    Task dq-dash-t2-build-report &middot; generated 2026-09-23
+  </footer>
+</div>
+
+<script>
+const CSV = `check_name,table_name,week_ending,pass_count,fail_count,pass_rate
+freshness_sla,payments,2026-08-03,3559,673,0.841
+freshness_sla,payments,2026-08-10,3122,772,0.8017
+freshness_sla,payments,2026-08-17,3160,705,0.8176
+freshness_sla,payments,2026-08-24,3752,667,0.8491
+freshness_sla,payments,2026-08-31,3263,615,0.8414
+freshness_sla,payments,2026-09-07,2930,632,0.8226
+freshness_sla,payments,2026-09-14,3098,701,0.8155
+freshness_sla,payments,2026-09-21,2950,789,0.789
+freshness_sla,customers,2026-08-03,2535,763,0.7686
+freshness_sla,customers,2026-08-10,2299,606,0.7914
+freshness_sla,customers,2026-08-17,2282,803,0.7397
+freshness_sla,customers,2026-08-24,2213,684,0.7639
+freshness_sla,customers,2026-08-31,2210,763,0.7434
+freshness_sla,customers,2026-09-07,2123,831,0.7187
+freshness_sla,customers,2026-09-14,314,2772,0.1017
+freshness_sla,customers,2026-09-21,2092,591,0.7797
+accepted_values,customers,2026-08-03,3841,578,0.8692
+accepted_values,customers,2026-08-10,3882,668,0.8532
+accepted_values,customers,2026-08-17,4118,694,0.8558
+accepted_values,customers,2026-08-24,3771,581,0.8665
+accepted_values,customers,2026-08-31,4164,478,0.897
+accepted_values,customers,2026-09-07,3978,658,0.8581
+accepted_values,customers,2026-09-14,4434,757,0.8542
+accepted_values,customers,2026-09-21,4207,631,0.8696
+not_null,returns,2026-08-03,1824,150,0.924
+not_null,returns,2026-08-10,1869,115,0.942
+not_null,returns,2026-08-17,1995,110,0.9477
+not_null,returns,2026-08-24,2095,127,0.9428
+not_null,returns,2026-08-31,2117,37,0.9828
+not_null,returns,2026-09-07,2146,32,0.9853
+not_null,returns,2026-09-14,2065,74,0.9654
+not_null,returns,2026-09-21,2076,79,0.9633
+value_range,product_catalog,2026-08-03,3659,0,1.0
+value_range,product_catalog,2026-08-10,4472,23,0.9949
+value_range,product_catalog,2026-08-17,2971,2223,0.572
+value_range,product_catalog,2026-08-24,4693,0,1.0
+value_range,product_catalog,2026-08-31,4709,157,0.9677
+value_range,product_catalog,2026-09-07,4710,0,1.0
+value_range,product_catalog,2026-09-14,5042,13,0.9974
+value_range,product_catalog,2026-09-21,4294,151,0.966
+schema_match,orders,2026-08-03,1463,192,0.884
+schema_match,orders,2026-08-10,1401,212,0.8686
+schema_match,orders,2026-08-17,1483,321,0.8221
+schema_match,orders,2026-08-24,1342,225,0.8564
+schema_match,orders,2026-08-31,1201,216,0.8476
+schema_match,orders,2026-09-07,1568,256,0.8596
+schema_match,orders,2026-09-14,1439,233,0.8606
+schema_match,orders,2026-09-21,1378,308,0.8173`;
+
+const COLORS = ['--series-1','--series-2','--series-3','--series-4','--series-5','--series-6'];
+
+function parseCSV(text) {
+  const lines = text.trim().split("\n");
+  const rows = lines.slice(1).map(l => {
+    const [check_name, table_name, week_ending, pass_count, fail_count, pass_rate] = l.split(",");
+    return { check_name, table_name, week_ending, pass_count: +pass_count, fail_count: +fail_count, pass_rate: +pass_rate };
+  });
+  return rows;
+}
+const rows = parseCSV(CSV);
+const pairs = [...new Set(rows.map(r => r.check_name + "|" + r.table_name))];
+const weeks = [...new Set(rows.map(r => r.week_ending))].sort();
+
+function seriesFor(pair) {
+  return rows.filter(r => (r.check_name + "|" + r.table_name) === pair)
+             .sort((a,b) => a.week_ending.localeCompare(b.week_ending));
+}
+function labelFor(pair) {
+  const [c,t] = pair.split("|");
+  return `${c} · ${t}`;
+}
+function statusOf(rate) {
+  if (rate >= 0.9) return "good";
+  if (rate >= 0.75) return "warning";
+  return "critical";
+}
+
+// --- stat tiles ---
+const latestWeek = weeks[weeks.length - 1];
+const prevWeek = weeks[weeks.length - 2];
+const latestRows = rows.filter(r => r.week_ending === latestWeek);
+const prevRows = rows.filter(r => r.week_ending === prevWeek);
+const overallLatest = latestRows.reduce((s,r)=>s+r.pass_count,0) / latestRows.reduce((s,r)=>s+r.pass_count+r.fail_count,0);
+const overallPrev = prevRows.reduce((s,r)=>s+r.pass_count,0) / prevRows.reduce((s,r)=>s+r.pass_count+r.fail_count,0);
+const worst = [...latestRows].sort((a,b)=>a.pass_rate-b.pass_rate)[0];
+const delta = overallLatest - overallPrev;
+
+const statRow = document.getElementById("statRow");
+function tile(label, value, deltaText, deltaClass) {
+  const d = document.createElement("div");
+  d.className = "stat-tile";
+  d.innerHTML = `<div class="label">${label}</div><div class="value">${value}</div>` +
+    (deltaText ? `<div class="delta ${deltaClass||''}">${deltaText}</div>` : "");
+  return d;
+}
+statRow.appendChild(tile("Overall pass rate (latest week)", (overallLatest*100).toFixed(1)+"%",
+  (delta>=0?"+":"") + (delta*100).toFixed(1) + " pts vs prior week", delta>=0?"good":"bad"));
+statRow.appendChild(tile("Checks tracked", pairs.length));
+statRow.appendChild(tile("Weeks of history", weeks.length));
+statRow.appendChild(tile("Worst check this week", labelFor(worst.check_name+"|"+worst.table_name),
+  (worst.pass_rate*100).toFixed(1)+"% pass rate", "bad"));
+
+// --- legend ---
+const legend = document.getElementById("legend");
+let hidden = new Set();
+pairs.forEach((p,i) => {
+  const item = document.createElement("div");
+  item.className = "legend-item";
+  item.dataset.pair = p;
+  item.innerHTML = `<span class="swatch" style="background:var(${COLORS[i]})"></span><span class="name">${labelFor(p)}</span>`;
+  item.addEventListener("click", () => {
+    if (hidden.has(p)) hidden.delete(p); else hidden.add(p);
+    item.classList.toggle("dimmed");
+    drawChart();
+  });
+  legend.appendChild(item);
+});
+
+// --- chart ---
+const svg = document.getElementById("chart");
+const tooltip = document.getElementById("tooltip");
+const W = 920, H = 320, padL = 40, padR = 10, padT = 10, padB = 26;
+const plotW = W - padL - padR, plotH = H - padT - padB;
+
+function xFor(i) { return padL + (i / (weeks.length - 1)) * plotW; }
+function yFor(v) { return padT + (1 - v) * plotH; }
+
+function drawChart() {
+  svg.innerHTML = "";
+  const ns = "http://www.w3.org/2000/svg";
+  // gridlines (0, .25, .5, .75, 1.0)
+  [0, 0.25, 0.5, 0.75, 1.0].forEach(v => {
+    const y = yFor(v);
+    const line = document.createElementNS(ns, "line");
+    line.setAttribute("x1", padL); line.setAttribute("x2", W - padR);
+    line.setAttribute("y1", y); line.setAttribute("y2", y);
+    line.setAttribute("class", v === 0 ? "baseline" : "gridline");
+    svg.appendChild(line);
+    const label = document.createElementNS(ns, "text");
+    label.setAttribute("x", 4); label.setAttribute("y", y + 4);
+    label.setAttribute("class", "axis-label");
+    label.textContent = Math.round(v*100) + "%";
+    svg.appendChild(label);
+  });
+  // week labels (every other week to avoid crowding)
+  weeks.forEach((w, i) => {
+    if (i % 2 !== 0 && i !== weeks.length -1) return;
+    const label = document.createElementNS(ns, "text");
+    label.setAttribute("x", xFor(i)); label.setAttribute("y", H - 6);
+    label.setAttribute("class", "axis-label");
+    label.setAttribute("text-anchor", "middle");
+    label.textContent = w.slice(5);
+    svg.appendChild(label);
+  });
+  // series
+  pairs.forEach((p, i) => {
+    if (hidden.has(p)) return;
+    const data = seriesFor(p);
+    const pts = data.map((d, j) => `${xFor(j)},${yFor(d.pass_rate)}`).join(" ");
+    const poly = document.createElementNS(ns, "polyline");
+    poly.setAttribute("points", pts);
+    poly.setAttribute("class", "series-line");
+    poly.style.stroke = `var(${COLORS[i]})`;
+    svg.appendChild(poly);
+    data.forEach((d, j) => {
+      const dot = document.createElementNS(ns, "circle");
+      dot.setAttribute("cx", xFor(j)); dot.setAttribute("cy", yFor(d.pass_rate));
+      dot.setAttribute("class", "series-dot");
+      dot.style.fill = `var(${COLORS[i]})`;
+      svg.appendChild(dot);
+    });
+  });
+  // hover capture
+  const rect = document.createElementNS(ns, "rect");
+  rect.setAttribute("x", padL); rect.setAttribute("y", 0);
+  rect.setAttribute("width", plotW); rect.setAttribute("height", H);
+  rect.setAttribute("fill", "transparent");
+  const hoverLine = document.createElementNS(ns, "line");
+  hoverLine.setAttribute("y1", padT); hoverLine.setAttribute("y2", H - padB);
+  hoverLine.setAttribute("class", "hover-line");
+  svg.appendChild(hoverLine);
+  svg.appendChild(rect);
+
+  rect.addEventListener("mousemove", (e) => {
+    const box = svg.getBoundingClientRect();
+    const scaleX = box.width / W;
+    const mx = (e.clientX - box.left) / scaleX;
+    let idx = Math.round((mx - padL) / plotW * (weeks.length - 1));
+    idx = Math.max(0, Math.min(weeks.length - 1, idx));
+    const x = xFor(idx);
+    hoverLine.setAttribute("x1", x); hoverLine.setAttribute("x2", x);
+    hoverLine.style.opacity = 1;
+    const week = weeks[idx];
+    let html = `<div class="tt-week">${week}</div>`;
+    pairs.forEach((p, i) => {
+      if (hidden.has(p)) return;
+      const d = seriesFor(p)[idx];
+      if (!d) return;
+      html += `<div class="tt-row"><span><span class="sw" style="background:var(${COLORS[i]})"></span>${labelFor(p)}</span><span class="val">${(d.pass_rate*100).toFixed(1)}%</span></div>`;
+    });
+    tooltip.innerHTML = html;
+    tooltip.style.opacity = 1;
+    tooltip.style.left = Math.min(e.clientX - box.left + 12, box.width - 180) + "px";
+    tooltip.style.top = (e.clientY - box.top - 40) + "px";
+  });
+  rect.addEventListener("mouseleave", () => {
+    tooltip.style.opacity = 0;
+    hoverLine.style.opacity = 0;
+  });
+}
+drawChart();
+
+// --- latest week table ---
+const tbl = document.getElementById("latestTable");
+const sorted = [...latestRows].sort((a,b) => a.pass_rate - b.pass_rate);
+let thead = "<thead><tr><th>Check</th><th>Table</th><th class='num'>Pass</th><th class='num'>Fail</th><th class='num'>Pass rate</th><th>Status</th></tr></thead>";
+let tbody = "<tbody>" + sorted.map(r => {
+  const s = statusOf(r.pass_rate);
+  const labels = { good: "OK", warning: "Watch", critical: "Failing" };
+  return `<tr>
+    <td>${r.check_name}</td>
+    <td>${r.table_name}</td>
+    <td class="num">${r.pass_count.toLocaleString()}</td>
+    <td class="num">${r.fail_count.toLocaleString()}</td>
+    <td class="num">${(r.pass_rate*100).toFixed(1)}%</td>
+    <td><span class="status-pill ${s}"><span class="dot"></span>${labels[s]}</span></td>
+  </tr>`;
+}).join("") + "</tbody>";
+tbl.innerHTML = thead + tbody;
+</script>
+</body>
+</html>
