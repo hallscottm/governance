@@ -4,7 +4,7 @@ Status: Draft — pending review
 Ratified: No
 Last updated: 2026-09-22
 Provenance: see 00-qa.md in this directory
-Built on: 01-definitions.md (29 owned terms)
+Built on: 01-definitions.md (34 owned terms)
 
 Structure: strict single-parent tree, consistent with every domain's
 Taxonomies column. Only terms owned by this registry are classified here
@@ -53,6 +53,13 @@ Taxonomies column. Only terms owned by this registry are classified here
 │   ├── Security & Compliance (#ccdept-security-compliance)
 │   └── IT Training & Change Management (#ccdept-training-change-management)
 │
+├── Business Function Departments
+│   ├── Marketing (#ccdept-marketing)
+│   ├── Sales (#ccdept-sales)
+│   ├── Finance & Accounting (#ccdept-finance-accounting)
+│   ├── Human Resources (#ccdept-human-resources)
+│   └── Legal (#ccdept-legal)
+│
 └── Governance Bodies
     └── Governance Council (#ccgov-governance-council)
 
@@ -87,6 +94,25 @@ load-bearing part; the specific Department groupings are a reasonable
 generalized default (same posture as every other generalized/illustrative
 content in this framework, e.g., the Regulatory Mapping template in every
 domain's Risk Tiers column).
+
+## Business Function Departments — Data Owner Alignment (not a domain table)
+
+Added 2026-09-22 (see 00-qa.md Q9). Business Function Departments don't
+appear in the table above because they don't own a technical domain —
+they hold Data Owner (`data-owner`, 05-data-metadata/01-definitions.md)
+authority over Business Glossary Terms/Metrics instead, catalogued once
+in Data/Metadata's registry, not duplicated here:
+
+| Business Function Department | Typical Data Domain | Standards (for AI understanding) |
+|---|---|---|
+| Marketing | Marketing (campaigns, leads, attribution) | CAN-SPAM, GDPR/CCPA consent — mostly org convention otherwise |
+| Sales | Sales (pipeline, opportunities) | Mostly org convention; revenue recognition itself belongs to Finance (ASC 606/IFRS 15), not Sales |
+| Finance & Accounting | Finance (revenue, cost, margin, chart of accounts) | GAAP, IFRS, SOX, ASC 606/IFRS 15, XBRL |
+| Human Resources | HR/Employee (headcount, compensation, benefits) | EEOC, FLSA, ADA, FMLA, ISO 30414 |
+| Legal | Legal/Regulatory (contracts, legal holds, privilege) | EDRM, GDPR, CCPA |
+
+Same "illustrative, not prescriptive" posture as the table above — an
+adopting organization substitutes its own actual business functions.
 
 ---
 

@@ -24,32 +24,28 @@ git add -A
 
 # 5. Write the commit message to a temp file, then commit from it
 $commitMsg = @'
-Add Roles & Departments pillar; restructure axis to Domains; add Data Platform and Business Intelligence/Reporting domains
+Add Business Function Departments (Marketing, Sales, Finance & Accounting, HR, Legal) with Data Owner authority
 
-- Establish Roles and Departments as a third cross-cutting pillar (roles,
-  departments, org chart) alongside Governance and Security; retrofit all
-  4 completed domains' Access Rules to reference it instead of carrying
-  provisional role vocabulary.
-- Rename the axis concept "Layer" to "Domain" throughout; add
-  00-framework/ea-framework-alignment.md mapping the axis to TOGAF's BDAT
-  and the Zachman Framework.
-- Insert new Data Platform domain (Database/Table/Transaction/etc.
-  migrated out of System Architecture; new Data Lake/Lakehouse/Warehouse/
-  Vector DB/Streaming content); insert new Business Intelligence /
-  Reporting domain (Report Data Model, Calculated Field, Source-to-Target
-  Mapping extending Data/Metadata's lineage concept). Domains renumbered
-  1-9 accordingly, all cross-references and directory paths updated.
-- Add Data Architect, Data Engineer, and Analytics Engineer roles
-  co-owning Data Platform; add Business Intelligence and Analytics
-  department (Business Analyst/Report Builder, BI Analyst/Developer)
-  owning the new BI/Reporting domain.
-- Add data-metric (Data/Metadata) and dp-semantic-layer (Data Platform)
-  terms bridging official definitions into the new BI domain.
-
-DevOps/Workflow-Process ownership remains unresolved (flagged
-"under revision" throughout); Workflow/Process domain itself and most of
-Data Platform/BI-Reporting's later columns (Policies, Access Rules,
-Procedures, Risk Tiers, Tooling) are not yet drafted.
+- Add five Business Function Departments to the Roles & Departments
+  registry, distinct from the existing IT/technical departments: they
+  hold Data Owner authority (already-defined role) over Data/Metadata's
+  Business Glossary Terms and Metrics for their function, rather than
+  owning a technical domain outright.
+- Each carries a Standards note for AI understanding: GAAP/IFRS/SOX/
+  ASC 606/XBRL (Finance & Accounting), EEOC/FLSA/ADA/FMLA/ISO 30414 (HR),
+  EDRM/GDPR/CCPA (Legal), CAN-SPAM/GDPR-CCPA consent (Marketing).
+- Legal becomes the retroactive Data Owner for Data/Metadata's
+  previously-unowned Legal Hold term and Data Privacy & Regulatory
+  subdomain.
+- Resolves how a domain-specific report (Marketing/Sales/Finance report)
+  traces its Calculated Fields back to an owned Metric: the Metric's
+  Data Owner is now the business function, not Data Governance &
+  Engineering, which remains the Data Steward (enforces quality, doesn't
+  set the definition).
+- Deliberately did not draw formal ontology edges from the generic
+  Data Owner role to each new department (would misrepresent a shared
+  role as exclusive); captured as prose + a dedicated alignment table
+  instead. Logged as Q9 in the registry's Q&A log.
 '@
 
 $commitMsg | Out-File -FilePath ".git\COMMIT_MSG.tmp" -Encoding utf8

@@ -40,7 +40,12 @@ accountability. Source: DAMA-DMBOK.
 ### Data Owner {#data-owner}
 The accountable individual or role for a Data Domain's definition,
 quality, and access rules — makes governance decisions, as distinct from
-Data Steward, who executes them day to day. Source: DAMA-DMBOK.
+Data Steward, who executes them day to day. Typically held by a Business
+Function Department (Marketing, Sales, Finance & Accounting, Human
+Resources, Legal — cross-cutting/roles-and-departments/01-definitions.md,
+added 2026-09-22) for its own Data Domain, not by Data Governance &
+Engineering itself. Source: DAMA-DMBOK.
+Referenced by: Roles & Departments (Business Function Departments)
 
 ### Data Steward {#data-steward}
 The individual or role responsible for the day-to-day application of
@@ -364,7 +369,13 @@ referenced here for the disposal mechanism).
 ### Legal Hold {#data-legal-hold}
 A directive suspending the normal Data Retention Period and Data
 Disposal process for specific data subject to litigation, audit, or
-investigation. Source: Common legal/records-management practice.
+investigation. Data Owner authority for this term and this subdomain's
+Data Privacy & Regulatory terms (Consent, Right to Erasure, Cross-Border
+Data Transfer) sits with Legal (cross-cutting/roles-and-departments/
+01-definitions.md#ccdept-legal, added 2026-09-22), which had no assigned
+business owner before then. Source: Common legal/records-management
+practice; EDRM.
+Referenced by: Roles & Departments (Legal)
 
 ---
 

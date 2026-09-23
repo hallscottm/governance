@@ -63,6 +63,16 @@ department below.
     ├── Owns: Domain 9 (Interface/Human) — not yet drafted
     └── Positional Roles: none defined yet
 
+**Business Function Departments** (added 2026-09-22, see 00-qa.md Q9) —
+hold Data Owner authority over Data/Metadata's Business Glossary Terms/
+Metrics for their function, rather than owning a technical domain:
+
+- **Marketing** (#ccdept-marketing) — Marketing Data Domain (campaigns, leads, attribution)
+- **Sales** (#ccdept-sales) — Sales Data Domain (pipeline, opportunities)
+- **Finance & Accounting** (#ccdept-finance-accounting) — Finance Data Domain (revenue, cost, margin); GAAP/IFRS/SOX/ASC 606
+- **Human Resources** (#ccdept-human-resources) — HR/Employee Data Domain; EEOC/FLSA/ADA/FMLA/ISO 30414
+- **Legal** (#ccdept-legal) — Legal/Regulatory Data Domain; now the Data Owner for Data/Metadata's Legal Hold (#data-legal-hold) and Data Privacy & Regulatory terms; EDRM/GDPR/CCPA
+
 **Generic Functional Roles** (not department-fixed — context-dependent,
 per transaction): Requester (#ccrole-requester), Approver
 (#ccrole-approver).

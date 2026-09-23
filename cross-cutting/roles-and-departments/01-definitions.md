@@ -298,6 +298,77 @@ organizational practice.
 
 ---
 
+## Business Function Departments
+
+Added 2026-09-22 (see 00-qa.md Q9) — distinct in kind from the
+Departments above: these do not own a technical domain (no Infrastructure/
+Data Platform/BI-Reporting-style artifacts of their own). What they hold
+is **Data Owner authority** (`data-owner`, 05-data-metadata/
+01-definitions.md) over the Business Glossary Terms and Metrics that
+originate from their function — accountable for what a term *means*,
+distinct from Data Governance & Engineering's Data Steward role, which
+enforces quality/consistency of that definition once set but doesn't
+have authority to redefine it. A Marketing/Sales/Finance/HR/Legal-owned
+Metric is still catalogued once, in Data/Metadata's registry — this
+section does not create a second glossary.
+
+### Marketing {#ccdept-marketing}
+Business Function Department. Typical Data Owner for the Marketing Data
+Domain (campaigns, leads, attribution, channel performance) — e.g., the
+authority on what qualifies as a "Marketing Qualified Lead." Standards
+for AI understanding: CAN-SPAM Act (commercial email), GDPR/CCPA consent
+provisions (already cited in Data/Metadata's Data Privacy & Regulatory
+subdomain) — no single formal body governs core marketing vocabulary the
+way GAAP governs Finance; most Marketing Metrics are org-specific
+convention, source-cited as such when drafted. Source: Common
+organizational practice.
+
+### Sales {#ccdept-sales}
+Business Function Department. Typical Data Owner for the Sales Data
+Domain (pipeline, opportunities, quota, win/loss) — e.g., the authority
+on what qualifies as a "Qualified Opportunity" or pipeline stage
+definitions. Note: when a Sale converts to recognized revenue is Finance
+& Accounting's authority (ASC 606/IFRS 15), not Sales' — a common
+boundary dispute worth flagging explicitly rather than leaving implicit.
+No single formal standards body; pipeline-stage vocabulary is typically
+org-specific convention. Source: Common organizational practice.
+
+### Finance & Accounting {#ccdept-finance-accounting}
+Business Function Department. Typical Data Owner for the Finance Data
+Domain (revenue, cost, margin, chart of accounts) — the authority with
+the most formal external standards of any Business Function Department
+here. Standards for AI understanding: GAAP (US) / IFRS (international)
+for accounting principles, SOX for financial controls and audit trail
+requirements, ASC 606 / IFRS 15 for revenue recognition specifically
+(the rule that decides when a Sale becomes recognized Revenue), XBRL for
+structured financial reporting. A Metric touching revenue/margin/cost
+should trace its Data Owner here even if the underlying transaction data
+originates in Sales or Data Platform. Source: GAAP; IFRS; SOX; ASC 606.
+
+### Human Resources {#ccdept-human-resources}
+Business Function Department. Typical Data Owner for the HR/Employee
+Data Domain (headcount, compensation, benefits, performance) — carries
+real regulatory weight, not just definitional authority. Standards for
+AI understanding: EEOC (equal employment opportunity), FLSA (wage/hour
+classification), ADA, FMLA, ISO 30414 (human capital reporting). Employee
+data is also typically the framework's highest Data Classification tier
+(`data-classification-restricted`/PII, per Data/Metadata) by default.
+Source: EEOC; FLSA; ISO 30414.
+
+### Legal {#ccdept-legal}
+Business Function Department. Typical Data Owner for legal/regulatory
+Data Domains (contracts, legal holds, privilege, regulatory filings) —
+and the natural home for authority over Data/Metadata's existing Legal
+Hold term (`data-legal-hold`) and Data Privacy & Regulatory subdomain
+(Consent, Right to Erasure, Cross-Border Data Transfer), which were
+drafted without an assigned business owner until now. Standards for AI
+understanding: EDRM (Electronic Discovery Reference Model — legal
+hold/eDiscovery), GDPR/CCPA (already cited in Data/Metadata), attorney-
+client privilege designations (no formal external body — org/counsel
+convention). Source: EDRM; GDPR; CCPA.
+
+---
+
 ## Governance Bodies
 
 ### Governance Council {#ccgov-governance-council}

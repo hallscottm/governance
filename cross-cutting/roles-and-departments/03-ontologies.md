@@ -65,6 +65,20 @@ Departments, and Governance Bodies to each other.
 - `ccrole-bi-analyst-developer` --[constrains]--> `ccrole-business-analyst-report-builder`
   Rationale: added 2026-09-22 (see 00-qa.md Q8) — BI Analyst/Developer is typically who reviews and promotes a Business Analyst's self-service model to Certified status; not a hard separation-of-duties rule, but the same "design/review precedes build" shape as Data Architect constraining Data Engineer above.
 
+## Business Function Department → Data Owner Authority
+
+No formal ontology edges drawn here, by design — added 2026-09-22 (see
+00-qa.md Q9). Each Business Function Department's Data Owner authority is
+scoped to its own Data Domain (Marketing's authority over the Marketing
+Data Domain, Finance's over the Finance Data Domain, etc.), and
+`data-owner` is a single generic role instantiated per-domain, not one
+department's exclusive property — forcing a `requires` edge from
+`data-owner` to any one department would misrepresent it as exclusive.
+Consistent with the "not every term needs a relationship" scope note
+(00-framework/relation-types.md) — the department-to-domain mapping is
+captured as prose in 01-definitions.md and the alignment table in
+02-taxonomies.md instead.
+
 ## Separation of Duties
 
 - `ccrole-approver` --[constrains]--> `ccrole-requester`
