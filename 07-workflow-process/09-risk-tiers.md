@@ -18,11 +18,23 @@ factor (cross-cutting maximum rule, per cross-cutting/risk-tiers.md).
 
 | Factor | Low | Moderate | High |
 |---|---|---|---|
-| Environment (referenced from Infrastructure) | Dev | Staging/QA | Production |
+| Environment (referenced from Infrastructure) | Dev | Staging/QA, Production | — (Environment alone never reaches High; see note below) |
 | Service Tier / Criticality (referenced from System Architecture, for the Repository/Pipeline's owning Service) | Non-critical, internal tooling | Business-important | Business-critical |
 | Change Request Type (04-metadata-standards.md) | Standard | Normal | Emergency |
 | Incident Severity (04-metadata-standards.md), where applicable | Sev4 | Sev3 | Sev1/Sev2 |
 | Break-glass/override used (WFPROC-1 override, or CCPROC-4) | Not used | N/A — this factor has no Moderate value | Used — an override is automatically High risk regardless of the underlying change's own tier |
+
+**Note on Environment factor (corrected 2026-09-23):** Production alone
+caps this factor at Moderate, matching cross-cutting/risk-tiers.md's own
+stated interpretation ("Most Production resources... Moderate"). An
+earlier version of this table put Production directly in the High
+column, which combined with the cross-domain "highest tier wins" rule
+meant every Production resource in every domain was automatically High
+regardless of any other factor — contradicting cross-cutting's own
+description of itself. High still requires Production *plus* another
+High-triggering factor from this table (data sensitivity, public
+exposure, business-criticality, etc., depending on domain) — Environment
+alone is never sufficient.
 
 **Note on Change Request Type factor:** an Emergency change is
 automatically High risk not because the underlying change is necessarily
@@ -47,13 +59,15 @@ in 06-policies.md/07-access-rules.md — summarized here for visibility):**
 
 | Tier | Workflow/Process-Specific Policy Implication |
 |---|---|
-| **Low** | WFAR-1 override: Owning Team Lead alone. WFPOL-4: Post-Incident Review optional (Sev3/Sev4). |
+| **Low** | WFAR-1 override: Infrastructure Admin alone. WFPOL-4: Post-Incident Review optional (Sev3/Sev4). |
 | **Moderate** | WFAR-2 IaC approval: single applicable role (Infrastructure Admin or Data Engineer). |
-| **High** | WFAR-1 override: Owning Team Lead + Security/Compliance. WFAR-2: applicable role + Security/Compliance. WFPOL-4: Post-Incident Review required (Sev1/Sev2). WFPOL-1, WFPOL-2, WFPOL-3 hard blocks apply uniformly at every tier (not scaled), same treatment established across every other domain's uniform hard blocks. |
+| **High** | WFAR-1 override: Infrastructure Admin + Security/Compliance. WFAR-2: applicable role + Security/Compliance. WFPOL-4: Post-Incident Review required (Sev1/Sev2). WFPOL-1, WFPOL-2, WFPOL-3 hard blocks apply uniformly at every tier (not scaled), same treatment established across every other domain's uniform hard blocks. |
 
 ---
 
 **Open items:**
+- (Resolved 2026-09-23) Environment factor corrected: Production alone
+  now caps at Moderate, not High — see the note under Determining Factors.
 - Change Request Type and Break-glass/override are both "process, not
   resource" risk factors — a genuine first for this framework's Risk
   Tiers columns, flagged explicitly as a category worth watching for as

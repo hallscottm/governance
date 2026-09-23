@@ -10,25 +10,25 @@ This file is derived from every domain's 06-policies.md, 07-access-rules.md, and
 
 ## Cross-Cutting Baseline (applies to every domain unless noted)
 
-**Policies** ([cross-cutting/policies.md](cross-cutting/policies.md)):
+**Policies** ([cross-cutting/policies.md](../cross-cutting/policies.md)):
 - CCP-1 — Metadata Completeness (Production)
 - CCP-2 — Cost Attribution Required
 - CCP-3 — Production Provisioning Approval
 - CCP-4 — Agent Accountability Boundary
 
-**Access Rules** ([cross-cutting/access-rules.md](cross-cutting/access-rules.md)):
+**Access Rules** ([cross-cutting/access-rules.md](../cross-cutting/access-rules.md)):
 - CCAR-1 — AI Agent/Harness Provisioning Authority
 - CCAR-2 — Production Provisioning Approval Authority
 - CCAR-3 — Hard-Block Override (Break-Glass), Risk-Tier-Scaled
 - CCAR-4 — Approval Identity Assurance
 
-**Procedures** ([cross-cutting/procedures.md](cross-cutting/procedures.md)):
+**Procedures** ([cross-cutting/procedures.md](../cross-cutting/procedures.md)):
 - CCPROC-1 — Production Provisioning Request & Approval
 - CCPROC-2 — Metadata Completeness Validation
 - CCPROC-3 — Cost Attribution Validation
 - CCPROC-4 — Break-Glass Override
 
-**Risk Scale:** [cross-cutting/risk-tiers.md](cross-cutting/risk-tiers.md) (FIPS 199-aligned Low/Moderate/High — every domain's Risk Tiers column extends this scale rather than defining its own)
+**Risk Scale:** [cross-cutting/risk-tiers.md](../cross-cutting/risk-tiers.md) (FIPS 199-aligned Low/Moderate/High — every domain's Risk Tiers column extends this scale rather than defining its own)
 
 ---
 
@@ -36,7 +36,7 @@ This file is derived from every domain's 06-policies.md, 07-access-rules.md, and
 
 ### Infrastructure
 
-**Policies** (6) — [01-infrastructure/06-policies.md](01-infrastructure/06-policies.md):
+**Policies** (6) — [01-infrastructure/06-policies.md](../01-infrastructure/06-policies.md):
 - POL-1 — Metadata Completeness (Production)
 - POL-2 — Minimum Availability Tier (Production, scaled by Risk Tier)
 - POL-3 — Disaster Recovery Tier (Production, scaled by Risk Tier)
@@ -44,122 +44,122 @@ This file is derived from every domain's 06-policies.md, 07-access-rules.md, and
 - POL-5 — Provisioning Approval
 - POL-6 — Cost Center Tag Enforcement
 
-**Access Rules** (4) — [01-infrastructure/07-access-rules.md](01-infrastructure/07-access-rules.md):
+**Access Rules** (4) — [01-infrastructure/07-access-rules.md](../01-infrastructure/07-access-rules.md):
 - AR-1 — AI Agent Provisioning Authority
 - AR-2 — Hard-Block Override (Break-Glass)
 - AR-3 — Production Provisioning Approval
 - AR-4 — Decommissioning Sanitization Sign-off
 
-**Risk Tier Determining Factors** — [01-infrastructure/09-risk-tiers.md](01-infrastructure/09-risk-tiers.md):
+**Risk Tier Determining Factors** — [01-infrastructure/09-risk-tiers.md](../01-infrastructure/09-risk-tiers.md):
 Environment (`infra-environment-lifecycle`), Availability Tier (`infra-availability-tier-*`), Data sensitivity (`data-sensitivity-level`), Workload type
 
 ### Networking
 
-**Policies** (3) — [02-networking/06-policies.md](02-networking/06-policies.md):
+**Policies** (3) — [02-networking/06-policies.md](../02-networking/06-policies.md):
 - NPOL-1 — Default-Deny Ingress (Production)
 - NPOL-2 — Encryption in Transit Required (Production)
 - NPOL-3 — Public Exposure Requires Additional Approval
 
-**Access Rules** (1) — [02-networking/07-access-rules.md](02-networking/07-access-rules.md):
+**Access Rules** (1) — [02-networking/07-access-rules.md](../02-networking/07-access-rules.md):
 - NAR-1 — Public Exposure Approval Authority
 
-**Risk Tier Determining Factors** — [02-networking/09-risk-tiers.md](02-networking/09-risk-tiers.md):
+**Risk Tier Determining Factors** — [02-networking/09-risk-tiers.md](../02-networking/09-risk-tiers.md):
 Environment (referenced from Infrastructure), Network exposure, Trust boundary classification, Segmentation posture, Data sensitivity of traffic carried (referenced from Data/Metadata, `data-sensitivity-level`)
 
 ### System Architecture
 
-**Policies** (5) — [03-system-architecture/06-policies.md](03-system-architecture/06-policies.md):
+**Policies** (5) — [03-system-architecture/06-policies.md](../03-system-architecture/06-policies.md):
 - SAPOL-1 — Backward Compatibility Required (Production APIs)
 - SAPOL-2 — Database Schema Migration Review (moved 2026-09-22)
 - SAPOL-3 — Managed Secret Storage Required
 - SAPOL-4 — Automated Tests Must Pass Before Production Deployment
 - SAPOL-5 — Public-Facing Service Security Baseline (Scaled by Risk Tier)
 
-**Access Rules** (2) — [03-system-architecture/07-access-rules.md](03-system-architecture/07-access-rules.md):
+**Access Rules** (2) — [03-system-architecture/07-access-rules.md](../03-system-architecture/07-access-rules.md):
 - SAAR-1 — Schema Migration Review Authority (moved 2026-09-22)
 - SAAR-2 — Public-Facing Security Baseline Verification Authority
 
-**Risk Tier Determining Factors** — [03-system-architecture/09-risk-tiers.md](03-system-architecture/09-risk-tiers.md):
+**Risk Tier Determining Factors** — [03-system-architecture/09-risk-tiers.md](../03-system-architecture/09-risk-tiers.md):
 Environment (referenced from Infrastructure), Service Tier / Criticality (04-metadata-standards.md), Public exposure, Data handled (referenced from Data/Metadata, `data-sensitivity-level`)
 
 ### Data Platform
 
-**Policies** (5) — [04-data-platform/06-policies.md](04-data-platform/06-policies.md):
+**Policies** (5) — [04-data-platform/06-policies.md](../04-data-platform/06-policies.md):
 - DPPOL-1 — Database Schema Migration Review (Scaled by Risk Tier) (moved from System Architecture's SAPOL-2, 2026-09-22)
 - DPPOL-2 — Streaming Retention Window Required
 - DPPOL-3 — Embedding Model Reference Required (Vector Database)
 - DPPOL-4 — Lakehouse Table Format Declared, Changes Require Migration Plan
 - DPPOL-5 — Semantic Layer as Sole Source for Certified Metrics
 
-**Access Rules** (3) — [04-data-platform/07-access-rules.md](04-data-platform/07-access-rules.md):
+**Access Rules** (3) — [04-data-platform/07-access-rules.md](../04-data-platform/07-access-rules.md):
 - DPPAR-1 — Schema Migration Review Authority (moved from System Architecture's SAAR-1, 2026-09-22, Scaled by Risk Tier)
 - DPPAR-2 — Lakehouse Table Format Change Authority
 - DPPAR-3 — Semantic Layer Change Authority
 
-**Risk Tier Determining Factors** — [04-data-platform/09-risk-tiers.md](04-data-platform/09-risk-tiers.md):
+**Risk Tier Determining Factors** — [04-data-platform/09-risk-tiers.md](../04-data-platform/09-risk-tiers.md):
 Environment (referenced from Infrastructure), Sensitivity Level / Contains PII (referenced from Data/Metadata, `data-sensitivity-level`, `data-pii`), Service Tier / Criticality (referenced from System Architecture — the criticality of the Service(s) this entity backs), Public exposure (Vector Database or Streaming Platform reachable via a public Endpoint, e.g. a RAG API)
 
 ### Data/Metadata
 
-**Policies** (4) — [05-data-metadata/06-policies.md](05-data-metadata/06-policies.md):
+**Policies** (4) — [05-data-metadata/06-policies.md](../05-data-metadata/06-policies.md):
 - DPOL-1 — PII/Restricted Data Protection Requirements
 - DPOL-2 — Data Retention Period Required; Disposal Enforced at Expiry
 - DPOL-3 — Data Owner Approval for New Access to Confidential/Restricted Data
 - DPOL-4 — Right to Erasure Fulfillment SLA (Where Personal Data Is In Scope)
 
-**Access Rules** (1) — [05-data-metadata/07-access-rules.md](05-data-metadata/07-access-rules.md):
+**Access Rules** (1) — [05-data-metadata/07-access-rules.md](../05-data-metadata/07-access-rules.md):
 - DAR-1 — Access Approval Separation of Duties
 
-**Risk Tier Determining Factors** — [05-data-metadata/09-risk-tiers.md](05-data-metadata/09-risk-tiers.md):
+**Risk Tier Determining Factors** — [05-data-metadata/09-risk-tiers.md](../05-data-metadata/09-risk-tiers.md):
 Environment (referenced from Infrastructure), Sensitivity Level (`data-sensitivity-level`), Contains PII (`data-pii`), Data volume / scale (qualitative)
 
 ### Business Intelligence / Reporting
 
-**Policies** (4) — [06-bi-reporting/06-policies.md](06-bi-reporting/06-policies.md):
+**Policies** (4) — [06-bi-reporting/06-policies.md](../06-bi-reporting/06-policies.md):
 - BIPOL-1 — Certified Status Required for Broad Distribution
 - BIPOL-2 — Complete Source-to-Target Mapping Required for Certification
 - BIPOL-3 — Row-Level Security Required (Scaled by Sensitivity)
 - BIPOL-4 — Data Extract Refresh Schedule Required
 
-**Access Rules** (2) — [06-bi-reporting/07-access-rules.md](06-bi-reporting/07-access-rules.md):
+**Access Rules** (2) — [06-bi-reporting/07-access-rules.md](../06-bi-reporting/07-access-rules.md):
 - BIAR-1 — Certification Authority
 - BIAR-2 — Row-Level Security Configuration Authority (Scaled by Sensitivity)
 
-**Risk Tier Determining Factors** — [06-bi-reporting/09-risk-tiers.md](06-bi-reporting/09-risk-tiers.md):
+**Risk Tier Determining Factors** — [06-bi-reporting/09-risk-tiers.md](../06-bi-reporting/09-risk-tiers.md):
 Environment (referenced from Infrastructure), Sensitivity Level / Contains PII (referenced from Data/Metadata), Distribution Scope (04-metadata-standards.md), Certification Status (04-metadata-standards.md)
 
 ### Workflow/Process
 
-**Policies** (5) — [07-workflow-process/06-policies.md](07-workflow-process/06-policies.md):
+**Policies** (5) — [07-workflow-process/06-policies.md](../07-workflow-process/06-policies.md):
 - WFPOL-1 — Branch Protection Required on Default Branch
 - WFPOL-2 — Deployment Gate Required Before Production Promotion
 - WFPOL-3 — IaC Apply Requires a Reviewed Plan
 - WFPOL-4 — Post-Incident Review Required (Scaled by Severity)
 - WFPOL-5 — Emergency Change Requires Post-Hoc Review
 
-**Access Rules** (3) — [07-workflow-process/07-access-rules.md](07-workflow-process/07-access-rules.md):
+**Access Rules** (3) — [07-workflow-process/07-access-rules.md](../07-workflow-process/07-access-rules.md):
 - WFAR-1 — Branch Protection Override Authority
 - WFAR-2 — IaC Apply Approval Authority (Scaled by Risk Tier and Target Domain)
 - WFAR-3 — Emergency Change Post-Hoc Approval Authority
 
-**Risk Tier Determining Factors** — [07-workflow-process/09-risk-tiers.md](07-workflow-process/09-risk-tiers.md):
+**Risk Tier Determining Factors** — [07-workflow-process/09-risk-tiers.md](../07-workflow-process/09-risk-tiers.md):
 Environment (referenced from Infrastructure), Service Tier / Criticality (referenced from System Architecture, for the Repository/Pipeline's owning Service), Change Request Type (04-metadata-standards.md), Incident Severity (04-metadata-standards.md), where applicable, Break-glass/override used (WFPROC-1 override, or CCPROC-4)
 
 ### Harness
 
-**Policies** (5) — [08-harness/06-policies.md](08-harness/06-policies.md):
+**Policies** (5) — [08-harness/06-policies.md](../08-harness/06-policies.md):
 - HPOL-1 — Production Tool Permission Requires Prior Sandbox Testing
 - HPOL-2 — Model Version Pin Change Requires a Passing Eval Suite Run
 - HPOL-3 — Human-in-the-Loop Gate Required for High Risk Tier Actions
 - HPOL-4 — Guardrail Violation Triggers Automatic Rate Limit Escalation
 - HPOL-5 — Guardrail Override Requires Post-Hoc Review Within 24 Hours
 
-**Access Rules** (3) — [08-harness/07-access-rules.md](08-harness/07-access-rules.md):
+**Access Rules** (3) — [08-harness/07-access-rules.md](../08-harness/07-access-rules.md):
 - HAR-1 — Production Tool Permission Grant Authority
 - HAR-2 — Human-in-the-Loop Gate Resolution Authority
 - HAR-3 — Guardrail Override Authority (Break-Glass)
 
-**Risk Tier Determining Factors** — [08-harness/09-risk-tiers.md](08-harness/09-risk-tiers.md):
+**Risk Tier Determining Factors** — [08-harness/09-risk-tiers.md](../08-harness/09-risk-tiers.md):
 Environment (referenced from Infrastructure), Agent Type (04-metadata-standards.md), Tool Permission Scope breadth, Sandbox Tested Flag, for a Production-scoped grant (04-metadata-standards.md), Override/Break-glass used (HPROC-4's Rate Limit tightening, or HPROC-5's Guardrail override)
 
 ---

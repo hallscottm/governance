@@ -10,5 +10,14 @@ columns:
   pilots/dq-metrics-dashboard: run-1-complete-findings-open
   01-running-an-engagement: draft
   agents/factory-agent: draft
-  pilots/skill-pilot-1: approved-and-registered
+  factory-runs/csv-to-markdown-summary: approved-and-registered
   skills/csv-to-markdown-summary-v1: approved
+  02-github-access: draft
+  github-auth/mint-token: draft
+  github-auth/scope-check: draft
+  03-new-deployment-bootstrap: draft
+  factory-runs/dq-metrics-dummy-data-generator: approved-and-registered
+  skills/dq-metrics-dummy-data-generator-v1: approved
+  skills/csv-to-markdown-summary-v1-SKILL.md-retrofit: applied
+  04-agent-isolation-and-harnessing: draft
+  05-conventions: draft

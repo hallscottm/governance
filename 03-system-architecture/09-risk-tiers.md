@@ -18,10 +18,22 @@ factor (cross-cutting maximum rule, per cross-cutting/risk-tiers.md).
 
 | Factor | Low | Moderate | High |
 |---|---|---|---|
-| Environment (referenced from Infrastructure) | Dev | Staging/QA | Production |
+| Environment (referenced from Infrastructure) | Dev | Staging/QA, Production | — (Environment alone never reaches High; see note below) |
 | Service Tier / Criticality (04-metadata-standards.md) | Non-critical, internal tooling | Business-important, moderate user impact if down | Business-critical, severe impact if down |
 | Public exposure | Internal-only (no public Endpoint) | N/A — this factor has no Moderate value | Publicly internet-facing (triggers SAPOL-5, and Networking's NPOL-3) |
 | Data handled (referenced from Data/Metadata, `data-sensitivity-level`) | Public or Internal | Confidential | Restricted, or Contains PII = true |
+
+**Note on Environment factor (corrected 2026-09-23):** Production alone
+caps this factor at Moderate, matching cross-cutting/risk-tiers.md's own
+stated interpretation ("Most Production resources... Moderate"). An
+earlier version of this table put Production directly in the High
+column, which combined with the cross-domain "highest tier wins" rule
+meant every Production resource in every domain was automatically High
+regardless of any other factor — contradicting cross-cutting's own
+description of itself. High still requires Production *plus* another
+High-triggering factor from this table (data sensitivity, public
+exposure, business-criticality, etc., depending on domain) — Environment
+alone is never sufficient.
 
 **Note on Public exposure factor:** same treatment as Networking's
 identical factor — public internet-facing exposure is automatically High
@@ -51,6 +63,8 @@ in 06-policies.md/07-access-rules.md — summarized here for visibility):**
 ---
 
 **Open items:**
+- (Resolved 2026-09-23) Environment factor corrected: Production alone
+  now caps at Moderate, not High — see the note under Determining Factors.
 - (Resolved 2026-09-22) Data handled/sensitivity factor populated,
   sourced from Data/Metadata's Sensitivity Level field — resolved in one
   pass across all three prior domains (Infrastructure, Networking, System

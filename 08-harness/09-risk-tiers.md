@@ -18,11 +18,23 @@ factor (cross-cutting maximum rule, per cross-cutting/risk-tiers.md).
 
 | Factor | Low | Moderate | High |
 |---|---|---|---|
-| Environment (referenced from Infrastructure) | Dev | Staging/QA | Production |
+| Environment (referenced from Infrastructure) | Dev | Staging/QA, Production | — (Environment alone never reaches High; see note below) |
 | Agent Type (04-metadata-standards.md) | Assistant | Autonomous | Multi-Agent |
 | Tool Permission Scope breadth | Read-only | Read-write, scoped to a defined resource set | Destructive operations or external communications (e.g. sending messages, spending funds, deleting data) permitted |
 | Sandbox Tested Flag, for a Production-scoped grant (04-metadata-standards.md) | N/A — Sandbox testing has no Low/Moderate distinction | N/A | Not set — an untested Production-scoped grant is automatically High risk, per HPOL-1's hard block being the thing this factor would signal is about to be violated |
 | Override/Break-glass used (HPROC-4's Rate Limit tightening, or HPROC-5's Guardrail override) | Not used | N/A — this factor has no Moderate value | Used — an override is automatically High risk regardless of what was overridden, per HPOL-5 |
+
+**Note on Environment factor (corrected 2026-09-23):** Production alone
+caps this factor at Moderate, matching cross-cutting/risk-tiers.md's own
+stated interpretation ("Most Production resources... Moderate"). An
+earlier version of this table put Production directly in the High
+column, which combined with the cross-domain "highest tier wins" rule
+meant every Production resource in every domain was automatically High
+regardless of any other factor — contradicting cross-cutting's own
+description of itself. High still requires Production *plus* another
+High-triggering factor from this table (data sensitivity, public
+exposure, business-criticality, etc., depending on domain) — Environment
+alone is never sufficient.
 
 **Note on Agent Type factor:** unlike most Determining Factors across
 this framework, which score a static resource property, Agent Type
@@ -50,11 +62,13 @@ in 06-policies.md/07-access-rules.md — summarized here for visibility):**
 |---|---|
 | **Low** | Assistant-type Agents are exempt from HPOL-3's Human-in-the-Loop Gate requirement entirely (a human already initiated the request). |
 | **Moderate** | HAR-1 Production Tool Permission grant approval: Owning Team Lead alone. |
-| **High** | HAR-1: Owning Team Lead + Security/Compliance. HPOL-3's Human-in-the-Loop Gate applies to Autonomous/Multi-Agent Types. HAR-3's Guardrail override always requires both roles (no Low/Moderate path exists for this specific override, since HPOL-5 fixes it at High unconditionally). HPOL-1, HPOL-2 hard blocks apply uniformly at every tier (not scaled), same treatment established across every other domain's uniform hard blocks. |
+| **High** | HAR-1: Owning Team Lead + Security/Compliance. HPOL-3's Human-in-the-Loop Gate applies to Autonomous/Multi-Agent Types. HAR-3's Guardrail override always requires Infrastructure Admin + Security/Compliance (no Low/Moderate path exists for this specific override, since HPOL-5 fixes it at High unconditionally). HPOL-1, HPOL-2 hard blocks apply uniformly at every tier (not scaled), same treatment established across every other domain's uniform hard blocks. |
 
 ---
 
 **Open items:**
+- (Resolved 2026-09-23) Environment factor corrected: Production alone
+  now caps at Moderate, not High — see the note under Determining Factors.
 - Agent Type and Tool Permission Scope breadth are both genuinely new
   factor shapes for this framework — behavioral-autonomy and
   action-consequence-breadth, respectively — distinct from both the

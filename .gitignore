@@ -2,3 +2,21 @@
 # quoting issues when committing — not framework content.
 commit-message.txt
 commit-session.ps1
+
+# Credentials - never belong in this repo, regardless of where they're
+# generated or briefly staged. Defense-in-depth: the actual private key
+# is stored outside this repo entirely (implementation/02-github-access.md);
+# this is a backstop in case a copy ever lands here by mistake.
+*.pem
+*.p12
+*.pfx
+.env
+.env.*
+**/secrets/**
+
+# Local Python virtual environments - never committed, recreate with
+# `python3 -m venv .venv` per implementation/02-github-access.md
+.venv/
+venv/
+__pycache__/
+*.pyc

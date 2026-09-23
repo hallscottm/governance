@@ -31,6 +31,20 @@ Determining Factor in the owning domain's Risk Tiers column (risk tier is
 not averaged — one high-risk factor is enough to elevate the whole
 resource). This averaging rule is itself cross-cutting, not domain-specific.
 
+**Clarifying note (added 2026-09-23):** this maximum-of-factors rule does
+not mean Environment=Production alone forces High. Each domain's own
+Determining Factors table caps Environment at Moderate; High requires
+Production combined with a separate High-triggering factor (data
+sensitivity, public exposure, business-criticality, etc., depending on
+domain). This is what makes "Most Production resources... Moderate"
+(General Interpretation, above) actually true rather than aspirational.
+An earlier version of every domain's table put Production directly in
+the High column, which under this same maximum-of-factors rule made
+every Production resource automatically High and contradicted this
+file's own description of itself — corrected across all 8 domains'
+09-risk-tiers.md files 2026-09-23; see each domain's own Environment
+factor note for the specific fix.
+
 ## Consequences by Tier (cross-cutting baseline)
 
 | Tier | Baseline Implication |

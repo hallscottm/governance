@@ -1,4 +1,4 @@
-# Q&A Log — pilots/skill-pilot-1
+# Q&A Log — factory-runs/csv-to-markdown-summary
 # Append-only. Do not edit past entries; add new dated entries instead.
 
 ## 2026-09-23 — Run 1: first live Factory Run (draft -> sandbox/eval)
@@ -10,7 +10,7 @@ mechanically without also needing a real data source/report tool).
 
 **Answer:** Compiled implementation/agents/factory-agent.md from
 engagements/13-factory.md. Ran it against a real Factory Run Task
-(implementation/pilots/skill-pilot-1/task-factory-run-csv-summary.md)
+(implementation/factory-runs/csv-to-markdown-summary/task-factory-run-csv-summary.md)
 asking for a Skill that turns a CSV into a markdown table + summary.
 Factory Agent drafted a real, working Python script plus a
 Skill Library-schema entry, both status: draft, in sandbox/ - re-
@@ -22,7 +22,7 @@ plus a static Tool Permission Scope check for stray network/subprocess
 calls) - all 5 passed on first attempt, attempt_count stays 0.
 
 **Applied to:** implementation/agents/factory-agent.md,
-implementation/pilots/skill-pilot-1/*.
+implementation/factory-runs/csv-to-markdown-summary/*.
 
 **Status:** Eval passed. Awaiting a real human Approval decision
 (CCAR-1/CCAR-2/CCAR-4) before Register - deliberately not self-approved

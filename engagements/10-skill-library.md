@@ -51,7 +51,7 @@ update.
 ## Registered Skills
 
 First entry, registered 2026-09-23 via the first completed Factory Run
-(implementation/pilots/skill-pilot-1/). Implementation lives at
+(implementation/factory-runs/csv-to-markdown-summary/). Implementation lives at
 implementation/skills/csv-to-markdown-summary-v1/ (a reference-runtime
 detail - not duplicated here, this row is the governance record).
 
@@ -75,11 +75,54 @@ requires_tool_permission_scope: >
   markdown path passed to it. Execute: the bundled script only
   (standard library only, no external packages, no network access).
 typical_risk_tier: Low
-eval_suite: implementation/pilots/skill-pilot-1/sandbox/eval-result.md
+eval_suite: implementation/factory-runs/csv-to-markdown-summary/sandbox/eval-result.md
   (5/5 cases passed, first attempt - normal input, ragged rows, embedded
   pipe character, empty CSV, missing-file error path, plus a static
   Tool Permission Scope check)
 provenance: factory-built factory-run-csv-to-markdown-summary
+created_date: 2026-09-23
+last_updated: 2026-09-23
+used_by: []
+```
+
+## Registered Skills (continued)
+
+Second entry, registered 2026-09-23 via the second completed Factory
+Run (implementation/factory-runs/dq-metrics-dummy-data-generator/), after a retry that fixed a
+scope-compliance failure on the first attempt (see the pilot log for
+the full incident). Implementation lives at
+implementation/skills/dq-metrics-dummy-data-generator-v1/ (a real
+SKILL.md package, not just a script + registry record).
+
+```yaml
+skill_id: skill-lib/dq-metrics-dummy-data-generator-v1
+name: Data Quality Metrics Dummy Data Generator
+description: >
+  Generates a synthetic "weekly data-quality metrics" CSV shaped like a
+  real BI/data-quality export: one row per (check_name, table_name,
+  week_ending), with pass_count, fail_count, pass_rate. Parameterized by
+  weeks, pairs, and a random seed - same seed always produces
+  byte-identical output. Pass rates modeled to look like real DQ
+  metrics (mostly high, occasional bad weeks) rather than uniform
+  random. Synthetic test data only - not a substitute for a real,
+  connected data-quality-checks source in a live report.
+version: 1
+status: approved
+owning_domain: null
+requires_capability_scope: >
+  No read access to any input file or live data source. Write one
+  local CSV file as output, at the single output path supplied as an
+  argument. No network access.
+requires_tool_permission_scope: >
+  Read: none (all inputs are CLI parameters). Write: the single output
+  CSV path passed to it. Execute: the bundled script only (standard
+  library only - argparse, csv, datetime, random - no external
+  packages, no network access).
+typical_risk_tier: Low
+eval_suite: implementation/factory-runs/dq-metrics-dummy-data-generator/sandbox/eval-result.md
+  (5/5 cases passed on independent re-verification after an isolated
+  retry - reproducibility, seed sensitivity, 3 bad-input cases)
+provenance: factory-built factory-run-dq-dummy-data-generator (2 attempts - first attempt failed scope compliance, reverted; second attempt isolated and independently verified)
 created_date: 2026-09-23
 last_updated: 2026-09-23
 used_by: []
