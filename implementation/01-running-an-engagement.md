@@ -53,8 +53,21 @@ Step N prompt shape:
    Agent from doing this to its own plan, and CCAR-4 (cross-cutting/
    access-rules.md) requires this to trace back to a real authenticated
    identity, not just a name typed into a file. In this pilot substrate
-   that authentication is *you, personally, editing the file* - a real
-   deployment would gate this through actual IAM/SSO instead.
+   that authentication is *you, personally, editing the file*, then
+   your real GitHub identity again at PR-merge time - see
+   `cross-cutting/access-rules.md`'s "Applied to this repository's own
+   governance work" note under CCAR-4 for what actually satisfies that
+   requirement here.
+
+   **Known, documented gap - not silently accepted:** you are also the
+   only person who can hold `ccrole-approver` in this deployment, so
+   you are simultaneously Requester and Approver on every Task -
+   CCAR-2's separation-of-duties rule cannot be satisfied literally by
+   a single operator. See `cross-cutting/access-rules.md`'s "CCAR-2
+   exception: solo-operator deployments" for what this deviation is,
+   why it's accepted for now, and the trigger for when it stops being
+   acceptable (a second real collaborator, or any genuinely
+   Production-consequence action outside this repo itself).
 
 4. **Per Task, in dependency order.** For a Task whose `skills_invoked`
    already names a real, registered Library entry: spin up that Agent

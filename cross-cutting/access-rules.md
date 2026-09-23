@@ -75,6 +75,59 @@ review ("how do we verify the Approver is actually the Approver") —
 generalized here since it constrains every approval gate in the
 framework, not only Engagements.
 
+**Applied to this repository's own governance work (recorded
+2026-09-23):** this repository has no separate custom IAM/SSO system —
+GitHub's own account authentication is the identity substrate CCAR-4
+refers to here. A PR merge performed while signed into GitHub as the
+repo owner's real, individual account, with two-factor authentication
+enabled (something-you-know + something-you-have — NIST AAL2), and
+GitHub's own merge-event record (author, timestamp, and whether a
+protection bypass was used) as the audit record, satisfies CCAR-4's
+requirement for this deployment — see `implementation/02-github-access.md`
+for the mechanics. This assumes 2FA is actually turned on for that
+account; if it isn't yet, enable it (GitHub → Settings → Password and
+authentication → Two-factor authentication) before relying on this as
+AAL2-equivalent. High Risk Tier work would still need step-up/AAL3-
+equivalent assurance beyond GitHub's standard 2FA — not yet a gap this
+deployment has had to close, since no High-risk action has been routed
+through this pipeline.
+
+### CCAR-2 exception: solo-operator deployments (recorded 2026-09-23)
+
+CCAR-2's separation-of-duties requirement assumes the Requester and the
+Approver are different people. A deployment run by exactly one person —
+this repository, currently — cannot satisfy that literally: the same
+individual (hallscottm@gmail.com) originates the request, holds
+`ccrole-approver` at the Planning-approval step
+(`implementation/01-running-an-engagement.md` step 3), and is the one
+GitHub account that reviews and merges every PR. This is a documented,
+accepted deviation for this deployment, not a satisfied requirement —
+writing it down here is what keeps it from being silently assumed away.
+
+What still holds despite the gap:
+- Every change to `main` still passes through a real PR; GitHub's own
+  audit trail (author, timestamp, diff, merge event, whether protection
+  was bypassed) is real and immutable even when Requester and Approver
+  are the same person. Reviewing your own diff before merging is still
+  review, even though it is not *independent* review.
+- CCAR-3's break-glass two-person High-risk rule is a separate
+  requirement from CCAR-2's separation-of-duties rule; this exception
+  covers CCAR-2 only. A genuinely High-risk break-glass action under a
+  solo deployment would fail CCAR-3 outright (no second Infrastructure
+  Admin/Security-Compliance signer exists) and is covered by the
+  revisit trigger below, not by this exception.
+
+**Revisit trigger — this exception stops being acceptable when:**
+- A second real, independent human joins this repository with a
+  legitimate stake in outcomes. At that point real separation of duties
+  is achievable, and CCAR-2 applies as written — no exception.
+- Any action this framework governs reaches genuine Production
+  consequence for a system *other than this governance repository
+  itself* (actually provisioning real infrastructure, not documenting
+  how one would). At that point CCAR-2's and CCAR-3's requirements are
+  not optional, and a second approver must be found before proceeding —
+  even if that means pausing the work.
+
 ---
 
 **Role vocabulary note (resolved 2026-09-22):** Requester, Approver,
