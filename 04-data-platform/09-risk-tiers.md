@@ -18,10 +18,22 @@ factor (cross-cutting maximum rule, per cross-cutting/risk-tiers.md).
 
 | Factor | Low | Moderate | High |
 |---|---|---|---|
-| Environment (referenced from Infrastructure) | Dev | Staging/QA | Production |
+| Environment (referenced from Infrastructure) | Dev | Staging/QA, Production | — (Environment alone never reaches High; see note below) |
 | Sensitivity Level / Contains PII (referenced from Data/Metadata, `data-sensitivity-level`, `data-pii`) | Public or Internal, no PII | Confidential | Restricted, or Contains PII = true |
 | Service Tier / Criticality (referenced from System Architecture — the criticality of the Service(s) this entity backs) | Non-critical, internal tooling | Business-important, moderate user impact if down | Business-critical, severe impact if down |
 | Public exposure (Vector Database or Streaming Platform reachable via a public Endpoint, e.g. a RAG API) | Internal-only | N/A — this factor has no Moderate value | Publicly internet-facing |
+
+**Note on Environment factor (corrected 2026-09-23):** Production alone
+caps this factor at Moderate, matching cross-cutting/risk-tiers.md's own
+stated interpretation ("Most Production resources... Moderate"). An
+earlier version of this table put Production directly in the High
+column, which combined with the cross-domain "highest tier wins" rule
+meant every Production resource in every domain was automatically High
+regardless of any other factor — contradicting cross-cutting's own
+description of itself. High still requires Production *plus* another
+High-triggering factor from this table (data sensitivity, public
+exposure, business-criticality, etc., depending on domain) — Environment
+alone is never sufficient.
 
 **Note on Sensitivity Level/PII factor:** sourced identically to how
 Infrastructure, Networking, and System Architecture each source it —
@@ -54,6 +66,8 @@ in 06-policies.md/07-access-rules.md — summarized here for visibility):**
 ---
 
 **Open items:**
+- (Resolved 2026-09-23) Environment factor corrected: Production alone
+  now caps at Moderate, not High — see the note under Determining Factors.
 - Public exposure factor's real-world frequency (how often a Vector
   Database/Streaming Platform is genuinely public-facing vs. always
   sitting behind a Service) isn't asserted here — included because it's

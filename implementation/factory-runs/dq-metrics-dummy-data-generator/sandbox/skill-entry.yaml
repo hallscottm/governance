@@ -1,0 +1,69 @@
+# Candidate Skill Library entry - DRAFT
+#
+# Produced by Factory Agent for task-factory-run-dq-dummy-data-generator
+# (implementation/factory-runs/dq-metrics-dummy-data-generator/task-factory-run-dq-dummy-data.md).
+#
+# This is a Sandbox candidate only. It has NOT been written to the live
+# Library path (engagements/10-skill-library.md) and has NOT been
+# Sandbox/Eval tested yet. status: draft reflects that. Registration in
+# the live Library, and any status change beyond draft, happens only
+# after Sandbox/Eval testing and human approval - not by this agent.
+#
+# Library re-check (defense-in-depth) performed before drafting this
+# entry: read engagements/10-skill-library.md in full (re-confirmed on
+# this attempt too). Only one Skill is registered there -
+# skill-lib/csv-to-markdown-summary-v1 (CSV -> markdown table + summary
+# line). Nothing named or described as "dummy data", "synthetic data",
+# "test data generator", or any data-quality-metrics generator exists
+# in the Library. "Close enough" test (required Capability Scope and
+# Tool Permission Scope must match exactly) does not apply to
+# csv-to-markdown-summary-v1 either: that Skill reads an existing CSV
+# and formats it, it does not generate synthetic data from parameters.
+# Confirms the routing Task's claim that nothing matched.
+#
+# Implementation: packaged as a real Skill (SKILL.md + bundled script,
+# not just a script + this record) at
+# implementation/skills/dq-metrics-dummy-data-generator-v1/.
+
+skill_id: skill-lib/dq-metrics-dummy-data-generator-v1
+name: Data Quality Metrics Dummy Data Generator
+description: >
+  Generates a synthetic "weekly data-quality metrics" CSV shaped like a
+  real BI/data-quality export: one row per (check_name, table_name,
+  week_ending), with columns check_name, table_name, week_ending,
+  pass_count, fail_count, pass_rate. Takes three parameters - number of
+  weeks to simulate, number of distinct (check, table) pairs, and a
+  random seed. The same seed (with the same weeks/pairs) always
+  produces byte-identical output, for eval reproducibility. Pass rates
+  are modeled to look like real data-quality metrics (mostly high, with
+  small week-to-week variance and occasional sharp "bad weeks" per
+  pair) rather than uniformly random values. Runs the bundled script to
+  produce the output file; does not fabricate row contents from memory
+  or from any live/production data source - this is synthetic test
+  input only, not a substitute for a real data-quality-checks
+  connection.
+version: 1
+status: draft
+owning_domain: null
+implementation: implementation/skills/dq-metrics-dummy-data-generator-v1/
+  (SKILL.md + generate_dq_dummy_data.py)
+requires_capability_scope: >
+  No read access to any input file or live data source. Write one
+  local CSV file as output, at the single output path supplied as an
+  argument. No network access.
+requires_tool_permission_scope: >
+  Read: none (all inputs are CLI parameters - weeks, pairs, seed,
+  anchor date - not files). Write: the single output CSV path passed
+  to it. Execute: the bundled script only (standard library only -
+  argparse, csv, datetime, random - no external packages, no network
+  access).
+typical_risk_tier: Low
+eval_suite: implementation/factory-runs/dq-metrics-dummy-data-generator/eval/ (pending - not yet run;
+  this is a Sandbox candidate awaiting Sandbox/Eval testing, not an
+  approved entry)
+provenance: factory-built factory-run-dq-dummy-data-generator (attempt 2 -
+  repackaged as a full Skill folder with SKILL.md after attempt 1's
+  scope violation; see implementation/factory-runs/dq-metrics-dummy-data-generator/factory-run-log.md)
+created_date: 2026-09-23
+last_updated: 2026-09-23
+used_by: []

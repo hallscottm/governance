@@ -24,10 +24,22 @@ to elevate the whole resource).
 
 | Factor | Low | Moderate | High |
 |---|---|---|---|
-| Environment (`infra-environment-lifecycle`) | Dev | Staging/QA | Production |
+| Environment (`infra-environment-lifecycle`) | Dev | Staging/QA, Production | — (Environment alone never reaches High; see note below) |
 | Availability Tier (`infra-availability-tier-*`) | Tier I–II | Tier III | Tier IV |
 | Data sensitivity (`data-sensitivity-level`) | Public or Internal | Confidential | Restricted, or Contains PII = true regardless of stated classification |
 | Workload type | General compute | — | AI Training/Inference on regulated data (`infra-training-workload`, `infra-inference-workload`) |
+
+**Note on Environment factor (corrected 2026-09-23):** Production alone
+caps this factor at Moderate, matching cross-cutting/risk-tiers.md's own
+stated interpretation ("Most Production resources... Moderate"). An
+earlier version of this table put Production directly in the High
+column, which combined with the cross-domain "highest tier wins" rule
+meant every Production resource in every domain was automatically High
+regardless of any other factor — contradicting cross-cutting's own
+description of itself. High still requires Production *plus* another
+High-triggering factor from this table (data sensitivity, public
+exposure, business-criticality, etc., depending on domain) — Environment
+alone is never sufficient.
 
 **Data sensitivity note (resolved 2026-09-22):** this factor is now
 sourced from Data/Metadata's Sensitivity Level field
@@ -67,6 +79,8 @@ not restated here).
 ---
 
 **Open items:**
+- (Resolved 2026-09-23) Environment factor corrected: Production alone
+  now caps at Moderate, not High — see the note under Determining Factors.
 - (Resolved 2026-09-22) POL-2/POL-3 updated in 06-policies.md to scale
   with Risk Tier instead of applying flatly to all Production.
 - (Resolved 2026-09-22) AR-2 in 07-access-rules.md updated to require

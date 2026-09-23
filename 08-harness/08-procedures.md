@@ -84,9 +84,9 @@ resources without restatement — see cross-cutting/procedures.md.
 1. A situation is identified where an Agent's Guardrail must be bypassed
    immediately (e.g., a time-critical action a Human-in-the-Loop Gate is
    too slow to resolve).
-2. Owning Team Lead and Security/Compliance jointly authorize the
-   Override/Break-glass (HAR-3 — no single-approver path exists for this
-   override, unlike other domains' break-glass patterns).
+2. Infrastructure Admin and Security/Compliance jointly authorize the
+   Override/Break-glass (HAR-3/CCAR-3 — no single-approver path exists
+   for this override, unlike other domains' break-glass patterns).
 3. The override executes immediately; it is logged with which Guardrail
    was bypassed, who approved it, and the stated reason, same audit
    discipline as CCPROC-4.

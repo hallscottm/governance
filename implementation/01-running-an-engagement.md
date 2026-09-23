@@ -79,7 +79,7 @@ Same step-by-step shape, five stages (13-factory.md), each a real agent
 run or a real human decision - no stage is skipped or simulated:
 
 1. **Draft** - Factory Agent (once compiled - not yet, see
-   implementation/pilots/skill-pilot-1/ for the first real run) drafts
+   implementation/factory-runs/csv-to-markdown-summary/ for the first real run) drafts
    the candidate Skill/Agent entry, `status: draft`.
 2. **Sandbox** - the candidate is exercised somewhere that isn't
    Production before anything trusts it. In this pilot substrate: a

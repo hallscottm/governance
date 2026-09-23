@@ -23,10 +23,10 @@ resources without restatement — see cross-cutting/procedures.md.
 2. The merge button/mechanism is disabled until: at least one Code
    Review approval is recorded, and the Pipeline Run's Deployment Gate
    status is passing.
-3. An Owning Team Lead (or, at High Risk Tier, Owning Team Lead +
-   Security/Compliance, per WFAR-1) may override this block in a genuine
-   emergency; every override is logged with who approved it and why,
-   same audit discipline as CCPROC-4.
+3. An Infrastructure Admin (or, at High Risk Tier, Infrastructure
+   Admin + Security/Compliance, per WFAR-1/CCAR-3) may override this
+   block in a genuine emergency; every override is logged with who
+   approved it and why, same audit discipline as CCPROC-4.
 4. On merge, the change proceeds to the next Pipeline Stage per
    05-conventions.md's CI/CD Pipeline Flow diagram.
 

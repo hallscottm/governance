@@ -77,7 +77,7 @@ def render(sections, total):
         lines.append(f"## {name} ({len(terms)} terms)")
         lines.append("")
         for term_name, anchor in terms:
-            lines.append(f"- [{term_name}]({path}#{anchor})")
+            lines.append(f"- [{term_name}](../{path}#{anchor})")
         lines.append("")
     lines.append("---")
     lines.append("")

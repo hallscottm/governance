@@ -18,10 +18,22 @@ factor (cross-cutting maximum rule, per cross-cutting/risk-tiers.md).
 
 | Factor | Low | Moderate | High |
 |---|---|---|---|
-| Environment (referenced from Infrastructure) | Dev | Staging/QA | Production |
+| Environment (referenced from Infrastructure) | Dev | Staging/QA, Production | — (Environment alone never reaches High; see note below) |
 | Sensitivity Level / Contains PII (referenced from Data/Metadata) | Public or Internal, no PII | Confidential | Restricted, or Contains PII = true |
 | Distribution Scope (04-metadata-standards.md) | Internal | Departmental | Organization-wide or External |
 | Certification Status (04-metadata-standards.md) | N/A at Internal scope | Draft, at Departmental scope | Draft, if somehow paired with wider scope — should be structurally prevented by BIPOL-1, so this combination flags a policy violation rather than a normal risk state |
+
+**Note on Environment factor (corrected 2026-09-23):** Production alone
+caps this factor at Moderate, matching cross-cutting/risk-tiers.md's own
+stated interpretation ("Most Production resources... Moderate"). An
+earlier version of this table put Production directly in the High
+column, which combined with the cross-domain "highest tier wins" rule
+meant every Production resource in every domain was automatically High
+regardless of any other factor — contradicting cross-cutting's own
+description of itself. High still requires Production *plus* another
+High-triggering factor from this table (data sensitivity, public
+exposure, business-criticality, etc., depending on domain) — Environment
+alone is never sufficient.
 
 **Note on Distribution Scope factor:** this is the domain-defining factor
 — unlike every prior domain's Risk Tiers, where "who can see this" is
@@ -55,6 +67,8 @@ in 06-policies.md/07-access-rules.md — summarized here for visibility):**
 ---
 
 **Open items:**
+- (Resolved 2026-09-23) Environment factor corrected: Production alone
+  now caps at Moderate, not High — see the note under Determining Factors.
 - Distribution Scope as a Risk Tier factor is a genuine departure from
   this framework's established pattern (every prior domain treats "who
   can see this" as an Access Rules concern, not a Risk Tiers one) —

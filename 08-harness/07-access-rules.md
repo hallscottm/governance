@@ -40,9 +40,14 @@ required.
 **Applies to:** Owning Team Lead role (all tiers), Security/Compliance
 role (High tier only), Agent entity type, Production environment.
 **Ties to:** HPOL-1, HPOL-2.
-**Rationale:** Reuses CCAR-3's exact two-tier escalation shape — a
-Production Tool Permission grant is a hard-block-adjacent decision like
-any other CCP-3-class approval.
+**Rationale:** Reuses CCAR-3's tier-scaling *pattern* (single approver
+at Low/Moderate, two-person at High) — not CCAR-3 itself, since granting
+a new Tool Permission is a routine approval-gate decision, not an
+override of an existing hard block. Owning Team Lead is the correct
+approver here for the same reason it's correct at every other ordinary
+approval gate in this framework (contrast HAR-3, an actual hard-block
+override, where CCAR-3 applies directly and Owning Team Lead is not a
+valid approver).
 
 ### HAR-2 — Human-in-the-Loop Gate Resolution Authority
 **Rule:** The human who resolves a Human-in-the-Loop Gate (HPOL-3) must
@@ -60,21 +65,27 @@ permitted to be the human on the other side of it, and explicitly
 excludes the Agent from ever qualifying.
 
 ### HAR-3 — Guardrail Override Authority (Break-Glass)
-**Rule:** Overriding an Agent's Guardrail (HPOL-5) requires Owning Team
-Lead approval, plus Security/Compliance — every Guardrail override is
-automatically High Risk Tier per HPOL-5, so the High-tier two-person
-sign-off (CCAR-3) always applies here; there is no Low/Moderate-tier
-single-approver path for this specific override, unlike Workflow/Process's
-WFAR-1.
-**Applies to:** Owning Team Lead role, Security/Compliance role, Agent
-entity type, any environment.
-**Ties to:** HPOL-5.
+**Rule:** Overriding an Agent's Guardrail (HPOL-5) requires
+Infrastructure Admin approval, plus Security/Compliance — every
+Guardrail override is automatically High Risk Tier per HPOL-5, so the
+High-tier two-person sign-off (CCAR-3) always applies here; there is no
+Low/Moderate-tier single-approver path for this specific override,
+unlike Workflow/Process's WFAR-2 (an ordinary approval gate, not an
+override).
+**Applies to:** Infrastructure Admin role, Security/Compliance role,
+Agent entity type, any environment.
+**Ties to:** HPOL-5, CCAR-3.
 **Rationale:** HPOL-5 fixes Guardrail override at High Risk Tier
 unconditionally (09-risk-tiers.md); CCAR-3's own two-person rule for
 High risk therefore applies unconditionally too, rather than scaled —
 the one Access Rule in this domain with no Low/Moderate path, flagged
 explicitly since every other Access Rule in this framework offers at
-least a single-approver tier for something.
+least a single-approver tier for something. **Corrected 2026-09-23:**
+an earlier version of this rule granted the override to Owning Team
+Lead — this is a hard-block override (Guardrail is HPOL-5's hard
+block), squarely inside CCAR-3's exclusive authority ("No other role,
+and no AI Agent/Harness, may grant this override at any risk tier");
+Owning Team Lead was never a valid approver here.
 
 ---
 
@@ -83,10 +94,13 @@ least a single-approver tier for something.
   this framework — every other domain's Access Rules columns describe who
   may approve a human action; this one describes who may **not**
   (the Agent itself, categorically) alongside who may.
-- HAR-1 and HAR-3 both reuse CCAR-3's escalation shape, same reuse
-  discipline Workflow/Process's WFAR-1 already established — no domain
-  in this framework has yet invented its own override-authority pattern
-  from scratch.
+- HAR-1 reuses CCAR-3's tier-scaling *pattern* for an ordinary approval
+  gate (Owning Team Lead, same as HAR-2 and Workflow/Process's WFAR-2).
+  HAR-3 *is* CCAR-3 applied to a hard-block override (Infrastructure
+  Admin, not Owning Team Lead) — same distinction Workflow/Process's
+  WFAR-1 vs. WFAR-2 now makes explicitly, after both WFAR-1 and HAR-3
+  were corrected 2026-09-23 to stop granting break-glass authority to
+  Owning Team Lead, which CCAR-3 never permits at any risk tier.
 - HAR-3's unconditional High-tier requirement (no Low/Moderate path) is a
   direct, mechanical consequence of HPOL-5/09-risk-tiers.md fixing
   Guardrail override at High Risk Tier — flagged the same way

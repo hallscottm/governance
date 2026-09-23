@@ -31,16 +31,22 @@ of accountable owner.
 ### WFAR-1 — Branch Protection Override Authority
 **Rule:** Bypassing a WFPOL-1 branch protection requirement (e.g.,
 merging without a passing Pipeline Run in a genuine emergency) requires
-Owning Team Lead approval at Low/Moderate Risk Tier, and Owning Team Lead
-+ Security/Compliance at High Risk Tier — the same two-tier escalation
-CCAR-3 already establishes for hard-block overrides generally, applied
-here to this domain's specific hard block.
-**Applies to:** Owning Team Lead role (all tiers), Security/Compliance
-role (High tier only), Repository entity type.
-**Ties to:** WFPOL-1.
-**Rationale:** Reuses CCAR-3's exact escalation shape rather than
-inventing a new one — a branch-protection override is a hard-block
-override like any other CCP-1/CCP-2-class bypass.
+Infrastructure Admin approval at Low/Moderate Risk Tier, and
+Infrastructure Admin + Security/Compliance at High Risk Tier — this
+*is* CCAR-3, not a lookalike of it: a branch-protection override is a
+hard-block override of exactly the kind CCAR-3 governs exclusively
+("No other role, and no AI Agent/Harness, may grant this override at
+any risk tier"), so it does not get its own role assignment.
+**Applies to:** Infrastructure Admin role (all tiers), Security/
+Compliance role (High tier only), Repository entity type.
+**Ties to:** WFPOL-1, CCAR-3.
+**Rationale:** This is CCAR-3 applied to this domain's specific hard
+block, not a new rule with its own authority. **Corrected 2026-09-23:**
+an earlier version of this rule granted the override to Owning Team
+Lead while claiming to "reuse CCAR-3's exact escalation shape" —
+Owning Team Lead is never a valid override authority under CCAR-3 at
+any tier; that was a real authorization-boundary bug, not a wording
+issue.
 
 ### WFAR-2 — IaC Apply Approval Authority (Scaled by Risk Tier and Target Domain)
 **Rule:** Authority to approve a WFPOL-3 IaC Plan before Apply depends on

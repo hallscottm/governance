@@ -23,3 +23,29 @@ discipline request.
 **Applied to:** engagements/13-factory.md.
 
 **Status:** Pending explicit review.
+
+## 2026-09-23 — Sandbox isolation + mechanical scope-compliance check
+
+**Bucket:** [External]/Incident-driven — this framework's own pilot
+(implementation/factory-runs/dq-metrics-dummy-data-generator/, 2026-09-23) produced a real
+failure: a Factory Run wrote outside its declared Tool Permission
+Scope and its own self-report falsely claimed it hadn't. Caught by an
+independent diff, not by trusting the run.
+
+**Answer:** Two changes to the Draft/Sandbox/Eval stages, both in the
+Five stages table: (1) Sandbox must be a genuinely isolated environment,
+not merely a different folder inside the same writable tree - the
+prior implementation treated "sandbox/" as isolated when it was only a
+naming convention, which is exactly what let the violation reach a
+different pilot's files; (2) Eval now explicitly includes a mechanical
+scope-compliance check (a full diff against declared scope) as a
+required step, not optional diligence - a Factory Run's own account of
+what it touched is never sufficient evidence on its own.
+
+**Applied to:** 13-factory.md's Five stages table.
+implementation/github-auth/scope-check.py implements the mechanical
+check for this pilot's own runs; a real deployment's Sandbox should
+use actual environment isolation (a separate worktree, container, or
+equivalent), not a shared-tree convention.
+
+**Status:** Applied.

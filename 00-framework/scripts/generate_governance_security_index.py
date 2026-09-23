@@ -102,13 +102,13 @@ def render():
     for path_str, label in cc_sources:
         path = ROOT / path_str
         items = extract_items(path)
-        lines.append(f"**{label}** ([{path_str}]({path_str})):")
+        lines.append(f"**{label}** ([{path_str}](../{path_str})):")
         for item_id, title in items:
             lines.append(f"- {item_id} — {title}")
         lines.append("")
     risk_path = ROOT / "cross-cutting/risk-tiers.md"
     if risk_path.exists():
-        lines.append(f"**Risk Scale:** [cross-cutting/risk-tiers.md](cross-cutting/risk-tiers.md) "
+        lines.append(f"**Risk Scale:** [cross-cutting/risk-tiers.md](../cross-cutting/risk-tiers.md) "
                       f"(FIPS 199-aligned Low/Moderate/High — every domain's Risk Tiers column "
                       f"extends this scale rather than defining its own)")
         lines.append("")
@@ -133,16 +133,16 @@ def render():
 
         lines.append(f"### {name}")
         lines.append("")
-        lines.append(f"**Policies** ({len(policies)}) — [{d}/06-policies.md]({d}/06-policies.md):")
+        lines.append(f"**Policies** ({len(policies)}) — [{d}/06-policies.md](../{d}/06-policies.md):")
         for item_id, title in policies:
             anchor = item_id.lower().replace(' ', '-')
             lines.append(f"- {item_id} — {title}")
         lines.append("")
-        lines.append(f"**Access Rules** ({len(access_rules)}) — [{d}/07-access-rules.md]({d}/07-access-rules.md):")
+        lines.append(f"**Access Rules** ({len(access_rules)}) — [{d}/07-access-rules.md](../{d}/07-access-rules.md):")
         for item_id, title in access_rules:
             lines.append(f"- {item_id} — {title}")
         lines.append("")
-        lines.append(f"**Risk Tier Determining Factors** — [{d}/09-risk-tiers.md]({d}/09-risk-tiers.md):")
+        lines.append(f"**Risk Tier Determining Factors** — [{d}/09-risk-tiers.md](../{d}/09-risk-tiers.md):")
         if factors:
             lines.append(", ".join(factors))
         else:
