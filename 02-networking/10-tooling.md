@@ -21,7 +21,11 @@ provisioned together.
 **Capability needed:** declarative network resource definition (VPCs,
 subnets, security groups), compatible with Infrastructure's provisioning
 workflow.
-**Status:** Not selected.
+**Status:** Not selected. Note (added 2026-09-22): same as
+Infrastructure's Category 2 — the plan/apply workflow is now governed by
+Workflow/Process's Infrastructure as Code subdomain (WFPOL-3/WFPROC-3,
+07-workflow-process/06-policies.md); this category remains which product
+implements it.
 
 ## Category 2 — Policy Enforcement (Network-Specific)
 

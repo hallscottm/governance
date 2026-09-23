@@ -75,10 +75,11 @@ an equivalent major-version identifier in their contract.
   fixed enum — a controlled domain list would need organizational input
   (business domain boundaries) this framework doesn't have yet. Revisit
   if uncontrolled domain naming causes real drift once this is used.
-- `job` abbreviation has no owning Definitions anchor since scheduling
-  belongs to Workflow/Process (domain 7, not yet built) — flagged as a
-  forward reference, same pattern as Metadata Standards' Repository
-  Reference field.
+- (Resolved 2026-09-22) `job` abbreviation's scheduling concept is now
+  owned by Workflow/Process's Pipeline Trigger (`wf-pipeline-trigger`,
+  specifically its schedule-based Trigger Type) — this abbreviation
+  remains a System Architecture-local naming convenience, distinct from
+  that domain's own Conventions.
 
 **Quality bar check (00-framework/quality-bar.md):**
 - [x] Simple — three small patterns (service, database, API version), one abbreviation table

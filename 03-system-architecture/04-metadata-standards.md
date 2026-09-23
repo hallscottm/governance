@@ -49,10 +49,12 @@ this column.
   candidate for formal ownership by cross-cutting/roles-and-departments/
   (Interface/Human, the domain this item originally deferred to, was
   folded into that pillar 2026-09-22 — see its 00-qa.md Q11).
-- **Repository Reference** and its naming/URL convention are a forward
-  reference to Workflow/Process (domain 7, not yet built) — this field
-  only asserts that a reference must exist, not its format. Revisit once
-  that domain defines repository conventions.
+- (Resolved 2026-09-22) **Repository Reference** now points to
+  Workflow/Process's own Repository term (`wf-repository`) and naming
+  convention (07-workflow-process/05-conventions.md's Repository Naming
+  Convention, which reuses this domain's own Service pattern) — see
+  `sysarch-service --[requires]--> wf-repository`
+  (07-workflow-process/03-ontologies.md).
 - **Data Classification** (e.g., what sensitivity level a database holds)
   is explicitly out of scope here — owned by Data/Metadata (domain 5),
   not yet built. A Database entity type here does not include it.

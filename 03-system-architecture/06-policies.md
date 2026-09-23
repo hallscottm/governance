@@ -50,12 +50,15 @@ well-understood, severe risk categories.
 **Rule:** A Release (`sysarch-release`) cannot be deployed to Production
 unless its associated automated tests (Unit Test, Integration Test —
 `sysarch-unit-test`, `sysarch-integration-test`) have passed. This policy
-asserts the requirement only — the mechanism that enforces it (a CI
-pipeline gate) belongs to Workflow/Process (domain 7, not yet built).
+asserts the requirement only — the mechanism that enforces it is
+Workflow/Process's Deployment Gate (`wf-deployment-gate`), specifically
+its own WFPOL-2 general Production-promotion gate requirement
+(07-workflow-process/06-policies.md).
 **Applies to:** Production environment, Service/Application/API entity
 types.
-**Enforcement:** Hard block, mechanism deferred to Workflow/Process and/or
-this domain's Tooling (column 10).
+**Enforcement:** Hard block, mechanism resolved 2026-09-22 — see
+Workflow/Process's Tooling column (07-workflow-process/10-tooling.md,
+CI/CD Pipeline Platform category).
 **Rationale:** Explicitly chosen as a hard block — consistent with
 SAPOL-1's treatment of Production-bound changes; a specific test coverage
 threshold is deliberately not set here (no bounded, defensible number
@@ -97,8 +100,9 @@ than a single uniform baseline.
   (column 7), next. (Who qualifies as reviewer for the former SAPOL-2 is
   now Data Platform's Access Rules question — see
   04-data-platform/07-access-rules.md's DPPAR-1.)
-- SAPOL-4's enforcement mechanism is a genuine forward reference to
-  Workflow/Process (domain 7) — flagged, not resolved here.
+- (Resolved 2026-09-22) SAPOL-4's enforcement mechanism is
+  Workflow/Process's Deployment Gate/WFPOL-2 and CI/CD Pipeline Platform
+  category — see 07-workflow-process/06-policies.md and 10-tooling.md.
 
 **Quality bar check (00-framework/quality-bar.md):**
 - [x] Simple — 5 domain-specific policies plus inherited cross-cutting ones, no duplication

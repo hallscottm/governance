@@ -91,11 +91,11 @@ captured as prose in 01-definitions.md and the alignment table in
 
 ## Cross-Domain References (relationships pointing into this registry)
 
-None yet — this registry is new. Per 00-framework/relation-types.md's
-reverse-pointer rule, this section will record any future domain that
-draws a relationship into a specific Role/Department anchor (distinct
-from the ordinary reference-stub usage every domain's Access Rules column
-already makes when it names a role by ID).
+Per 00-framework/relation-types.md's reverse-pointer rule.
+
+- `ccrole-approver`
+  Referenced by (cross-domain relationships), added 2026-09-22:
+  - Workflow/Process: `wf-change-request --[requires]--> ccrole-approver`
 
 ---
 

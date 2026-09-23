@@ -47,10 +47,11 @@ is constrained by what the target runtime can pull from.
 
 ### Automated Test Execution & Gating
 Runs Unit Tests and Integration Tests and enforces the SAPOL-4 gate before
-Production deployment. This category's actual execution mechanism is a
-forward reference to Workflow/Process (domain 7, not yet built) — listed
-here because the gate itself (what must pass) is owned by this domain, even
-though the pipeline that runs it is not.
+Production deployment. This category's actual execution mechanism is
+Workflow/Process's CI/CD Pipeline Platform (07-workflow-process/10-tooling.md)
+— resolved 2026-09-22; listed here because the gate itself (what must
+pass) is owned by this domain, even though the pipeline that runs it is
+owned by Workflow/Process.
 
 ---
 
@@ -68,10 +69,10 @@ though the pipeline that runs it is not.
   design.
 
 **Open items:**
-- Automated Test Execution & Gating's actual mechanism depends on
-  Workflow/Process (domain 7), not yet built — same forward reference
-  already flagged in 06-policies.md (SAPOL-4) and 08-procedures.md
-  (SAPROC-4).
+- (Resolved 2026-09-22) Automated Test Execution & Gating's actual
+  mechanism is Workflow/Process's CI/CD Pipeline Platform — same
+  resolution now recorded in 06-policies.md (SAPOL-4) and
+  08-procedures.md (SAPROC-4).
 
 **Quality bar check (00-framework/quality-bar.md):**
 - [x] Simple — 6 capability categories, no product lock-in

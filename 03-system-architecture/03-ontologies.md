@@ -48,6 +48,11 @@ domain's ontology file.
   Rationale: a build process produces a build artifact as its output.
 - `sysarch-service` --[runs-on]--> `infra-container`
   Rationale: cross-domain — a service instance commonly runs inside a container (the isolated runtime), though not exclusively.
+- `sysarch-service` --[requires]--> `wf-repository`
+  Rationale: cross-domain, added 2026-09-22 when Workflow/Process was
+  built — a service's source lives in a repository; this makes explicit
+  what 04-metadata-standards.md's Repository Reference field already
+  implied.
 
 ## Interfaces & APIs
 
@@ -99,6 +104,20 @@ domain's ontology file.
 - `sysarch-release` --[has-lifecycle-state]--> `infra-environment-lifecycle`
   Rationale: cross-domain — a release progresses through lifecycle environments (Development, Staging/QA, Production) as it is promoted.
 
+## Cross-Domain References (relationships pointing into this domain)
+
+Per 00-framework/relation-types.md's reverse-pointer rule. Added
+2026-09-22 when Workflow/Process was built — the section that used to
+hold Data/Metadata's inbound edges into `sysarch-database` migrated away
+with those terms to Data Platform (see the Open Items note below); this
+is a fresh instance of the same section, not a restoration of the old one.
+
+- `sysarch-release`
+  Referenced by (cross-domain relationships):
+  - Workflow/Process: `wf-deployment-gate --[constrains]--> sysarch-release`
+  - Workflow/Process: `wf-release-candidate --[produces]--> sysarch-release`
+  - Workflow/Process: `wf-rollback --[requires]--> sysarch-release`
+
 ## Application Security
 
 - `sysarch-authorization` --[requires]--> `sysarch-authentication`
@@ -141,7 +160,7 @@ domain's ontology file.
   column on 2026-09-22 — see 04-data-platform/03-ontologies.md.
 
 **Quality bar check (00-framework/quality-bar.md):**
-- [x] Simple — 42 relationships (Databases & Storage relationships migrated to Data Platform 2026-09-22), grouped by subdomain, no forced edges
+- [x] Simple — 43 relationships (Databases & Storage relationships migrated to Data Platform 2026-09-22; 1 new edge into Workflow/Process added 2026-09-22), grouped by subdomain, no forced edges
 - [x] Modular — each relationship stands alone; cross-domain edges are
       clearly marked and reverse-pointed rather than silently assumed
 - [x] Easy to update — anchor-ID based, survives renames

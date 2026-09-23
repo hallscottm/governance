@@ -92,6 +92,9 @@ source of truth on these edges).
   Referenced by (cross-domain relationships), added 2026-09-22:
   - Cross-Cutting Roles & Departments: `ccrole-analytics-engineer --[requires]--> dp-semantic-layer`
   - Business Intelligence / Reporting: `bi-report-data-model --[requires]--> dp-semantic-layer`
+- `dp-data-pipeline`
+  Referenced by (cross-domain relationships), added 2026-09-22:
+  - Workflow/Process: `wf-dag --[requires]--> dp-data-pipeline`
 
 ---
 
@@ -112,7 +115,7 @@ source of truth on these edges).
   is clearer.
 
 **Quality bar check (00-framework/quality-bar.md):**
-- [x] Simple — 25 relationships (plus 6 documented cross-domain edges owned by Data/Metadata), grouped by subdomain
+- [x] Simple — 25 relationships (plus 9 documented inbound cross-domain edges: 6 from Data/Metadata, 2 from Cross-Cutting Roles & Departments/Business Intelligence / Reporting, 1 from Workflow/Process, added 2026-09-22), grouped by subdomain
 - [x] Modular — migrated relationships kept their exact prior meaning;
       new relationships added independently
 - [x] Easy to update — new storage/streaming paradigms add relationships

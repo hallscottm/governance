@@ -47,9 +47,12 @@ alongside SAPOL-2 → DPPOL-1 and SAAR-1 → DPPAR-1.
 2. A Release with failing or missing required test results is rejected
    before deployment.
 3. The only path past a failed check is CCPROC-4's break-glass override.
-   The pipeline mechanism that runs these tests is a forward reference to
-   Workflow/Process (domain 7, not yet built) — this procedure defines the
-   gate, not the pipeline.
+   The pipeline mechanism that runs these tests is Workflow/Process's
+   CI/CD Pipeline Platform (07-workflow-process/10-tooling.md), executing
+   its own WFPROC-2 Production Promotion Gate Check
+   (07-workflow-process/08-procedures.md) — this procedure defines the
+   gate's requirement, that domain's procedure defines how the gate
+   itself runs.
 
 ### SAPROC-5 — Public-Facing Security Baseline Verification (Scaled by Risk Tier)
 **Executes:** SAPOL-5, SAAR-2

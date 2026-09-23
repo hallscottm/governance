@@ -53,10 +53,11 @@ Networking.
 ### Data Pipeline Orchestration
 Schedules and runs Data Pipelines (Orchestration Reference,
 04-metadata-standards.md). This category's actual execution/scheduling
-mechanism is a forward reference to Workflow/Process (domain 7, not yet
-built) — listed here because the pipeline concept and its metadata fields
-are owned by this domain, even though the orchestration engine itself is
-not.
+mechanism is Workflow/Process's Data Pipeline Orchestration Engine
+category (07-workflow-process/10-tooling.md) — resolved 2026-09-22;
+listed here because the pipeline concept and its metadata fields are
+owned by this domain, even though the orchestration engine itself is
+owned by Workflow/Process.
 
 ### Semantic Layer Tooling
 Implements the Semantic Layer (`dp-semantic-layer`) that materializes
@@ -96,9 +97,9 @@ one platform typically serves both domains, not independently selected.
   Management in System Architecture.
 
 **Open items:**
-- Data Pipeline Orchestration's actual mechanism depends on
-  Workflow/Process (domain 7), not yet built — same forward reference
-  already flagged in 06-policies.md and 08-procedures.md.
+- (Resolved 2026-09-22) Data Pipeline Orchestration's actual mechanism is
+  Workflow/Process's Orchestration Engine — same resolution now recorded
+  in 06-policies.md and 08-procedures.md.
 - (Resolved 2026-09-22) DPPROC-5's detection mechanism cross-checked
   against Business Intelligence / Reporting's own Tooling column, now
   drafted (06-bi-reporting/10-tooling.md) — both domains explicitly share

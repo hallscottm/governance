@@ -36,7 +36,13 @@ not evaluated or recommended.)
 provisioning time (feeds Category 3).
 **Capability needed:** declarative resource definition, state management,
 plan/apply workflow compatible with an approval gate (PROC-1).
-**Status:** Not selected.
+**Status:** Not selected. Note (added 2026-09-22): the plan/apply
+workflow itself — review before apply, state file, drift detection — is
+now governed by Workflow/Process's Infrastructure as Code subdomain
+(`wf-iac`, WFPOL-3/WFPROC-3, 07-workflow-process/06-policies.md) and its
+Infrastructure as Code Platform tooling category
+(07-workflow-process/10-tooling.md); this category is *which product*
+implements that workflow, not a separate workflow definition.
 
 ## Category 3 — Policy Enforcement / Policy-as-Code
 

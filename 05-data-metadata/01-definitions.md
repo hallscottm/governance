@@ -7,7 +7,7 @@ Last updated: 2026-09-22
 Scope: what data *means* — classification, quality, catalog, lineage,
 governance — as distinct from where it's stored (System Architecture's
 Database/Schema, domain 3) and how it moves through pipelines
-(Workflow/Process, domain 7, not yet built). This domain is also where the
+(Workflow/Process, domain 7, built 2026-09-22). This domain is also where the
 Data-sensitivity Risk Tier factor, left unpopulated in Infrastructure,
 Networking, and System Architecture, gets a real home.
 

@@ -17,50 +17,47 @@ Read-Host "`nReview the above. Press Enter to stage and commit, or Ctrl+C to abo
 git add -A
 
 @'
-Fill Business Intelligence / Reporting's remaining 8 columns (Standards Alignment through Tooling)
+Build out Workflow/Process domain (all 11 columns) and resolve forward references across five other domains
 
-Standards Alignment: WCAG 2.1/2.2 (first accessibility citation in this
-framework -- the first domain whose artifacts a broad human audience
-consumes directly), XMLA, ISO 8000, NIST SP 800-53 AC family, plus the
-dbt Semantic Layer/MetricFlow spec and TDWI BI governance practice
-flagged as community-originated, not formal standards bodies.
+Workflow/Process (domain 7) built fresh across six subdomains: Source
+Control, CI/CD Pipelines, Data Pipeline Orchestration, Infrastructure as
+Code, Operational SOPs, and Release Management -- 29 owned terms, 26
+internal relationships plus 7 cross-domain edges.
 
-Metadata Standards: field registry for Report, Dashboard, and Report
-Data Model entities, including Certification Status and Source-to-Target
-Mapping Reference fields that directly operationalize the Draft/Certified
-lifecycle from 01-definitions.md.
+Conventions includes four Mermaid diagrams embedded directly in the
+markdown (GitHub-native rendering, no external tool or image file): CI/CD
+Pipeline Flow, Environment Promotion Flow, an illustrative Data Pipeline
+Orchestration DAG, and an Incident Lifecycle state diagram, each tied to
+specific Definitions/Policies anchors.
 
-Conventions: Report/Dashboard naming with a [CERTIFIED] title prefix,
-Calculated Field naming tied to matching Metric names where one exists.
+Policies: WFPOL-1 (branch protection) is the mechanism that makes every
+other domain's hard-block test/scan policies actually enforceable at
+merge time. WFPOL-2 (deployment gate before Production) is the general
+mechanism System Architecture's SAPOL-4, Data Platform's DPPOL-1, and
+Business Intelligence / Reporting's BIPOL-1 all assumed existed --
+closes that loop for all three at once. WFPOL-3 governs IaC apply.
+WFPOL-4 scales post-incident review by severity. WFPOL-5 is this
+framework's first post-hoc (rather than pre-) approval gate, for
+emergency changes.
 
-Policies: BIPOL-1 is the policy this domain was created to write --
-Certified status is required before a Report/Dashboard can reach
-Organization-wide or External distribution. BIPOL-2 makes the ontology's
-Source-to-Target Mapping requirement enforceable. BIPOL-3 scales Row-
-Level Security by inherited sensitivity, mirroring System Architecture's
-SAPOL-5 escalation pattern. BIPOL-4 requires a refresh schedule on any
-Data Extract.
+Access Rules deliberately introduce no new role -- all three route
+authority through roles other domains already own.
 
-Access Rules: BIAR-1 (certification authority, BI Analyst/Developer only,
-no self-certification) and BIAR-2 (Row-Level Security configuration
-authority, scaled by sensitivity).
+Risk Tiers introduces two process-based factors (Change Request Type,
+break-glass/override usage) -- the first factors in this framework scored
+on how a change was made rather than a property of the resource itself.
 
-Procedures: BIPROC-1/2/3 execute the above, with BIPROC-2 nested inside
-BIPROC-1's certification review flow.
+Tooling resolves forward references left open across five other domains:
+System Architecture's Repository Reference field and SAPOL-4/SAPROC-4's
+pipeline mechanism, Data Platform's Orchestration Reference field and
+DPPROC-5's detection mechanism, and Infrastructure's/Networking's IaC
+Platform categories. All affected files (System Architecture x5,
+Data Platform x2, Infrastructure x2, Networking x1, Data/Metadata x1,
+plus reverse-pointer updates in Infrastructure/System
+Architecture/Data Platform/Cross-Cutting Roles & Departments' ontologies)
+updated in this same pass to record the resolutions.
 
-Risk Tiers: introduces Distribution Scope as a first-class Risk Tier
-factor -- a deliberate, flagged departure from this framework's usual
-pattern of treating "who can see this" as purely an Access Rules concern,
-justified because audience reach is this domain's defining risk.
-
-Tooling: 5 capability categories, including Accessibility Testing (new)
-and a Data Catalog / Metadata Management Platform explicitly shared with
-Data Platform's and Data/Metadata's own Tooling columns rather than
-independently selected -- resolves the reconciliation flagged as an open
-item in Data Platform's Tooling column (updated to record the resolution).
-
-All 11 columns of Business Intelligence / Reporting (domain 6) are now
-drafted.
+All 11 columns of Workflow/Process (domain 7) are now drafted.
 '@ | Out-File -Encoding utf8 ".git\COMMIT_MSG.tmp"
 
 git commit -F ".git\COMMIT_MSG.tmp"

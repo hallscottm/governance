@@ -47,9 +47,11 @@ registry + entity-type applicability matrix).
 ---
 
 **Open items:**
-- **Orchestration Reference** is a genuine forward reference to
-  Workflow/Process (domain 7, not yet built) — same pattern already
-  flagged in System Architecture's Repository Reference field.
+- (Resolved 2026-09-22) **Orchestration Reference** now points to
+  Workflow/Process's Orchestration Engine (`wf-orchestration-engine`) and
+  DAG (`wf-dag`) — see `wf-dag --[requires]--> dp-data-pipeline`
+  (07-workflow-process/03-ontologies.md) and that domain's Data Pipeline
+  Orchestration Engine tooling category (10-tooling.md).
 - **Embedding Model Reference** has no formal versioning-scheme
   convention yet (that belongs in this domain's own Conventions, column
   5) — this field only requires that a reference exists.

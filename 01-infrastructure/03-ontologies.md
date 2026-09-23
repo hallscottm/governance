@@ -158,6 +158,7 @@ domain.
   - Networking: `net-reverse-proxy --[runs-on]--> infra-compute-unit`
   - System Architecture: `sysarch-serverless-architecture --[runs-on]--> infra-compute-unit`
   - Data Platform: `dp-database --[runs-on]--> infra-compute-unit` (moved from System Architecture 2026-09-22)
+  - Workflow/Process: `wf-iac --[produces]--> infra-compute-unit` (added 2026-09-22)
 - `infra-throughput`
   Referenced by (cross-domain relationships):
   - Networking: `net-bandwidth --[constrains]--> infra-throughput`
