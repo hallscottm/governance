@@ -19,11 +19,12 @@ Endpoints. Overlaps functionally with Networking's Load Balancer/Reverse
 Proxy tooling (10-tooling.md) — likely the same product family, not
 independently selected.
 
-### Database Platform & Migration Tooling
-Runs Schema Migrations (SAPROC-2) and enforces the review gate before a
-migration reaches Production. Category is deliberately broad (relational,
-document, key-value engines all need this) rather than one relational-
-only recommendation.
+### Database Platform & Migration Tooling (moved 2026-09-22)
+**Moved to Data Platform** (04-data-platform/10-tooling.md) alongside
+Schema Migration's policy/access-rule/procedure ownership — this domain's
+Database Engine field (04-metadata-standards.md) still names which
+engine a Service depends on, but the platform/migration tooling itself is
+Data Platform's to select.
 
 ### Secrets Management
 Provides the managed secret storage required by SAPOL-3, and the scanning

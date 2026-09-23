@@ -26,25 +26,14 @@ increment (`sysarch-semver`) and a new version identifier
 change in Production is a direct consumer-facing failure, the same
 severity class as Networking's NPOL-1/NPOL-2.
 
-### SAPOL-2 — Database Schema Migration Review (Scaled by Risk Tier)
-**Rule:** A schema migration (`dp-schema-migration`, owned by Data
-Platform as of 2026-09-22 — kept here as a System Architecture policy
-since it governs a deployment/release gate on a Service's database
-dependency, not database mechanics themselves; candidate for moving to
-Data Platform's own Policies column in a future pass) targeting a
-Production database requires review before being applied, scaled by the
-database entity's Risk Tier (09-risk-tiers.md, extending
-cross-cutting/risk-tiers.md):
-- **Low:** peer review sufficient.
-- **Moderate:** peer review + Owning Team lead sign-off.
-- **High:** peer review + lead sign-off + a documented rollback plan on
-  file before the migration is applied.
-**Applies to:** Production environment, Database entity type.
-**Enforcement:** Approval gate, scaled as above. Who qualifies as
-reviewer/lead is deferred to this domain's Access Rules (column 7).
-**Rationale:** Explicitly chosen to scale by Risk Tier — mirrors
-Infrastructure's POL-2/POL-3 pattern, established once Risk Tiers existed
-and applied here proactively rather than needing a later retrofit.
+### SAPOL-2 — Database Schema Migration Review (moved 2026-09-22)
+**Moved to Data Platform** as DPPOL-1 (04-data-platform/06-policies.md) —
+the "candidate for moving" flagged when this policy was first drafted has
+now happened, in the same pass that built out Data Platform's remaining
+columns. A Service's Production deployment still depends on its
+Database's migrations passing this gate (see SAPOL-4/SAPROC-4's test
+gate, which is a separate, sequential concern) — this domain references
+DPPOL-1 rather than restating it.
 
 ### SAPOL-3 — Managed Secret Storage Required
 **Rule:** Application Secrets (`sysarch-application-secret`) must be
@@ -96,14 +85,18 @@ than a single uniform baseline.
   from different domains — SAPOL-5 covers the service's own security
   posture, NPOL-3 covers the network-boundary approval to expose it at
   all. Neither restates the other.
-- SAPOL-2 and SAPOL-5 both scale by Risk Tier, applied proactively from
-  the start (unlike Infrastructure's POL-2/POL-3, which were retrofitted
-  after Risk Tiers was drafted) — Risk Tiers already existed as a
-  cross-cutting concept by the time this column was drafted.
+- SAPOL-5 scales by Risk Tier, applied proactively from the start
+  (unlike Infrastructure's POL-2/POL-3, which were retrofitted after Risk
+  Tiers was drafted) — Risk Tiers already existed as a cross-cutting
+  concept by the time this column was drafted. SAPOL-2 (now DPPOL-1,
+  moved to Data Platform 2026-09-22) shared this same proactive-scaling
+  treatment at the time it was drafted here.
 
 **Open items:**
-- Who qualifies as "Owning Team lead" (SAPOL-2) and who performs the
-  SAPOL-5 verification are deferred to Access Rules (column 7), next.
+- Who performs the SAPOL-5 verification is deferred to Access Rules
+  (column 7), next. (Who qualifies as reviewer for the former SAPOL-2 is
+  now Data Platform's Access Rules question — see
+  04-data-platform/07-access-rules.md's DPPAR-1.)
 - SAPOL-4's enforcement mechanism is a genuine forward reference to
   Workflow/Process (domain 7) — flagged, not resolved here.
 

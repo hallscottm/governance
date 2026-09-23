@@ -41,14 +41,10 @@ break traceability).
 
 ## Database Naming Convention
 
-**Pattern:** `<service_name>_<purpose>` (snake_case, not kebab-case)
-
-Databases commonly restrict or discourage hyphens in identifiers
-depending on engine — snake_case is used here instead of the kebab-case
-pattern used elsewhere in this framework, an explicit, engine-driven
-exception.
-
-**Example:** `orders_primary`, `billing_reporting`
+**Moved to Data Platform** (04-data-platform/05-conventions.md) as of
+2026-09-22, alongside the Database term itself (`dp-database`) — this
+domain now only references a Database by its name (e.g., in Dependency
+List, 04-metadata-standards.md), it doesn't own the naming pattern.
 
 ## API Versioning Convention
 

@@ -24,18 +24,9 @@ resources without restatement — see cross-cutting/procedures.md.
    MAJOR version increment, the release is rejected before deployment.
 3. The only path past a failed check is CCPROC-4's break-glass override.
 
-### SAPROC-2 — Schema Migration Review (Scaled by Risk Tier)
-**Executes:** SAPOL-2, SAAR-1
-**Steps:**
-1. A schema migration targeting a Production database is submitted with
-   its Risk Tier already determined (per 09-risk-tiers.md).
-2. Low tier: routed to any peer reviewer; approval closes the step.
-3. Moderate tier: routed to a peer reviewer, then to the database's
-   Owning Team Lead (per SAAR-1) for sign-off.
-4. High tier: as Moderate, plus the migration must include a documented
-   rollback plan before Owning Team Lead sign-off is requested.
-5. On approval, the migration is applied. On rejection, the Requester is
-   notified with the reason; no migration is applied.
+### SAPROC-2 — Schema Migration Review (moved 2026-09-22)
+**Moved to Data Platform** as DPPROC-1 (04-data-platform/08-procedures.md)
+alongside SAPOL-2 → DPPOL-1 and SAAR-1 → DPPAR-1.
 
 ### SAPROC-3 — Managed Secret Storage Verification
 **Executes:** SAPOL-3

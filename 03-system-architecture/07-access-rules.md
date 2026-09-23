@@ -32,18 +32,12 @@ moved.
 
 ## Domain-Specific Access Rules
 
-### SAAR-1 — Schema Migration Review Authority (Scaled by Risk Tier)
-**Rule:** Authority to approve a SAPOL-2 schema migration is scaled by
-Risk Tier:
-- **Low:** any peer reviewer (no elevated role required).
-- **Moderate:** peer reviewer + the Owning Team Lead for that database.
-- **High:** peer reviewer + Owning Team Lead + a documented rollback plan
-  (per SAPOL-2); Owning Team Lead sign-off is mandatory, not optional.
-**Applies to:** Owning Team Lead role, Database entity type, Production
-environment.
-**Ties to:** SAPOL-2.
-**Rationale:** Mirrors SAPOL-2's own tier scaling directly — no new
-scaling logic introduced.
+### SAAR-1 — Schema Migration Review Authority (moved 2026-09-22)
+**Moved to Data Platform** as DPPAR-1 (04-data-platform/07-access-rules.md)
+alongside SAPOL-2 → DPPOL-1 — schema migration authority now runs through
+Data Engineer/Data Architect (Data Platform's owning roles), not Owning
+Team Lead, reflecting that this is a Data Platform-owned resource, not a
+Service-owned one.
 
 ### SAAR-2 — Public-Facing Security Baseline Verification Authority
 **Rule:** Verification that a public-facing Service/API meets its

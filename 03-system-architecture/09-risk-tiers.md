@@ -44,9 +44,9 @@ in 06-policies.md/07-access-rules.md — summarized here for visibility):**
 
 | Tier | System Architecture-Specific Policy Implication |
 |---|---|
-| **Low** | SAPOL-2 migration review: peer review only. SAPOL-5 (if public-facing): ASVS L1, Owning Team Lead self-attestation. |
-| **Moderate** | SAPOL-2: peer review + Owning Team Lead sign-off. SAPOL-5 (if public-facing): ASVS L2, Owning Team Lead attestation + Security/Compliance review. |
-| **High** | SAPOL-2: peer review + Owning Team Lead sign-off + documented rollback plan. SAPOL-5 (if public-facing): ASVS L3, mandatory independent Security/Compliance verification. SAPOL-1, SAPOL-3, SAPOL-4 hard blocks apply uniformly at every tier (not scaled), same treatment as Networking's NPOL-1/NPOL-2. |
+| **Low** | SAPOL-2 (schema migration review) moved to Data Platform's DPPOL-1, 2026-09-22 — see 04-data-platform/09-risk-tiers.md for that tier's treatment. SAPOL-5 (if public-facing): ASVS L1, Owning Team Lead self-attestation. |
+| **Moderate** | SAPOL-5 (if public-facing): ASVS L2, Owning Team Lead attestation + Security/Compliance review. |
+| **High** | SAPOL-5 (if public-facing): ASVS L3, mandatory independent Security/Compliance verification. SAPOL-1, SAPOL-3, SAPOL-4 hard blocks apply uniformly at every tier (not scaled), same treatment as Networking's NPOL-1/NPOL-2. |
 
 ---
 
