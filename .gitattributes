@@ -1,0 +1,15 @@
+# Normalize all text files to LF in the repository and on checkout,
+# regardless of the checking-out platform's default (avoids the
+# CRLF/LF phantom-diff noise seen 2026-09-23 - not a content change,
+# just inconsistent line endings across the tools/platforms writing to
+# this repo).
+* text=auto eol=lf
+
+# Binary/generated-image types some contributor might add later -
+# never line-ending-normalize these.
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.pdf binary
+*.zip binary
