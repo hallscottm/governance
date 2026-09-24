@@ -1,0 +1,16 @@
+check_name,table_name,week_ending,pass_count,fail_count,pass_rate
+not_null,orders,2026-08-24,1980,20,0.99
+not_null,orders,2026-08-31,1975,25,0.9875
+not_null,orders,2026-09-07,1990,10,0.995
+not_null,orders,2026-09-14,1985,15,0.9925
+not_null,orders,2026-09-21,1978,22,0.989
+unique_key,customers,2026-08-24,3000,15,0.995
+unique_key,customers,2026-08-31,3010,12,0.996
+unique_key,customers,2026-09-07,2995,18,0.994
+unique_key,customers,2026-09-14,3005,10,0.9967
+unique_key,customers,2026-09-21,3020,14,0.9954
+freshness_sla,payments,2026-08-24,2500,60,0.9765
+freshness_sla,payments,2026-08-31,2480,72,0.9718
+freshness_sla,payments,2026-09-07,2510,55,0.9786
+freshness_sla,payments,2026-09-14,2495,68,0.9734
+freshness_sla,payments,2026-09-21,2520,58,0.9775

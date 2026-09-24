@@ -128,6 +128,58 @@ last_updated: 2026-09-23
 used_by: []
 ```
 
+Third entry, registered 2026-09-23 via factory-run-build-bi-report-skill
+(implementation/factory-runs/build-bi-report/), drafted by a subagent
+scoped strictly to its own sandbox folder and independently verified
+(git status confirmed it touched nothing outside that scope; the Eval
+Suite was re-run from scratch by the orchestrating session rather than
+trusting the drafting run's self-report). Closes the honest process
+deviation recorded in implementation/pilots/dq-metrics-dashboard's
+pilot-log.md ("Run 2") - a real Factory Run for this capability now
+exists, so the by-hand dashboard build that pilot used is no longer
+the accepted path going forward. Implementation lives at
+implementation/skills/build-bi-report-v1/.
+
+```yaml
+skill_id: skill-lib/build-bi-report-v1
+name: Build BI Report
+description: >
+  Reads a weekly data-quality-metrics CSV (one row per check_name,
+  table_name, week_ending, with pass_count, fail_count, pass_rate -
+  the shape produced by dq-metrics-dummy-data-generator-v1 or an
+  equivalent real export) and writes a self-contained, dependency-free
+  HTML dashboard: a line chart of weekly pass rate per check/table
+  pair, a latest-week status table, and summary stat tiles. Does not
+  author, run, or evaluate a new Data Quality Rule - visualizes
+  already-existing metrics only. Internal-distribution, non-Confidential
+  data only - does not implement Certified-status badging (BIPOL-1/2)
+  or Row-Level Security (BIPOL-3); rejects any --distribution-scope
+  wider than Internal/Departmental.
+version: 1
+status: approved
+owning_domain: null
+requires_capability_scope: >
+  Read one local CSV file supplied as input (weekly DQ-metrics shape).
+  Write one local HTML file as output. No other file, network, or
+  system access. Never authors a new Data Quality Rule or widens
+  Distribution Scope/Sensitivity beyond what it's given.
+requires_tool_permission_scope: >
+  Read: the single input CSV path passed to it. Write: the single
+  output HTML path passed to it. Execute: the bundled script only
+  (standard library only - argparse, csv, json, datetime, html,
+  pathlib, sys - no external packages, no network access).
+typical_risk_tier: Low
+eval_suite: implementation/factory-runs/build-bi-report/sandbox/eval-result.md
+  (8/8 cases passed, re-run independently of the drafting run's own
+  self-report - required-flag enforcement, Distribution Scope
+  rejection, malformed-CSV error path, bad-week/single-week rendering)
+provenance: factory-built factory-run-build-bi-report-skill (subagent scoped to its own sandbox path, independently scope-verified)
+created_date: 2026-09-23
+last_updated: 2026-09-23
+approved_by: user (hallscottm@gmail.com), direct chat confirmation, 2026-09-23
+used_by: [dq-metrics-dashboard]
+```
+
 ## Lookup, reuse, escalation
 
 1. The Engagement Planning Agent needs a Skill for a Task (07's Skill

@@ -44,6 +44,52 @@ Project-level Capability Scope), but can't widen it. Widening means
 it's not this Template anymore; that's a new version or a new
 Template, decided the same way Skill versioning is.
 
+## Registered Agents
+
+First entry, registered 2026-09-23 via factory-run-bi-report-builder-agent
+(implementation/factory-runs/bi-report-builder-agent/) - the first real
+Agent Template this registry has ever held (the pre-built Vetting and
+Planning agents are framework machinery, not registry entries).
+Compiled definition lives at implementation/agents/bi-report-builder-agent.md.
+Drafted directly by the orchestrating session acting as Factory Agent
+(a Template is a role/schema definition, not executable code, so its
+Eval is scope/schema conformance against the real Task that needs it,
+not a runtime test - see sandbox/eval-result.md for the 7/7 cases
+checked).
+
+```yaml
+agent_template_id: agent-lib/bi-report-builder-agent-v1
+role_name: BI Report Builder Agent
+agent_type: Assistant
+capability_scope: >
+  Read the routing Task's confirmed metric list, source location,
+  Distribution Scope, and Sensitivity Level, and 06-bi-reporting's
+  Anchor layer. Write a Report Data Model and Dashboard to the
+  routing Task's own declared output location only. Never authors a
+  new Data Quality Rule; never decides Distribution Scope/Sensitivity
+  itself.
+tool_permission_scope: >
+  Read: Grep, Glob, Read (repo-wide read). Write: implementation/pilots/**/report/**
+  only (narrowed per-Project by the assigning Task to that Project's
+  own report path). Execute: skill-lib/build-bi-report-v1 only for the
+  actual chart/report construction step.
+default_skills: [skill-lib/build-bi-report-v1]
+model_version_pin: OPEN - Model Catalog (engagements/12-model-catalog.md)
+  has zero populated entries; human decision required, not guessed -
+  same open item as every other Agent/Skill registered so far.
+escalation_path: >
+  A confirmed source that doesn't fit skill-lib/build-bi-report-v1's
+  scope is named explicitly and routed as a new Factory Run Task, not
+  handled with ad hoc code outside any registered Skill.
+sandbox_tested: true
+status: approved
+provenance: factory-built factory-run-bi-report-builder-agent
+created_date: 2026-09-23
+last_updated: 2026-09-23
+approved_by: user (hallscottm@gmail.com), direct chat confirmation, 2026-09-23
+used_by: [dq-metrics-dashboard]
+```
+
 ## Lookup, reuse, escalation, deprecation
 
 Identical mechanism to the Skill Library (10-skill-library.md) — same

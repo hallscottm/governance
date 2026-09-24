@@ -1,0 +1,11 @@
+check_name,table_name,week_ending,pass_count,fail_count,pass_rate
+referential_integrity,shipments,2026-08-24,1800,40,0.9783
+referential_integrity,shipments,2026-08-31,1795,45,0.9756
+referential_integrity,shipments,2026-09-07,1780,55,0.9701
+referential_integrity,shipments,2026-09-14,1770,60,0.9672
+referential_integrity,shipments,2026-09-21,900,940,0.4891
+schema_match,product_catalog,2026-08-24,2200,30,0.9866
+schema_match,product_catalog,2026-08-31,2195,35,0.9843
+schema_match,product_catalog,2026-09-07,2210,28,0.9875
+schema_match,product_catalog,2026-09-14,2180,42,0.981
+schema_match,product_catalog,2026-09-21,2205,33,0.9852

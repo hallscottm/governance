@@ -66,6 +66,16 @@ approved_by: user (hallscottm@gmail.com), direct chat confirmation, 2026-09-23
 
 dependencies:
   - dq-dash-t1-define-metrics
+  # Correction (2026-09-23): this Task's own Description/Reasoning text
+  # always named factory-run-bi-report-builder-agent and
+  # factory-run-build-bi-report-skill as real prerequisites, but this
+  # machine-readable field never listed them - caught while actually
+  # running those two Factory Runs for real. Left as originally
+  # authored (this Task already shipped, status: complete, with its own
+  # honestly-recorded deviation below) rather than rewritten after the
+  # fact; see implementation/factory-runs/bi-report-builder-agent/
+  # task-factory-run-bi-report-builder-agent.md's Reasoning section for
+  # the matching note.
 
 result:
   output_location: implementation/pilots/dq-metrics-dashboard/report/dq_dashboard.html

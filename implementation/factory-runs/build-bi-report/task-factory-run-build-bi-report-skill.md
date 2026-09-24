@@ -6,7 +6,7 @@
 task_id: factory-run-build-bi-report-skill
 parent_project: dq-metrics-dashboard
 engagement_type: Request / Ad Hoc
-status: proposed
+status: complete
 
 assigned_agent:
   role_name: Factory Agent
@@ -45,16 +45,30 @@ tools_and_mcp_servers:
 
 risk_tier: Low
 approval_required: true
-approved_by:
+approved_by: user (hallscottm@gmail.com), direct chat confirmation, 2026-09-23
 
 attempt_count: 0
 
 dependencies: []
 
 result:
-  output_location:
-  completed_date:
-  outcome_summary:
+  output_location: implementation/factory-runs/build-bi-report/sandbox/build_bi_report.py,
+    SKILL.md, eval/ (candidate script + package); skill-entry.yaml
+    (draft Library entry, skill-lib/build-bi-report-v1)
+  completed_date: "2026-09-23"
+  outcome_summary: >
+    Drafted by a subagent acting as Factory Agent, scoped to write only
+    inside this Task's own sandbox path - independently verified via
+    git status that it stayed in scope (see sandbox/eval-result.md).
+    Eval Suite re-run independently by the orchestrating session
+    (8/8 cases passed) rather than trusting the drafting run's own
+    self-report, per this pilot's established finding. Approved by
+    real human decision (hallscottm@gmail.com, direct chat
+    confirmation, 2026-09-23) and registered as
+    skill-lib/build-bi-report-v1 in engagements/10-skill-library.md;
+    implementation lives at implementation/skills/build-bi-report-v1/.
+    Closes the honest process deviation recorded in
+    implementation/pilots/dq-metrics-dashboard's pilot-log.md ("Run 2").
 ```
 
 ## Body

@@ -1,0 +1,29 @@
+agent_template_id: agent-lib/bi-report-builder-agent-v1
+role_name: BI Report Builder Agent
+agent_type: Assistant
+capability_scope: >
+  Read the routing Task's confirmed metric list, source location,
+  Distribution Scope, and Sensitivity Level, and 06-bi-reporting's
+  Anchor layer. Write a Report Data Model and Dashboard to the
+  routing Task's own declared output location only. Never authors a
+  new Data Quality Rule; never decides Distribution Scope/Sensitivity
+  itself.
+tool_permission_scope: >
+  Read: Grep, Glob, Read (repo-wide read). Write: implementation/pilots/**/report/**
+  only (narrowed per-Project by the assigning Task to that Project's
+  own report path). Execute: skill-lib/build-bi-report-v1 only for the
+  actual chart/report construction step.
+default_skills: [skill-lib/build-bi-report-v1]
+model_version_pin: OPEN - Model Catalog (engagements/12-model-catalog.md)
+  has zero populated entries; human decision required, not guessed -
+  same open item as every other Agent/Skill registered so far.
+escalation_path: >
+  A confirmed source that doesn't fit skill-lib/build-bi-report-v1's
+  scope is named explicitly and routed as a new Factory Run Task, not
+  handled with ad hoc code outside any registered Skill.
+sandbox_tested: true
+status: draft
+provenance: factory-built factory-run-bi-report-builder-agent
+created_date: "2026-09-23"
+last_updated: "2026-09-23"
+used_by: [dq-metrics-dashboard]

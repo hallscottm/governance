@@ -6,7 +6,7 @@
 task_id: factory-run-bi-report-builder-agent
 parent_project: dq-metrics-dashboard
 engagement_type: Request / Ad Hoc
-status: proposed
+status: complete
 
 assigned_agent:
   role_name: Factory Agent
@@ -45,16 +45,26 @@ tools_and_mcp_servers:
 
 risk_tier: Low   # per 13-factory.md: "Own Risk Tier: Low (drafting only, no Production execution)"
 approval_required: true
-approved_by:
+approved_by: user (hallscottm@gmail.com), direct chat confirmation, 2026-09-23
 
 attempt_count: 0   # Factory-Run-specific field, 13-factory.md — increments on Sandbox/Eval failure
 
 dependencies: []
 
 result:
-  output_location:
-  completed_date:
-  outcome_summary:
+  output_location: implementation/agents/bi-report-builder-agent.md
+    (compiled definition); implementation/factory-runs/bi-report-builder-agent/sandbox/agent-entry.yaml
+    (draft Library entry, agent-lib/bi-report-builder-agent-v1)
+  completed_date: "2026-09-23"
+  outcome_summary: >
+    Drafted and Eval-checked (7/7 cases, see sandbox/eval-result.md),
+    then approved by real human decision (hallscottm@gmail.com, direct
+    chat confirmation, 2026-09-23 - CCAR-1: this Agent never
+    self-approved its own draft) and registered as
+    agent-lib/bi-report-builder-agent-v1 in
+    engagements/11-agent-library.md. Closes the honest process
+    deviation recorded in implementation/pilots/dq-metrics-dashboard's
+    pilot-log.md ("Run 2").
 ```
 
 ## Body
@@ -87,5 +97,14 @@ would be out of scope. This Task exists instead of that shortcut — it
 is the mechanism engagements/13-factory.md itself prescribes for
 exactly this situation (an ordinary Task Document, `engagement_type:
 Request / Ad Hoc`, naming the Factory Agent). dq-dash-t2-build-report
-lists this Task's id in its own `dependencies` and cannot start until
-this either completes or is rejected.
+names this Task (and factory-run-build-bi-report-skill) as prerequisites
+in its own Description/Reasoning text - **correction, 2026-09-23:** its
+`dependencies:` front-matter field itself only ever listed
+`dq-dash-t1-define-metrics`, not these two Factory Run ids. That was a
+real inconsistency between the prose and the machine-readable field,
+caught while finally running this Task for real; dq-dash-t2 already
+shipped (`status: complete`) with an honestly-recorded process
+deviation before this was caught, so its historical `dependencies`
+field is left as-authored rather than rewritten after the fact -
+recorded here instead, plus in dq-dash-t2's own file, so the
+inconsistency isn't silently dropped.

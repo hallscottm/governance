@@ -140,3 +140,31 @@ Both remaining Tasks closed for real, not just drafted:
   execution is an accepted path for low-risk, Internal-scope work and
   say so explicitly in engagements/13-factory.md rather than leaving it
   implicit.
+
+## Run 3 (2026-09-23) — the Run 2 shortcut closed for real
+
+Both Factory Run Tasks this pilot had deferred were run for real, not
+drafted-and-skipped again:
+
+- **factory-run-bi-report-builder-agent:** drafted directly by the
+  orchestrating session acting as Factory Agent (a role/schema
+  definition, not code - its Eval is scope/schema conformance, 7/7
+  cases). Registered as agent-lib/bi-report-builder-agent-v1.
+- **factory-run-build-bi-report-skill:** drafted by a real subagent,
+  scoped strictly to its own sandbox folder. Scope compliance verified
+  independently via `git status` (not the subagent's own self-report -
+  this pilot's own established finding from the dq-dummy-data-generator
+  incident). Eval Suite re-run from scratch by the orchestrating
+  session, independently of the subagent's own reported results (8/8
+  cases). Registered as skill-lib/build-bi-report-v1.
+
+Both approved by real human decision (hallscottm@gmail.com, direct
+chat confirmation) - never self-approved, per CCAR-1. This closes the
+open item Run 2 flagged: "either build the Report Builder Agent/Skill
+for real next time, or decide by-hand orchestrator execution is an
+accepted path... and say so explicitly." The answer, now on record: the
+real Factory process is the accepted path, and it was run for real.
+The by-hand dashboard from Run 2 remains the pilot's actual delivered
+report (not rebuilt through the new Skill retroactively - that would
+be redoing already-accepted work for no governance reason); the new
+Agent/Skill exist for the *next* time this capability is needed.

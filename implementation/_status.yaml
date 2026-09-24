@@ -7,7 +7,11 @@ columns:
   00-overview: draft
   agents/vetting-agent: draft
   agents/planning-agent: draft
-  pilots/dq-metrics-dashboard: run-2-complete-report-delivered-findings-open
+  pilots/dq-metrics-dashboard: run-3-complete-real-factory-runs-closed-the-shortcut
+  agents/bi-report-builder-agent: approved-and-registered
+  factory-runs/bi-report-builder-agent: approved-and-registered
+  factory-runs/build-bi-report: approved-and-registered
+  skills/build-bi-report-v1: approved
   01-running-an-engagement: draft
   agents/factory-agent: draft
   factory-runs/csv-to-markdown-summary: approved-and-registered
